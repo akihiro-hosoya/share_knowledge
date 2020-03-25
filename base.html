@@ -215,67 +215,83 @@
 
 
             <!-- 質問 -->
-            <div class="container-fluid　padding">
-                <div class="row">
-                    <form action="">
-                        <div class="form-group">
-                            <label for="questionTitle">質問タイトル</label>
-                            <input type="text" class="form-control" id="questionTitle" placeholder="">
+            <div class="container padding">
+                <div class="row padding">
+                    <h3>質問してみる</h3>
+                    <div class="card">
+                        <div class="col-md-6 col-10">
+                            <div class="alert alert-info" role="alert">
+                                <h6><strong>質問する前に：</strong></h6>
+                                <p>これから投稿しようとしている質問は過去に投稿されている可能性があります。</p>
+                                <p>次のリンクから投稿前に確認をしておきましょう。</p>
+                                <a href="#" class="alert-link">質問を探す</a>
+                            </div>
+                            <div class="card-body">
+                                <form action="">
+                                    <div class="form-group">
+                                        <label for="questionTitle">質問タイトル</label>                                    
+                                        <input type="text" class="form-control" id="questionTitle" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="questionCategorySelect1">カテゴリ選択</label>
+                                        <select class="form-control" name="" id="questionCategorySelect1">
+                                            <option>カメラ</option>
+                                            <option>プリンター</option>
+                                            <option>PC</option>
+                                            <option>Apple</option>
+                                            <option>MNO</option>
+                                            <option>MVNO</option>
+                                            <option>ゲーム</option>
+                                            <option>OAタップ・電池</option>
+                                            <option>ストレージ</option>
+                                            <option>インターネット回線</option>
+                                            <option>保証・サポート</option>
+                                            <option>翻訳機</option>
+                                            <option>通常業務</option>
+                                            <option>販売トーク</option>
+                                            <option>その他</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="questionContent">質問内容</label>
+                                        <textarea class="form-control" name="" id="questionContent" cols="30" rows="10"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="formControlFile">添付ファイル</label>
+                                        <input type="file" class="form-control-file" id="formControlFile">
+                                    </div>
+                                    <a href="#"><button class="btn btn-primary" type="submit">質問する</button></a>
+                                </form>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="questionCategorySelect1">カテゴリ選択</label>
-                            <select class="form-control" name="" id="questionCategorySelect1">
-                                <option>カメラ</option>
-                                <option>プリンター</option>
-                                <option>PC</option>
-                                <option>Apple</option>
-                                <option>MNO</option>
-                                <option>MVNO</option>
-                                <option>ゲーム</option>
-                                <option>OAタップ・電池</option>
-                                <option>ストレージ</option>
-                                <option>インターネット回線</option>
-                                <option>保証・サポート</option>
-                                <option>翻訳機</option>
-                                <option>通常業務</option>
-                                <option>販売トーク</option>
-                                <option>その他</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="questionContent">質問内容</label>
-                            <textarea class="form-control" name="" id="questionContent" cols="30" rows="10"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="formControlFile">添付ファイル</label>
-                            <input type="file" class="form-control-file" id="formControlFile">
-                        </div>
-                    </form>
+                    </div>
                 </div>
+                
+            
 
 
                 <!-- 回答 -->
-                <div class="row">
-                    <h5>回答する</h5>
-                    <hr class="w-100">
-                    <div class="col-6 d-flex align-column">
-                        <div class="card">
-                            <h6 class="card-title">未回答の質問</h6>
+                <div class="row padding　d-flex flex-column">
+                    <h4>回答する</h4>
+                    <div class="card col-md-5 col-10">
+                        <div class="d-flex align-column">
+                            <div class="card">
+                                <h6 class="card-title">未回答の質問</h6>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-6 d-flex align-column">
-                        <div class="card">
-                            <h6 class="card-title">回答受付中の質問</h6>
+                        <div class="col-6 d-flex align-column">
+                            <div class="card">
+                                <h6 class="card-title">回答受付中の質問</h6>
+                            </div>
                         </div>
                     </div>
                 </div>
-
 
             </div>
             <!-- Profile -->
             <div class="container-fluid">
+                <h5>個人設定</h5>
                 <div class="row">
-                    <h5>個人設定</h5>
                     <!-- プロフィール設定 -->
                     <div class="col-6">
                         <div class="card">
@@ -300,7 +316,7 @@
             <div class="container-fluid padding">
                 <div class="row text-center">
                     <!-- ページ -->
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <h4>Pages</h4>
                         <hr>
                         <a href="#">Top</a>
@@ -311,7 +327,7 @@
                         <hr>
                     </div>
                     <!-- 固定ページ -->
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <h4>About</h4>
                         <hr>
                         <i class="fab fa-github-square"></i>
@@ -320,6 +336,13 @@
                         <a href="#">ご利用規約</a>
                         <a href="#">プライバシーポリシー</a>
                         <a href="#">お問い合わせ</a>
+                        <hr>
+                    </div>
+                    <!-- コピーライト -->
+                    <div>
+                        <h3>Quelle</h3>
+                        <p>知識共有サイト</p>
+                        &copy;Quelle
                     </div>
                 </div>
             </div>            
