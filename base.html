@@ -8,6 +8,7 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
 
         <title>Qulle</title>
@@ -60,9 +61,9 @@
                         <a href="#" class="nav-link">Logout</a>
                     </li>
                 </ul>
-                <form class="form-inline mt-4 mt-lg-auto ml-lg-4">
-                    <input type="search" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-primary active my-2 my-sm-0" type="submit">Search</button>
+                <form class="form-inline ml-lg-4">
+                    <input type="search" class="form-control-sm mr-sm-1" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-sm btn-primary active my-sm-0" type="submit">Search</button>
                 </form>
             </div>
         </nav>
@@ -74,14 +75,255 @@
             </ol>
         </nav>
 
-        <!-- 質問検索 -->
-        <!-- 質問投稿 -->
-        <!-- 回答 -->
-        <!-- Profile -->
-            <!-- プロフィール設定 -->
-            <!-- 質問・回答編集 -->
+        <!-- 背景 -->
+        <div class="body-wrapper">
+
+            <!-- 質問検索欄 -->
+            <div class="container padding">
+                <h3>質問を探す</h3>
+                <div class="row padding">
+                    <!-- キーワードから探す -->
+                    <div class="col-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5　class="card-title">キーワードで検索</h5>
+                                <p class="card-subtitle">キーワードを入れてみよう</p>
+                                <form class="form-inline">
+                                    <input type="search" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-primary" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 質問番号から探す -->
+                    <div class="col-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5　class="card-title">質問番号で検索</h5>
+                                <form class="form-inline">
+                                    <div class="input-group-number">
+                                        <div class="input-group-prepend">No.</div>
+                                        <input type="search" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
+                                    </div>
+                                    <button class="btn btn-primary" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- カテゴリから探す -->
+                    <div class="col-12">
+                        <div class="card p-2">
+                            <div class="card-body">
+                                <h5 class="card-title">カテゴリから探す</h5>
+                            </div>
+                            <div class="row no-gutters m-2 d-flex justify-content-around">
+                                <div class="card category col-5 col-md-2 mr-2 mb-2">
+                                    <i class="card-img-top fas fa-camera"></i>
+                                    <div class="card-body text-center">
+                                        <p class="card-title">カメラ</p>
+                                    </div>
+                                </div>
+                                <div class="card category col-5 col-md-2 mr-2 mb-2 ">
+                                    <i class="card-img-top material-icons">print</i>
+                                    <div class="card-body text-center">
+                                        <p class="card-title">プリンター</p>
+                                    </div>
+                                </div>
+                                <div class="card category col-5 col-md-2 mr-2 mb-2 ">
+                                    <i class="card-img-top material-icons">computer</i>
+                                    <div class="card-body text-center">
+                                        <p class="card-title">PC</p>
+                                    </div>
+                                </div>
+                                <div class="card category col-5 col-md-2 mr-2 mb-2 ">
+                                    <i class="card-img-top fab fa-apple"></i>
+                                    <div class="card-body text-center">
+                                        <p class="card-title">Apple</p>
+                                    </div>
+                                </div>
+                                <div class="card category col-5 col-md-2 mr-2 mb-2 ">
+                                    <i class="card-img-top fas fa-mobile-alt"></i>
+                                    <div class="card-body text-center">
+                                        <p class="card-title">MNO</p>
+                                    </div>
+                                </div>
+                                <div class="card category col-5 col-md-2 mr-2 mb-2 ">
+                                    <i class="card-img-top material-icons">sim_card</i>
+                                    <div class="card-body text-center">
+                                        <p class="card-title">MVNO</p>
+                                    </div>
+                                </div>
+                                <div class="card category col-5 col-md-2 mr-2 mb-2 ">
+                                    <i class="card-img-top fas fa-gamepad"></i>
+                                    <div class="card-body text-center">
+                                        <p class="card-title">ゲーム</p>
+                                    </div>
+                                </div>
+                                <div class="card category col-5 col-md-2 mr-2 mb-2 ">
+                                    <i class="card-img-top fas fa-battery-three-quarters"></i>
+                                    <div class="card-body text-center">
+                                        <p class="card-title">OAタップ・電池</p>
+                                    </div>
+                                </div>
+                                <div class="card category col-5 col-md-2 mr-2 mb-2 ">
+                                    <i class="card-img-top material-icons">storage</i>
+                                    <div class="card-body text-center">
+                                        <p class="card-title">ストレージ</p>
+                                    </div>
+                                </div>
+                                <div class="card category col-5 col-md-2 mr-2 mb-2 ">
+                                    <i class="card-img-top material-icons">router</i>
+                                    <div class="card-body text-center">
+                                        <p class="card-title">インターネット回線</p>
+                                    </div>
+                                </div>
+                                <div class="card category col-5 col-md-2 mr-2 mb-2 ">
+                                    <i class="card-img-top fas fa-medkit"></i>
+                                    <div class="card-body text-center">
+                                        <p class="card-title">保証・サポート</p>
+                                    </div>
+                                </div>
+                                <div class="card category col-5 col-md-2 mr-2 mb-2 ">
+                                    <i class="card-img-top fas fa-language"></i>
+                                    <div class="card-body text-center">
+                                        <p class="card-title">翻訳機</p>
+                                    </div>
+                                </div>
+                                <div class="card category col-5 col-md-2 mr-2 mb-2 ">
+                                    <i class="card-img-top fas fa-pen-square"></i>
+                                    <div class="card-body text-center">
+                                        <p class="card-title">通常業務</p>
+                                    </div>
+                                </div>
+                                <div class="card category col-5 col-md-2 mr-2 mb-2 ">
+                                    <i class="card-img-top fas fa-comments"></i>
+                                    <div class="card-body text-center">
+                                        <p class="card-title">販売トーク</p>
+                                    </div>
+                                </div>
+                                <div class="card category col-5 col-md-2 mr-2 mb-2 ">
+                                    <i class="card-img-top fas fa-question-circle"></i>
+                                    <div class="card-body text-center">
+                                        <p class="card-title">その他</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 質問 -->
+            <div class="container-fluid　padding">
+                <div class="row">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="questionTitle">質問タイトル</label>
+                            <input type="text" class="form-control" id="questionTitle" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="questionCategorySelect1">カテゴリ選択</label>
+                            <select class="form-control" name="" id="questionCategorySelect1">
+                                <option>カメラ</option>
+                                <option>プリンター</option>
+                                <option>PC</option>
+                                <option>Apple</option>
+                                <option>MNO</option>
+                                <option>MVNO</option>
+                                <option>ゲーム</option>
+                                <option>OAタップ・電池</option>
+                                <option>ストレージ</option>
+                                <option>インターネット回線</option>
+                                <option>保証・サポート</option>
+                                <option>翻訳機</option>
+                                <option>通常業務</option>
+                                <option>販売トーク</option>
+                                <option>その他</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="questionContent">質問内容</label>
+                            <textarea class="form-control" name="" id="questionContent" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="formControlFile">添付ファイル</label>
+                            <input type="file" class="form-control-file" id="formControlFile">
+                        </div>
+                    </form>
+                </div>
+
+
+                <!-- 回答 -->
+                <div class="row">
+                    <h5>回答する</h5>
+                    <hr class="w-100">
+                    <div class="col-6 d-flex align-column">
+                        <div class="card">
+                            <h6 class="card-title">未回答の質問</h6>
+                        </div>
+                    </div>
+                    <div class="col-6 d-flex align-column">
+                        <div class="card">
+                            <h6 class="card-title">回答受付中の質問</h6>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- Profile -->
+            <div class="container-fluid">
+                <div class="row">
+                    <h5>個人設定</h5>
+                    <!-- プロフィール設定 -->
+                    <div class="col-6">
+                        <div class="card">
+                            <i class="material-icons">settings</i>
+                            <h6 class="card-title">プロフィール設定</h6>
+                        </div>
+                    </div>
+                    <!-- 質問・回答編集 -->
+                    <div class="col-6">
+                        <div class="card">
+                            <i class="material-icons">create</i>
+                            <h6 class="card-title">質問・回答編集</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
         <!-- Footer -->
-            <!-- 固定ページ -->
+        <footer>
+            <div class="container-fluid padding">
+                <div class="row text-center">
+                    <!-- ページ -->
+                    <div class="col-md-4">
+                        <h4>Pages</h4>
+                        <hr>
+                        <a href="#">Top</a>
+                        <a href="#">News</a>
+                        <a href="#">カテゴリ</a>
+                        <a href="#">プロフィール</a>
+                        <a href="#">ログアウト</a>
+                        <hr>
+                    </div>
+                    <!-- 固定ページ -->
+                    <div class="col-md-4">
+                        <h4>About</h4>
+                        <hr>
+                        <i class="fab fa-github-square"></i>
+                        <a href="#">Github</a>
+                        <a href="#">製作者</a>
+                        <a href="#">ご利用規約</a>
+                        <a href="#">プライバシーポリシー</a>
+                        <a href="#">お問い合わせ</a>
+                    </div>
+                </div>
+            </div>            
+        </footer>
 
 
         <!-- Optional JavaScript -->
