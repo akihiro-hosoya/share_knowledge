@@ -16,51 +16,60 @@
 
     <body>
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-primary sticky-top">
-            <a href="#" class="navbar-brand">Quelle</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">LOGO</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a href="#" class="nav-link">Top<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav item">
-                        <a href="#" class="nav-link">News</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
-                            Category
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a href="#" class="dropdown-item">カメラ</a>
-                            <a href="#" class="dropdown-item">プリンター</a>
-                            <a href="#" class="dropdown-item">PC</a>
-                            <a href="#" class="dropdown-item">Apple</a>
-                            <a href="#" class="dropdown-item">3大キャリア</a>
-                            <a href="#" class="dropdown-item">格安sim</a>
-                            <a href="#" class="dropdown-item">ゲーム</a>
-                            <a href="#" class="dropdown-item">OAタップ・電池</a>
-                            <a href="#" class="dropdown-item">ストレージ</a>
-                            <a href="#" class="dropdown-item">インターネット回線</a>
-                            <a href="#" class="dropdown-item">保証・サポート</a>
-                            <a href="#" class="dropdown-item">翻訳機</a>
-                            <a href="#" class="dropdown-item">通常業務</a>
-                            <a href="#" class="dropdown-item">販売トーク</a>
-                            <a href="#" class="dropdown-item">その他</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Logout</a>
-                    </li>
-                </ul>
+          
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">ホーム <span class="sr-only">(カレント)</span></a>
+                </li>
+          
+                <li class="nav-item dropdown_multilayer">
+                  <a class="nav-link dropdown_multilayer_menu" href="#">第一階層ドロップダウン</a>
+          
+           <ul class="nav flex-column dropdown_multilayer_menu_sub">
+           <li class="nav-item dropdown_multilayer_menu_third">
+           <a class="nav-link" href="#">第二階層ドロップダウン</a>
+           <ul class="nav flex-column dropdown_multilayer_menu_third_sub">
+           <li class="nav-item">
+           <a class="nav-link" href="#">Link</a>
+           </li>
+           <li class="nav-item">
+           <a class="nav-link" href="#">Link</a>
+           </li>
+           <li class="nav-item">
+           <a class="nav-link" href="#">Link</a>
+           </li>
+           <li class="nav-item">
+           <a class="nav-link" href="#">Link</a>
+           </li>
+           </ul>
+           </li>
+          
+           <li class="nav-item">
+           <a class="nav-link" href="#">第二階層メニュー</a>
+           </li>
+           <li class="nav-item">
+           <a class="nav-link" href="#">第二階層メニュー</a>
+           </li>
+           <li class="nav-item">
+           <a class="nav-link" href="#">第二階層メニュー</a>
+           </li>
+           </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">メニュー２</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">メニュー3</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
                 <form class="form-inline ml-lg-4">
                     <input type="search" class="form-control-sm mr-sm-1" placeholder="Search" aria-label="Search">
                     <button class="btn btn-sm btn-primary active my-sm-0" type="submit">Search</button>
@@ -347,6 +356,44 @@
                 </div>
             </div>            
         </footer>
+
+        <div class="dropdown drop-hover">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+                    ドロップダウンボタン
+            </button>
+            <ul class="dropdown-menu">
+                <li class="dropright drop-hover">
+                    <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">メニュー</a>
+                <ul class="dropdown-menu">
+                    <li class="dropright drop-hover">
+                        <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">メニュー</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="#">メニュー</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">メニュー</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">メニュー</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">メニュー</a>
+                    </li>
+                </ul>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">メニュー</a>
+                </li>
+            </ul>
+            </div>
+            <style>
+            .drop-hover:hover > .dropdown-menu {
+            display: block !important;
+            }
+            </style>
 
 
         <!-- Optional JavaScript -->
