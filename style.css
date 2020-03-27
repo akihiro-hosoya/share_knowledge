@@ -1,0 +1,145 @@
+/* ---------- Navigation ---------- */
+.navbar, .navbar-expand-lg {
+    background-color: #6495ed;
+    /* border-bottom: solid 0.01rem white; */
+}
+.navbar-brand, .nav-link {
+    color: white;
+    font-family: 'Fredoka One', cursive;
+}
+.navbar-brand {
+    font-size: 25px;
+}
+.navbar-toggler {
+    border: solid 0.5px white;
+}
+.fa-bars {
+    color: white;
+}
+
+/* ---------- Search欄 ---------- */
+.search-bar {
+    background-color: #6495ed;
+    border-bottom: solid 0.01rem white;
+}
+.search-item {
+    color: white;
+}
+.search-item:hover {
+    color: #00008b;
+}
+
+/* ---------- 背景調整 ---------- */
+.main-wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+/* ---------- 質問検索欄 ---------- */
+.Qsearcher {
+    background-color: #fff;
+}
+.Qsearch-menu {
+    background-color: #87cefa;
+}
+
+.Ksearch, .Nsearch {
+    display: inline;
+}
+
+/* ---------- カテゴリ検索欄 ---------- */
+.category-icon:hover {
+    border: red solid 0.5px;
+    color: red;
+    cursor: pointer;
+}
+.category-item {
+    text-align: center;
+}
+.card-img-top {
+    font-size: 3rem;
+    margin: auto;
+    text-align: center;
+}
+.category-name1 {
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+/* 質問フォーム */
+.Qform h4, .Aform h4 {
+    text-align: center;
+}
+
+/* 回答フォーム */
+
+/* プロフィール */
+
+/* パンくずリスト */
+.breadcrumb {
+    margin: 5rem 0rem 0rem 0rem;
+}
+
+/* footer */
+footer {
+    background-color: #6495ed;
+    font-family: 'Fredoka One', cursive;
+}
+.footer-wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+.page-intro, .about-intro, .copy-w {
+    text-align: center;
+    color: #fff;
+}
+.page-intro a, .about-intro a, .copy-w a {
+    color: #fff;
+}
+.page-intro h4, .about-intro h4 {
+    border-top: #fff 0.5px solid;
+    border-bottom: #fff 0.5px solid;
+    padding: 1rem 0rem;
+}
+.page-intro a:hover, .about-intro a:hover, .copy-w a:hover {
+    color: #00008b;
+}
+.copy-w {
+    margin-top: 1.5rem;
+    border-top: #fff solid 1px;
+    padding-top: 1rem;
+    text-align: center;
+}
+
+
+
+
+
+
+/*---Media Queries --*/
+@media (max-width: 992px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 576px) {
+}
+
+/*
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+*/
