@@ -42,10 +42,221 @@
 
         <!-- Search欄 -->
         <div class="search-bar d-flex justify-content-around py-1 shadow-sm">
-            <a href="#" class="search-item btn">
-                <i class="fas fa-th-list"></i>
-                <span>カテゴリーから探す</span>
-            </a>
+            <div class="dropdown drop-hover">
+                <a href="#" class="search-item btn dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-th-list"></i>
+                    <span>カテゴリーから探す</span>
+                </a>
+                <div>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item btn-group dropright">
+                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">カメラ</button>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item btn-group dropright">
+                                    <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">一眼・ミラーレス</button>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item">Canon</li>
+                                        <li class="dropdown-item">SONY</li>
+                                        <li class="dropdown-item">OLYMPUS</li>
+                                        <li class="dropdown-item">Nikon</li>
+                                        <li class="dropdown-item">その他</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item btn-group dropright">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">コンデジ</button>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item">Canon</li>
+                                        <li class="dropdown-item">SONY</li>
+                                        <li class="dropdown-item">その他</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item btn">SD</li>
+                                <li class="dropdown-item btn">保証・サポート</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-item btn-group dropright">
+                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">プリンター</button>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item btn-group dropright">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">本体</button>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item">Canon</li>
+                                        <li class="dropdown-item">EPSON</li>
+                                        <li class="dropdown-item">brother</li>
+                                        <li class="dropdown-item">エコタンク</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item btn-group dropright">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">インク</button>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item">Canon</li>
+                                        <li class="dropdown-item">EPSON</li>
+                                        <li class="dropdown-item">brother</li>
+                                        <li class="dropdown-item">その他</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item btn-group dropright">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">周辺</button>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item">印刷用紙</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item btn">保証・サポート</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-item btn-group dropright">
+                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PC</button>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item btn-group dropright">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ノート</button>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item">FUJITSU</li>
+                                        <li class="dropdown-item">NEC</li>
+                                        <li class="dropdown-item">TOSHIBA</li>
+                                        <li class="dropdown-item">Lenovo</li>
+                                        <li class="dropdown-item">その他</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item btn-group dropright">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">モバイル</button>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item">FUJITSU</li>
+                                        <li class="dropdown-item">NEC</li>
+                                        <li class="dropdown-item">TOSHIBA</li>
+                                        <li class="dropdown-item">Lenovo</li>
+                                        <li class="dropdown-item">その他</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item btn-group dropright">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">デスクトップ</button>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item">FUJITSU</li>
+                                        <li class="dropdown-item">NEC</li>
+                                        <li class="dropdown-item">TOSHIBA</li>
+                                        <li class="dropdown-item">Lenovo</li>
+                                        <li class="dropdown-item">その他</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item btn-group dropright">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">周辺</button>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item">ハブ</li>
+                                        <li class="dropdown-item">マウス</li>
+                                        <li class="dropdown-item">キーボード</li>
+                                        <li class="dropdown-item">ソフトウェア</li>
+                                        <li class="dropdown-item">ケース</li>
+                                        <li class="dropdown-item">ドライブ</li>
+                                        <li class="dropdown-item">ストレージ</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item btn">保証・サポート・セッティング</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-item btn-group dropright">
+                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Apple</button>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item btn">iPhone</li>
+                                <li class="dropdown-item btn">iPad</li>
+                                <li class="dropdown-item btn">Apple Watch</li>
+                                <li class="dropdown-item btn">保証・サポート</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-item btn-group dropright">
+                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MNO</button>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item btn">共通</li>
+                                <li class="dropdown-item btn">docomo</li>
+                                <li class="dropdown-item btn">au</li>
+                                <li class="dropdown-item btn">Softbank</li>
+                                <li class="dropdown-item btn">保証・サポート</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-item btn-group dropright">
+                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MVNO</button>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item btn">共通</li>
+                                <li class="dropdown-item btn-group dropright">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Y!mobile</button>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item">モバイル</li>
+                                        <li class="dropdown-item">Pocket Wifi</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item btn-group dropright">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">UQ mobile</button>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item">モバイル</li>
+                                        <li class="dropdown-item">Pocket Wifi</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item btn">LINE mobile</li>
+                                <li class="dropdown-item btn">rakuten mobile</li>
+                                <li class="dropdown-item btn">保証・サポート</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-item btn-group dropright">
+                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ゲーム</button>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item btn">Nintendo</li>
+                                <li class="dropdown-item btn">SONY</li>
+                                <li class="dropdown-item btn">その他</li>
+                                <li class="dropdown-item btn">保証・サポート</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-item btn-group dropright">
+                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">OAタップ・電池</button>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item btn">OAタップ</li>
+                                <li class="dropdown-item btn">電池</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-item btn-group dropright">
+                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">インターネット回線</button>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item btn-group dropright">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">光回線</button>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item">ドコモ光</li>
+                                        <li class="dropdown-item">auひかり・Home</li>
+                                        <li class="dropdown-item">Softbank光・Air</li>
+                                        <li class="dropdown-item">Nifty光</li>
+                                        <li class="dropdown-item">Tcom光</li>
+                                        <li class="dropdown-item">NURO光</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item btn">固定代替</li>
+                                <li class="dropdown-item btn">ルーター</li>
+                                <li class="dropdown-item btn">保証・サポート</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-item btn-group dropright">
+                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">翻訳機・電子辞書</button>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item btn">翻訳機</li>
+                                <li class="dropdown-item btn-group dropright">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">電子辞書</button>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item">CASIO</li>
+                                        <li class="dropdown-item">SHARP</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-item">通常業務</li>
+                        <li class="dropdown-item">その他</li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
             <form class="search-item form-inline ml-lg-4">
                 <i class="fas fa-search"></i>
                 <span>キーワードから探す　</span>
@@ -62,14 +273,14 @@
             <div class="container-fluid padding">
                 <h3 class="text-center">質問を探す</h3>
                 <hr>    
-                <div class="Qsearch-menu row padding">
+                <div class="section-wrapper row padding">
                     <!-- キーワードから探す -->
                     <div class="col-lg-6">
-                        <div class="card border-danger mt-3 shadow">
-                            <div class="card-header">キーワードで検索</div>
+                        <div class="card mt-3 shadow">
+                            <div class="card-header"><span class="marker">キーワードで検索</span></div>
                             <div class="card-body">
                                 <p class="card-text">例：canon kissM</p>
-                                <form class="form-inline shadow-sm Ksearch">
+                                <form class="form-inline Ksearch">
                                     <input type="search" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
                                     <button class="btn btn-primary" type="submit">Search</button>
                                 </form>
@@ -78,11 +289,11 @@
                     </div>
                     <!-- 質問番号から探す -->
                     <div class="col-lg-6">
-                        <div class="card border-danger mt-3 shadow">
-                            <div class="card-header">質問番号で検索</div>
+                        <div class="card mt-3 shadow">
+                            <div class="card-header"><h4><span class="marker">質問番号で検索</span></h4></div>
                             <div class="card-body">
                                 <p class="card-text">例：No. 00123</p>
-                                <form class="form-inline shadow-sm">
+                                <form class="form-inline">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="number-addon">No.</span>
@@ -94,12 +305,12 @@
                             </div>
                         </div>
                     </div>
-                    <!-- カテゴリから探す -->
+                    <!-- カテゴリーから探す -->
                     <div class="col-12 my-3">
-                        <div class="card border-danger shadow">
-                            <h5 class="card-header shadow-sm mb-2">カテゴリーから探す</h5>
+                        <div class="card shadow">
+                            <div class="card-header shadow-sm mb-2"><span class="marker">カテゴリーから探す</span></div>
                             <div class="row no-gutters d-flex justify-content-around">
-                                <div class="card category-icon shadow-sm col-5 col-md-2 mr-2 mb-2">
+                                <div class="card category-icon shadow-sm col-5 col-md-3 mr-2 mb-2">
                                     <i class="card-img-top fas fa-camera mt-3"></i>
                                     <div class="card-body p-2">
                                         <p class="card-text category-name1">カメラ</p>
@@ -107,9 +318,8 @@
                                     <div class="card-footer d-flex justify-content-center p-1">
                                         <i class="fas fa-chevron-down"></i>
                                     </div>
-
                                 </div>
-                                <div class="card category-icon shadow-sm col-5 col-md-2 mr-2 mb-2 ">
+                                <div class="card category-icon shadow-sm col-5 col-md-3 mr-2 mb-2 ">
                                     <i class="card-img-top material-icons mt-3">print</i>
                                     <div class="card-body p-2">
                                         <p class="card-text category-name1">プリンター</p>
@@ -118,7 +328,7 @@
                                         <i class="fas fa-chevron-down"></i>
                                     </div>
                                 </div>
-                                <div class="card category-icon shadow-sm col-5 col-md-2 mr-2 mb-2 ">
+                                <div class="card category-icon shadow-sm col-5 col-md-3 mr-2 mb-2 ">
                                     <i class="card-img-top material-icons mt-3">computer</i>
                                     <div class="card-body p-2">
                                         <p class="card-text category-name1">PC</p>
@@ -127,7 +337,7 @@
                                         <i class="fas fa-chevron-down"></i>
                                     </div>
                                 </div>
-                                <div class="card category-icon shadow-sm col-5 col-md-2 mr-2 mb-2 ">
+                                <div class="card category-icon shadow-sm col-5 col-md-3 mr-2 mb-2 ">
                                     <i class="card-img-top fab fa-apple mt-3"></i>
                                     <div class="card-body p-2">
                                         <p class="card-text category-name1">Apple</p>
@@ -136,7 +346,7 @@
                                         <i class="fas fa-chevron-down"></i>
                                     </div>
                                 </div>
-                                <div class="card category-icon shadow-sm col-5 col-md-2 mr-2 mb-2 ">
+                                <div class="card category-icon shadow-sm col-5 col-md-3 mr-2 mb-2 ">
                                     <i class="card-img-top fas fa-mobile-alt mt-3"></i>
                                     <div class="card-body p-2">
                                         <p class="card-text category-name1">MNO</p>
@@ -145,7 +355,7 @@
                                         <i class="fas fa-chevron-down"></i>
                                     </div>
                                 </div>
-                                <div class="card category-icon shadow-sm col-5 col-md-2 mr-2 mb-2">
+                                <div class="card category-icon shadow-sm col-5 col-md-3 mr-2 mb-2">
                                     <i class="card-img-top material-icons mt-3">sim_card</i>
                                     <div class="card-body p-2">
                                         <p class="card-text category-name1">MVNO</p>
@@ -154,7 +364,7 @@
                                         <i class="fas fa-chevron-down"></i>
                                     </div>
                                 </div>
-                                <div class="card category-icon shadow-sm col-5 col-md-2 mr-2 mb-2">
+                                <div class="card category-icon shadow-sm col-5 col-md-3 mr-2 mb-2">
                                     <i class="card-img-top fas fa-gamepad mt-3"></i>
                                     <div class="card-body p-2">
                                         <p class="card-text category-name1">ゲーム</p>
@@ -163,7 +373,7 @@
                                         <i class="fas fa-chevron-down"></i>
                                     </div>
                                 </div>
-                                <div class="card category-icon shadow-sm col-5 col-md-2 mr-2 mb-2">
+                                <div class="card category-icon shadow-sm col-5 col-md-3 mr-2 mb-2">
                                     <i class="card-img-top fas fa-battery-three-quarters mt-3"></i>
                                     <div class="card-body p-2">
                                         <p class="card-text category-name1">OAタップ・電池</p>
@@ -172,16 +382,7 @@
                                         <i class="fas fa-chevron-down"></i>
                                     </div>
                                 </div>
-                                <div class="card category-icon shadow-sm col-5 col-md-2 mr-2 mb-2">
-                                    <i class="card-img-top material-icons mt-3">storage</i>
-                                    <div class="card-body p-2">
-                                        <p class="card-text category-name1">ストレージ</p>
-                                    </div>
-                                    <div class="card-footer d-flex justify-content-center p-1">
-                                        <i class="fas fa-chevron-down"></i>
-                                    </div>
-                                </div>
-                                <div class="card category-icon shadow-sm col-5 col-md-2 mr-2 mb-2">
+                                <div class="card category-icon shadow-sm col-5 col-md-3 mr-2 mb-2">
                                     <i class="card-img-top material-icons mt-3">router</i>
                                     <div class="card-body p-2">
                                         <p class="card-text category-name1">インターネット回線</p>
@@ -190,25 +391,16 @@
                                         <i class="fas fa-chevron-down"></i>
                                     </div>
                                 </div>
-                                <div class="card category-icon shadow-sm col-5 col-md-2 mr-2 mb-2">
-                                    <i class="card-img-top fas fa-medkit mt-3"></i>
-                                    <div class="card-body p-2">
-                                        <p class="card-text category-name1">保証・サポート</p>
-                                    </div>
-                                    <div class="card-footer d-flex justify-content-center p-1">
-                                        <i class="fas fa-chevron-down"></i>
-                                    </div>
-                                </div>
-                                <div class="card category-icon shadow-sm col-5 col-md-2 mr-2 mb-2">
+                                <div class="card category-icon shadow-sm col-5 col-md-3 mr-2 mb-2">
                                     <i class="card-img-top fas fa-language mt-3"></i>
                                     <div class="card-body p-2">
-                                        <p class="card-text category-name1">翻訳機</p>
+                                        <p class="card-text category-name1">翻訳機・電子辞書</p>
                                     </div>
                                     <div class="card-footer d-flex justify-content-center p-1">
                                         <i class="fas fa-chevron-down"></i>
                                     </div>
                                 </div>
-                                <div class="card category-icon shadow-sm col-5 col-md-2 mr-2 mb-2">
+                                <div class="card category-icon shadow-sm col-5 col-md-3 mr-2 mb-2">
                                     <i class="card-img-top fas fa-pen-square mt-3"></i>
                                     <div class="card-body p-2">
                                         <p class="card-text category-name1">通常業務</p>
@@ -217,16 +409,7 @@
                                         <i class="fas fa-chevron-down"></i>
                                     </div>
                                 </div>
-                                <div class="card category-icon shadow-sm col-5 col-md-2 mr-2 mb-2">
-                                    <i class="card-img-top fas fa-comments mt-3"></i>
-                                    <div class="card-body p-2">
-                                        <p class="card-text category-name1">販売トーク</p>
-                                    </div>
-                                    <div class="card-footer d-flex justify-content-center p-1">
-                                        <i class="fas fa-chevron-down"></i>
-                                    </div>
-                                </div>
-                                <div class="card category-icon shadow-sm col-5 col-md-2 mr-2 mb-2">
+                                <div class="card category-icon shadow-sm col-5 col-md-3 mr-2 mb-2">
                                     <i class="card-img-top fas fa-question-circle mt-3"></i>
                                     <div class="card-body p-2">
                                         <p class="card-text category-name1">その他</p>
@@ -243,56 +426,63 @@
         </div>
 
         <!-- 質問 -->
-        <div class="q&aForm mt-5">
+        <div class="q&aform mt-5">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="Qform">
-                            <h4>質問してみる</h4>
+                            <h3>質問してみる</h3>
                             <hr>
-                            <div class="card">
-                                <div class="alert alert-info" role="alert">
-                                    <h6><strong>質問する前に：</strong></h6>
-                                    <p>これから投稿しようとしている質問は過去に投稿されている可能性があります。</p>
-                                    <p>次のリンクから投稿前に確認をしておきましょう。</p>
-                                    <a href="#" class="alert-link">質問を探す</a>
-                                </div>
-                                <div class="card-body">
-                                    <form action="">
-                                        <div class="form-group">
-                                            <label for="questionTitle">質問タイトル</label>                                    
-                                            <input type="text" class="form-control" id="questionTitle" placeholder="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="questionCategorySelect1">カテゴリ選択</label>
-                                            <select class="form-control" name="" id="questionCategorySelect1">
-                                                <option>カメラ</option>
-                                                <option>プリンター</option>
-                                                <option>PC</option>
-                                                <option>Apple</option>
-                                                <option>MNO</option>
-                                                <option>MVNO</option>
-                                                <option>ゲーム</option>
-                                                <option>OAタップ・電池</option>
-                                                <option>ストレージ</option>
-                                                <option>インターネット回線</option>
-                                                <option>保証・サポート</option>
-                                                <option>翻訳機</option>
-                                                <option>通常業務</option>
-                                                <option>販売トーク</option>
-                                                <option>その他</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="questionContent">質問内容</label>
-                                            <textarea class="form-control" name="" id="questionContent" cols="30" rows="10"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="formControlFile">添付ファイル</label>
-                                            <input type="file" class="form-control-file" id="formControlFile">
-                                        </div>
-                                        <a href="#"><button class="btn btn-primary" type="submit">質問する</button></a>
-                                    </form>
+                            <div class="section-wrapper p-3">
+                                <div class="card shadow">
+                                    <div class="alert alert-info m-2 shadow" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h6><strong>質問する前に：</strong></h6>
+                                        <p>これから投稿しようとしている質問は過去に投稿されている可能性があります。</p>
+                                        <p>次のリンクから投稿前に確認をしておきましょう。</p>
+                                        <a href="#" class="alert-link">質問を探す</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <form action="">
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="questionTitle"><span class="marker-light">質問タイトル</span></label>                                    
+                                                <input type="text" class="form-control" id="questionTitle" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="questionCategorySelect1"><span class="marker-light">カテゴリ選択</span></label>
+                                                <select class="form-control" name="" id="questionCategorySelect1">
+                                                    <option>カメラ</option>
+                                                    <option>プリンター</option>
+                                                    <option>PC</option>
+                                                    <option>Apple</option>
+                                                    <option>MNO</option>
+                                                    <option>MVNO</option>
+                                                    <option>ゲーム</option>
+                                                    <option>OAタップ・電池</option>
+                                                    <option>ストレージ</option>
+                                                    <option>インターネット回線</option>
+                                                    <option>保証・サポート</option>
+                                                    <option>翻訳機</option>
+                                                    <option>通常業務</option>
+                                                    <option>販売トーク</option>
+                                                    <option>その他</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="questionContent"><span class="marker-light">質問内容</span></label>
+                                                <textarea class="form-control" name="" id="questionContent" cols="30" rows="10"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="formControlFile"><span class="marker-light">添付ファイル</span></label>
+                                                <input type="file" class="form-control-file" id="formControlFile">
+                                            </div>
+                                            <a href="#" class="Qconfirm">
+                                                <button class="btn btn-primary" type="submit">確認する</button>
+                                            </a>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -305,14 +495,49 @@
                 <!-- 回答 -->
                     <div class="col-lg-6 mt-lg-0 mt-5">
                         <div class="Aform">
-                            <h4>回答する</h4>
+                            <h3>回答する</h3>
                             <hr>
-                            <div class="Aoptions">
-                                <div class="card">
-                                    <h6 class="card-title">未回答の質問</h6>
-                                </div>
-                                <div class="card">
-                                    <h6 class="card-title">回答受付中の質問</h6>
+                            <div class="section-wrapper p-3">
+                                <div class="Aoptions bg-white py-3 shadow">
+                                    <h5 class="ml-3">新着の質問</h5>
+                                    <div class="p-2 medium">
+                                        <div class="media border border-secondary m-3 p-2 shadow">
+                                            <div class="border border-primary rounded-circle">
+                                                <span class="mr-3 fas fa-camera C-icon"></span>
+                                            </div>
+                                            <div class="media-body">
+                                                <h5 class="font-weight-bold mt-0">質問タイトル</h5>
+                                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
+                                                <p class="media-detail text-right mr-2 font-weight-light">投稿者：〇〇 &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD</p>
+                                            </div>
+                                        </div>
+                                        <div class="media border border-secondary m-3 p-2 btn-outline-success shadow">
+                                            <div class="border border-primary rounded-circle">
+                                                <span class="mr-3 fas fa-camera C-icon"></span>
+                                            </div>
+                                            <div class="media-body">
+                                                <h5 class="font-weight-bold mt-0">質問タイトル</h5>
+                                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
+                                                <p class="media-detail text-right mr-2 font-weight-light">投稿者：〇〇 &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD</p>
+                                            </div>
+                                        </div>
+                                        <div class="media border border-secondary m-3 p-2 btn-success shadow">
+                                            <div class="border border-primary rounded-circle">
+                                                <span class="mr-3 fas fa-camera C-icon"></span>
+                                            </div>
+                                            <div class="media-body">
+                                                <h5 class="font-weight-bold mt-0">質問タイトル</h5>
+                                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
+                                                <p class="media-detail text-right mr-2 font-weight-light">投稿者：〇〇 &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD</p>
+                                            </div>
+                                        </div>
+                                        <a href="#">
+                                            <h6 class="text-center mt-3 mb-5">他の新着質問もみる</h6>
+                                        </a>
+                                    </div>
+                                    <div class="mx-3 border border-danger p-4 text-center shadow">
+                                        <h6>未解決の質問をみる</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -326,19 +551,21 @@
             <div class="container-fluid mt-5">
                 <h3 class="text-center">個人設定</h3>
                 <hr>
-                <div class="row">
-                    <!-- プロフィール設定 -->
-                    <div class="col-6">
-                        <div class="card">
-                            <i class="material-icons">settings</i>
-                            <h6 class="card-title">プロフィール設定</h6>
+                <div class="section-wrapper p-3">
+                    <div class="row text-center">
+                        <!-- プロフィール設定 -->
+                        <div class="col-sm-6 pb-0">
+                            <div class="bg-white">
+                                <span class="material-icons">settings</span> 
+                                <h6 class="">プロフィール設定</h6>
+                            </div>
                         </div>
-                    </div>
-                    <!-- 質問・回答編集 -->
-                    <div class="col-6">
-                        <div class="card">
-                            <i class="material-icons">create</i>
-                            <h6 class="card-title">質問・回答編集</h6>
+                        <!-- 質問・回答編集 -->
+                        <div class="col-sm-6 mt-3 mt-sm-0">
+                            <div class="bg-white">
+                                <span class="material-icons">create</span>
+                                <p class="">質問・回答編集</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -361,9 +588,9 @@
                 <div class="container-fluid padding">
                     <div class="row">
                         <!-- ページ -->
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="page-intro">
-                                <h4>Pages</h4>
+                                <h5>Pages</h5>
                                 <p><a href="#">Top</a></p>
                                 <p><a href="#">News</a></p>
                                 <p><a href="#">Profile</a></p>
@@ -371,22 +598,22 @@
                             </div>
                         </div>
                         <!-- 固定ページ -->
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="about-intro">
-                                <h4>About</h4>
+                                <h5>About</h5>
                                 <p><a href="#">製作者</a></p>
                                 <p><a href="#">ご利用規約</a></p>
                                 <p><a href="#">プライバシーポリシー</a></p>
                                 <p><a href="#">お問い合わせ</a></p>
+                                <a class="my-2" href="#"><span><i class="fab fa-github-square"></i></span> Github</a>
                             </div>
                         </div>
                         <!-- コピーライト系 -->
-                        <div class="col-12 mb-4">
+                        <div class="col-12 my-1">
                             <div class="copy-w">
                                 <h3>Quelle</h3>
                                 <p class="mb-1">知識共有サイト</p>
                                 <p>&copy; Quelle</p>
-                                <a class="my-2" href="#"><span><i class="fab fa-github-square"></i></span> Github</a>
                             </div>
                         </div>
                     </div>

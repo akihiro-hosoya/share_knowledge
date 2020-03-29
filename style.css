@@ -1,3 +1,16 @@
+.section-wrapper {
+    background-color: #87cefa;
+}
+
+.marker {
+    background: linear-gradient(transparent 60%, #dc143c 90%);
+    font-weight: bold;
+}
+.marker-light {
+    background: linear-gradient(transparent 70%, #dc143c 90%);
+    font-weight: bold;
+}
+
 /* ---------- Navigation ---------- */
 .navbar, .navbar-expand-lg {
     background-color: #6495ed;
@@ -40,10 +53,6 @@
 .Qsearcher {
     background-color: #fff;
 }
-.Qsearch-menu {
-    background-color: #87cefa;
-}
-
 .Ksearch, .Nsearch {
     display: inline;
 }
@@ -68,11 +77,18 @@
 }
 
 /* 質問フォーム */
-.Qform h4, .Aform h4 {
+.Qform h3, .Aform h3 {
     text-align: center;
 }
+.Qconfirm {
+    display: flex;
+    justify-content: center;
+}
 
-/* 回答フォーム */
+/* 回答 */
+.C-icon {
+    font-size: 3rem;
+}
 
 /* プロフィール */
 
@@ -97,7 +113,7 @@ footer {
 .page-intro a, .about-intro a, .copy-w a {
     color: #fff;
 }
-.page-intro h4, .about-intro h4 {
+.page-intro h5, .about-intro h5 {
     border-top: #fff 0.5px solid;
     border-bottom: #fff 0.5px solid;
     padding: 1rem 0rem;
