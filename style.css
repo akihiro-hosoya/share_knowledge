@@ -22,6 +22,8 @@
 }
 .navbar-brand {
     font-size: 25px;
+    position: absolute;
+    top: 0.5rem;
 }
 .navbar-toggler {
     border: solid 0.5px white;
@@ -29,18 +31,21 @@
 .fa-bars {
     color: white;
 }
+.N-items {
+    text-align: end;
+}
 
 /* ---------- Search欄 ---------- */
-.search-bar {
-    background-color: #6495ed;
-    border-bottom: solid 0.01rem white;
-}
 .search-item {
     color: white;
 }
 .search-item:hover {
     color: #00008b;
 }
+.drop-hover:hover > .dropdown-menu {
+    display: block !important;
+    }
+
 
 /* ---------- 背景調整 ---------- */
 .main-wrapper {
@@ -90,7 +95,6 @@
     font-size: 3rem;
 }
 
-/* プロフィール */
 
 /* パンくずリスト */
 .breadcrumb {

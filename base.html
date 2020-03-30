@@ -16,299 +16,436 @@
     </head>
 
     <body>
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg shadow sticky-top">
-            <a class="navbar-brand" href="#">Quelle</a>
-            <button class="navbar-toggler shadow" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarToggler">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a href="#" class="nav-link">Top<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">News</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Logout</a>
-                    </li>
-                </ul>
+        <!-- ---------- Navigation ---------- -->
+        <nav class="navbar navbar-expand-md sticky-top">
+            <a class="navbar-brand" href="#"><h3>Quelle</h3></a>
+            <div class="flex-fill">
+                <div class="N-items">
+                    <button class="navbar-toggler my-1 shadow" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse d-md-flex justify-content-end" id="navbarToggler">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a href="#" class="nav-link">Top<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">News</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Question</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Answer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- ---------- Search欄 ---------- -->
+                <div class="search-bar d-md-flex justify-content-around d-sm-flex align-items-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="dropdown drop-hover col-6">
+                                <button class="search-item btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-th-list"></i>
+                                    <span>カテゴリーから探す</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <div class="d-flex flex-column">
+                                        <li class="btn-group dropright drop-hover">
+                                            <button type="button" class="btn dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">カメラ</button>
+                                            <ul class="dropdown-menu">
+                                                <li class="btn-group dropright drop-hover">
+                                                    <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">一眼・ミラーレス</button>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Canon</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Sony</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Olympus</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Nikon</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">その他</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="btn-group dropright drop-hover">
+                                                    <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">コンデジ</button>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Canon</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Sony</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">その他</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">SD</a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">保証・サポート</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="btn-group dropright drop-hover">
+                                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">プリンター</button>
+                                            <ul class="dropdown-menu">
+                                                <li class="btn-group dropright drop-hover">
+                                                    <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">本体</button>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Canon</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">EPSON</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">エコタンク</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">brother</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="btn-group dropright drop-hover">
+                                                    <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">インク</button>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="dropdown-item">
+                                                            <a>Canon</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a>EPSON</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a>brother</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a>その他</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="btn-group dropright drop-hover">
+                                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">周辺</button>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="dropdown-item">
+                                                            <a>印刷用紙</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">保証・サポート</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="btn-group dropright drop-hover">
+                                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PC</button>
+                                            <ul class="dropdown-menu">
+                                                <li class="btn-group dropright drop-hover">
+                                                    <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ノート</button>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="dropdown-item">
+                                                            <a href="#">FUJITSU</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">NEC</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">dynabook</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Lenovo</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">その他</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="btn-group dropright drop-hover">
+                                                    <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">モバイル</button>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="dropdown-item">
+                                                            <a href="#">FUJITSU</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">NEC</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">dynabook</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Lenovo</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">その他</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="btn-group dropright drop-hover">
+                                                    <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">デスクトップ</button>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="dropdown-item">
+                                                            <a href="#">FUJITSU</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">NEC</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">dynabook</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Lenovo</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">その他</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="btn-group dropright drop-hover">
+                                                    <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">周辺</button>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="dropdown-item">
+                                                            <a href="#">ハブ</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">マウス</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">キーボード</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">ソフトウェア</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">ケース</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">ドライブ</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">ストレージ</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">その他</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">保証・サポート・セッティング</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="btn-group dropright drop-hover">
+                                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Apple</button>
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown-item">
+                                                    <a href="#">iPhone</a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">iPad</a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">Watch</a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">保証・サポート・セッティング</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="btn-group dropright drop-hover">
+                                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MNO</button>
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown-item">
+                                                    <a href="#">共通</a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">docomo</a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">au</a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">Softbank</a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">保証・サポート</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="btn-group dropright drop-hover">
+                                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MVNO</button>
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown-item">
+                                                    <a href="#">共通・機種</a>
+                                                </li>
+                                                <li class="btn-group dropright drop-hover">
+                                                    <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Y!mobile</button>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="dropdown-item">
+                                                            <a href="#">モバイル</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Pocket Wifi</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="btn-group dropright drop-hover">
+                                                    <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">UQ mobile</button>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="dropdown-item">
+                                                            <a href="#">モバイル</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Pocket Wifi</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">LINE mobile</a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">rakuten mobile</a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">保証・サポート</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="btn-group dropright drop-hover">
+                                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ゲーム</button>
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown-item">
+                                                    <a href="#">Nintendo</a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">Sony</a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">アクセ・その他</a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">保証・サポート</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="btn-group dropright drop-hover">
+                                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">OAタップ・電池</button>
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown-item">
+                                                    <a href="#">OAタップ</a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">電池</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="btn-group dropright drop-hover">
+                                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">インターネット回線</button>
+                                            <ul class="dropdown-menu">
+                                                <li class="btn-group dropright drop-hover">
+                                                    <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">光回線</button>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="dropdown-item">
+                                                            <a href="#">ドコモ光</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">auひかり</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Softbank光・Air</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Nifty光</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">NURO光</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">固定代替</a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">ルーター</a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">保証・サポート</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="btn-group dropright drop-hover">
+                                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">翻訳機・電子辞書</button>
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown-item">
+                                                    <a href="#">翻訳機</a>
+                                                </li>
+                                                <li class="btn-group dropright drop-hover">
+                                                    <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">電子辞書</button>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="dropdown-item">
+                                                            <a href="#">CASIO</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">SHARP</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown-item">
+                                            <a href="#">通常業務</a>
+                                        </li>
+                                        <li class="dropdown-item">
+                                            <a href="#">その他</a>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </div>
+                            <form class="search-item form-inline ml-lg-4 col-6">
+                                <input type="search" class="form-control-sm mr-sm-1" placeholder="キーワードから探す" aria-label="Search">
+                                <button class="btn btn-sm btn-primary active my-sm-0" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
 
-        <!-- Search欄 -->
-        <div class="search-bar d-flex justify-content-around py-1 shadow-sm">
-            <div class="dropdown drop-hover">
-                <a href="#" class="search-item btn dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-th-list"></i>
-                    <span>カテゴリーから探す</span>
-                </a>
-                <div>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item btn-group dropright">
-                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">カメラ</button>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-item btn-group dropright">
-                                    <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">一眼・ミラーレス</button>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item">Canon</li>
-                                        <li class="dropdown-item">SONY</li>
-                                        <li class="dropdown-item">OLYMPUS</li>
-                                        <li class="dropdown-item">Nikon</li>
-                                        <li class="dropdown-item">その他</li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-item btn-group dropright">
-                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">コンデジ</button>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item">Canon</li>
-                                        <li class="dropdown-item">SONY</li>
-                                        <li class="dropdown-item">その他</li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-item btn">SD</li>
-                                <li class="dropdown-item btn">保証・サポート</li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-item btn-group dropright">
-                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">プリンター</button>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-item btn-group dropright">
-                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">本体</button>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item">Canon</li>
-                                        <li class="dropdown-item">EPSON</li>
-                                        <li class="dropdown-item">brother</li>
-                                        <li class="dropdown-item">エコタンク</li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-item btn-group dropright">
-                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">インク</button>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item">Canon</li>
-                                        <li class="dropdown-item">EPSON</li>
-                                        <li class="dropdown-item">brother</li>
-                                        <li class="dropdown-item">その他</li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-item btn-group dropright">
-                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">周辺</button>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item">印刷用紙</li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-item btn">保証・サポート</li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-item btn-group dropright">
-                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PC</button>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-item btn-group dropright">
-                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ノート</button>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item">FUJITSU</li>
-                                        <li class="dropdown-item">NEC</li>
-                                        <li class="dropdown-item">TOSHIBA</li>
-                                        <li class="dropdown-item">Lenovo</li>
-                                        <li class="dropdown-item">その他</li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-item btn-group dropright">
-                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">モバイル</button>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item">FUJITSU</li>
-                                        <li class="dropdown-item">NEC</li>
-                                        <li class="dropdown-item">TOSHIBA</li>
-                                        <li class="dropdown-item">Lenovo</li>
-                                        <li class="dropdown-item">その他</li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-item btn-group dropright">
-                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">デスクトップ</button>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item">FUJITSU</li>
-                                        <li class="dropdown-item">NEC</li>
-                                        <li class="dropdown-item">TOSHIBA</li>
-                                        <li class="dropdown-item">Lenovo</li>
-                                        <li class="dropdown-item">その他</li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-item btn-group dropright">
-                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">周辺</button>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item">ハブ</li>
-                                        <li class="dropdown-item">マウス</li>
-                                        <li class="dropdown-item">キーボード</li>
-                                        <li class="dropdown-item">ソフトウェア</li>
-                                        <li class="dropdown-item">ケース</li>
-                                        <li class="dropdown-item">ドライブ</li>
-                                        <li class="dropdown-item">ストレージ</li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-item btn">保証・サポート・セッティング</li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-item btn-group dropright">
-                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Apple</button>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-item btn">iPhone</li>
-                                <li class="dropdown-item btn">iPad</li>
-                                <li class="dropdown-item btn">Apple Watch</li>
-                                <li class="dropdown-item btn">保証・サポート</li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-item btn-group dropright">
-                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MNO</button>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-item btn">共通</li>
-                                <li class="dropdown-item btn">docomo</li>
-                                <li class="dropdown-item btn">au</li>
-                                <li class="dropdown-item btn">Softbank</li>
-                                <li class="dropdown-item btn">保証・サポート</li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-item btn-group dropright">
-                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MVNO</button>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-item btn">共通</li>
-                                <li class="dropdown-item btn-group dropright">
-                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Y!mobile</button>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item">モバイル</li>
-                                        <li class="dropdown-item">Pocket Wifi</li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-item btn-group dropright">
-                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">UQ mobile</button>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item">モバイル</li>
-                                        <li class="dropdown-item">Pocket Wifi</li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-item btn">LINE mobile</li>
-                                <li class="dropdown-item btn">rakuten mobile</li>
-                                <li class="dropdown-item btn">保証・サポート</li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-item btn-group dropright">
-                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ゲーム</button>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-item btn">Nintendo</li>
-                                <li class="dropdown-item btn">SONY</li>
-                                <li class="dropdown-item btn">その他</li>
-                                <li class="dropdown-item btn">保証・サポート</li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-item btn-group dropright">
-                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">OAタップ・電池</button>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-item btn">OAタップ</li>
-                                <li class="dropdown-item btn">電池</li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-item btn-group dropright">
-                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">インターネット回線</button>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-item btn-group dropright">
-                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">光回線</button>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item">ドコモ光</li>
-                                        <li class="dropdown-item">auひかり・Home</li>
-                                        <li class="dropdown-item">Softbank光・Air</li>
-                                        <li class="dropdown-item">Nifty光</li>
-                                        <li class="dropdown-item">Tcom光</li>
-                                        <li class="dropdown-item">NURO光</li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-item btn">固定代替</li>
-                                <li class="dropdown-item btn">ルーター</li>
-                                <li class="dropdown-item btn">保証・サポート</li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-item btn-group dropright">
-                            <button type="button" class="btn dropdown-toggle dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">翻訳機・電子辞書</button>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-item btn">翻訳機</li>
-                                <li class="dropdown-item btn-group dropright">
-                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">電子辞書</button>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item">CASIO</li>
-                                        <li class="dropdown-item">SHARP</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-item">通常業務</li>
-                        <li class="dropdown-item">その他</li>
-                    </ul>
-                </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-            <form class="search-item form-inline ml-lg-4">
-                <i class="fas fa-search"></i>
-                <span>キーワードから探す　</span>
-                <input type="search" class="form-control-sm mr-sm-1" placeholder="Search" aria-label="Search">
-                <button class="btn btn-sm btn-primary active my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-
-        <!-- 背景調整 -->
+        <!-- ---------- パンくずリスト ---------- -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mt-0">
+                <li class="breadcrumb-item active" aria-current="page">Top</li>
+            </ol>
+        </nav>
+        
+        <!-- ---------- 背景調整 ---------- -->
         <div class="main-wrapper">
 
-        <!-- 質問検索欄 -->
-        <div class="Qsearcher mt-3">
+        <!-- ---------- 質問検索欄 ---------- -->
+        <div class="Qsearcher mt-5">
             <div class="container-fluid padding">
-                <h3 class="text-center">質問を探す</h3>
+                <h2 class="text-center">質問を探す</h2>
                 <hr>    
                 <div class="section-wrapper row padding">
-                    <!-- キーワードから探す -->
-                    <div class="col-lg-6">
-                        <div class="card mt-3 shadow">
-                            <div class="card-header"><span class="marker">キーワードで検索</span></div>
-                            <div class="card-body">
-                                <p class="card-text">例：canon kissM</p>
-                                <form class="form-inline Ksearch">
-                                    <input type="search" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
-                                    <button class="btn btn-primary" type="submit">Search</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 質問番号から探す -->
-                    <div class="col-lg-6">
-                        <div class="card mt-3 shadow">
-                            <div class="card-header"><h4><span class="marker">質問番号で検索</span></h4></div>
-                            <div class="card-body">
-                                <p class="card-text">例：No. 00123</p>
-                                <form class="form-inline">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="number-addon">No.</span>
-                                        </div>
-                                        <input type="search" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
-                                    </div>
-                                    <button class="btn btn-primary" type="submit">Search</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- カテゴリーから探す -->
+                    <!-- ---------- カテゴリーから探す ---------- -->
                     <div class="col-12 my-3">
                         <div class="card shadow">
-                            <div class="card-header shadow-sm mb-2"><span class="marker">カテゴリーから探す</span></div>
+                            <div class="card-header shadow-sm mb-2"><h4><span class="marker">カテゴリーから探す</span></h4></div>
                             <div class="row no-gutters d-flex justify-content-around">
                                 <div class="card category-icon shadow-sm col-5 col-md-3 mr-2 mb-2">
                                     <i class="card-img-top fas fa-camera mt-3"></i>
@@ -425,13 +562,13 @@
             </div>
         </div>
 
-        <!-- 質問 -->
+        <!-- ---------- 質問 ---------- -->
         <div class="q&aform mt-5">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="Qform">
-                            <h3>質問してみる</h3>
+                            <h2>質問してみる</h2>
                             <hr>
                             <div class="section-wrapper p-3">
                                 <div class="card shadow">
@@ -492,10 +629,10 @@
             
 
 
-                <!-- 回答 -->
+                <!-- ---------- 回答 ---------- -->
                     <div class="col-lg-6 mt-lg-0 mt-5">
                         <div class="Aform">
-                            <h3>回答する</h3>
+                            <h2>回答する</h2>
                             <hr>
                             <div class="section-wrapper p-3">
                                 <div class="Aoptions bg-white py-3 shadow">
@@ -546,35 +683,9 @@
             </div>
         </div>
 
-        <!-- Profile -->
-        <div class="profile-en">
-            <div class="container-fluid mt-5">
-                <h3 class="text-center">個人設定</h3>
-                <hr>
-                <div class="section-wrapper p-3">
-                    <div class="row text-center">
-                        <!-- プロフィール設定 -->
-                        <div class="col-sm-6 pb-0">
-                            <div class="bg-white">
-                                <span class="material-icons">settings</span> 
-                                <h6 class="">プロフィール設定</h6>
-                            </div>
-                        </div>
-                        <!-- 質問・回答編集 -->
-                        <div class="col-sm-6 mt-3 mt-sm-0">
-                            <div class="bg-white">
-                                <span class="material-icons">create</span>
-                                <p class="">質問・回答編集</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
-        </div>
-
-        <!-- パンくずリスト -->
+        <!-- ---------- パンくずリスト ---------- -->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mt-3">
                 <li class="breadcrumb-item active" aria-current="page">Top</li>
@@ -582,7 +693,7 @@
         </nav>
         
 
-        <!-- Footer -->
+        <!-- ---------- Footer ---------- -->
         <footer>
             <div class="footer-wrapper pt-4">
                 <div class="container-fluid padding">
@@ -621,6 +732,7 @@
             </div>
         </footer>
 
+        
 
 
         <!-- Optional JavaScript -->
