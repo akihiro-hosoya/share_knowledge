@@ -54,8 +54,9 @@ ul {
 }
 
 /* ---------- Search欄 ---------- */
-.btn-c {
-    width: 190px;
+.fa-caret-right {
+    float: right;
+    margin-top: 0.3rem;
 }
 
 .dm_menu_2nd {
@@ -64,20 +65,9 @@ ul {
     background: #EEE;
     visibility: hidden;
     }		   
-
-.dm_menu_3rd {
-    position: absolute;
-    top: 0;
-    left: 190px;
-    width: 100%;
-    background: #CCC;
-    visibility: hidden;
-    }	   
-
 .dm_menu_2nd_sub {
     position: relative;
     }
-
 .dm_menu_2nd_sub:hover .dm_menu_3rd {
     visibility: visible;
     }
@@ -87,6 +77,18 @@ ul {
     visibility: visible; 
     }
 
+.dm_menu_3rd {
+    position: absolute;
+    top: 0;
+    left: 190px;
+    width: 100%;
+    background: #CCC;
+    visibility: hidden;
+    }
+.dm_menu_3rd_sub {
+    position: relative;
+    }
+
 .dm_menu_4th {
     position: absolute;
     top: 0;
@@ -94,13 +96,12 @@ ul {
     width: 100%;
     background: #CCC;
     visibility: hidden;
-}
-.dm_menu_3rd_sub {
-    position: relative;
-}
+    }
 .dm_menu_3rd_sub:hover .dm_menu_4th {
     visibility: visible;
     }
+
+
 
 
 
@@ -192,44 +193,6 @@ footer {
     text-align: center;
 }
 
-
-.dm_menu_sub {
-    position: absolute;
-    width: 210px;
-    background: #EEE;
-    visibility: hidden;
-    }		   
-
-.dm_menu_3rd {
-    position: absolute;
-    top: 0;
-    left: 210px;
-    width: 100%;
-    background: #CCC;
-    visibility: hidden;
-    }	   
-
-.dm_menu_2nd_sub::after {
-    content: "\f0da";
-    font-family: fontawesome;
-    position: absolute;
-    top: 8px;
-    right: 5px;
-    }
-  
-
-.dm_menu_2nd_sub {
-    position: relative;
-    }
-
-.dm_menu_2nd_sub:hover .dm_menu_3rd {
-    visibility: visible;
-    }
-  
-
-.dm:hover .dm_menu_sub {
-    visibility: visible; 
-    }
 
 
 
