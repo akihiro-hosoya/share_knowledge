@@ -1,3 +1,25 @@
+/* Reset */
+
+html, body {
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* 全体 */
 .section-wrapper {
     background-color: #87cefa;
 }
@@ -36,15 +58,53 @@
 }
 
 /* ---------- Search欄 ---------- */
-.search-item {
-    color: white;
-}
-.search-item:hover {
-    color: #00008b;
-}
-.drop-hover:hover > .dropdown-menu {
-    display: block !important;
+.dm_menu_2nd {
+	position: absolute;
+    width: 210px;
+    background: #EEE;
+    visibility: hidden;
+    }		   
+
+.dm_menu_3rd {
+    position: absolute;
+    top: 0;
+    left: 210px;
+    width: 100%;
+    background: #CCC;
+    visibility: hidden;
+    }	   
+
+.dm_menu_2nd_sub {
+    position: relative;
     }
+
+.dm_menu_2nd_sub:hover .dm_menu_3rd {
+    visibility: visible;
+    }
+
+
+.dm:hover .dm_menu_2nd {
+    visibility: visible; 
+    }
+
+.dm_menu_4th {
+    position: absolute;
+    top: 0;
+    left: 210px;
+    width: 100%;
+    background: #CCC;
+    visibility: hidden;
+}
+.dm_menu_3rd_sub {
+    position: relative;
+}
+.dm_menu_3rd_sub:hover .dm_menu_4th {
+    visibility: visible;
+    }
+
+
+
+
 
 
 /* ---------- 背景調整 ---------- */
@@ -133,7 +193,43 @@ footer {
 }
 
 
+.dm_menu_sub {
+    position: absolute;
+    width: 210px;
+    background: #EEE;
+    visibility: hidden;
+    }		   
 
+.dm_menu_3rd {
+    position: absolute;
+    top: 0;
+    left: 210px;
+    width: 100%;
+    background: #CCC;
+    visibility: hidden;
+    }	   
+
+.dm_menu_2nd_sub::after {
+    content: "\f0da";
+    font-family: fontawesome;
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    }
+  
+
+.dm_menu_2nd_sub {
+    position: relative;
+    }
+
+.dm_menu_2nd_sub:hover .dm_menu_3rd {
+    visibility: visible;
+    }
+  
+
+.dm:hover .dm_menu_sub {
+    visibility: visible; 
+    }
 
 
 
