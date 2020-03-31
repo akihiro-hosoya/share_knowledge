@@ -14,10 +14,6 @@ ul {
     list-style: none;
 }
 
-a {
-    text-decoration: none;
-}
-
 
 /* 全体 */
 .section-wrapper {
@@ -58,9 +54,13 @@ a {
 }
 
 /* ---------- Search欄 ---------- */
+.btn-c {
+    width: 190px;
+}
+
 .dm_menu_2nd {
 	position: absolute;
-    width: 210px;
+    width: 190px;
     background: #EEE;
     visibility: hidden;
     }		   
@@ -68,7 +68,7 @@ a {
 .dm_menu_3rd {
     position: absolute;
     top: 0;
-    left: 210px;
+    left: 190px;
     width: 100%;
     background: #CCC;
     visibility: hidden;
@@ -90,7 +90,7 @@ a {
 .dm_menu_4th {
     position: absolute;
     top: 0;
-    left: 210px;
+    left: 190px;
     width: 100%;
     background: #CCC;
     visibility: hidden;
