@@ -79,9 +79,6 @@
                                                                 <a href="#">Olympus</a>
                                                             </li>
                                                             <li class="dropdown-item">
-                                                                <a href="#">Nikon</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
                                                                 <a href="#">その他</a>
                                                             </li>
                                                         </ul>
@@ -467,9 +464,6 @@
                                                             <a href="#">Olympus</a>
                                                         </li>
                                                         <li class="dropdown-item">
-                                                            <a href="#">Nikon</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
                                                             <a href="#">その他</a>
                                                         </li>
                                                     </ul>
@@ -564,6 +558,9 @@
                                                 </li>
                                                 <li class="dropdown-item">
                                                     <a href="#">保証・サポート</a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="#">その他</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -900,26 +897,126 @@
                                                     <label class="font-weight-bold" for="questionTitle"><span class="marker-light">質問タイトル</span></label>                                    
                                                     <input type="text" class="form-control" id="questionTitle" placeholder="">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="font-weight-bold" for="questionCategorySelect1"><span class="marker-light">カテゴリ選択</span></label>
-                                                    <select class="form-control" name="" id="questionCategorySelect1">
-                                                        <option>選択してください</option>
-                                                        <option>カメラ</option>
-                                                        <option>プリンター</option>
-                                                        <option>PC</option>
-                                                        <option>Apple</option>
-                                                        <option>MNO</option>
-                                                        <option>MVNO</option>
-                                                        <option>ゲーム</option>
-                                                        <option>OAタップ・電池</option>
-                                                        <option>ストレージ</option>
-                                                        <option>インターネット</option>
-                                                        <option>保証・サポート</option>
-                                                        <option>翻訳機</option>
-                                                        <option>通常業務</option>
-                                                        <option>販売トーク</option>
-                                                        <option>その他</option>
-                                                    </select>
+                                                <div>
+                                                        <label class="font-weight-bold" for="questionCategorySelect1"><span class="marker-light">カテゴリ選択</span></label>
+                                                        <select name="select1" id="select1">
+                                                            <option data-subgroup="" value="">選択してください</option>
+                                                            <option data-subgroup="camera" value="0">カメラ</option>
+                                                            <option data-subgroup="printer" value="1">プリンター</option>
+                                                            <option data-subgroup="pc" value="2">PC</option>
+                                                            <option data-subgroup="apple" value="3">Apple</option>
+                                                            <option data-subgroup="mno" value="4">MNO</option>
+                                                            <option data-subgroup="mvno" value="5">MVNO</option>
+                                                            <option data-subgroup="game" value="6">ゲーム</option>
+                                                            <option data-subgroup="oa" value="7">OAタップ・電池</option>
+                                                            <option data-subgroup="internet" value="8">インターネット</option>
+                                                            <option data-subgroup="study" value="9">学習機器</option>
+                                                            <option data-subgroup="normal" value="10">通常業務</option>
+                                                            <option data-subgroup="other" value="11">その他</option>
+                                                        </select>
+                                                        <select name="select2" id="select2">
+                                                            <option value="">選択してください</option>
+                                                            <!-- カメラ -->
+                                                            <option data-group="camera" data-subgroup="mirror" value="1">一眼・ミラーレス</option>
+                                                            <option data-group="camera" data-subgroup="comdigi" value="2">コンデジ</option>
+                                                            <option data-group="camera" data-subgroup="around" value="3">周辺</option>
+                                                            <option data-group="camera" data-subgroup="support" value="4">保証・サポート</option>
+                                                            <!-- プリンター -->
+                                                            <option data-group="printer" data-subgroup="printerHontai" value="1">本体</option>
+                                                            <option data-group="printer" data-subgroup="ink" value="2">インク</option>
+                                                            <option data-group="printer" data-subgroup="support" value="3">保証・サポート</option>
+                                                            <option data-group="printer" data-subgroup="other" value="4">その他</option>
+                                                            <!-- PC -->
+                                                            <option data-group="pc" data-subgroup="pcHontai" value="1">本体</option>
+                                                            <option data-group="pc" data-subgroup="pcAround" value="2">周辺</option>
+                                                            <option data-group="pc" data-subgroup="support" value="3">保証・サポート関連</option>
+                                                            <!-- Apple -->
+                                                            <option data-group="apple" data-subgroup="iPhone" value="1">iPhone</option>
+                                                            <option data-group="apple" data-subgroup="iPad" value="2">iPad</option>
+                                                            <option data-group="apple" data-subgroup="Watch" value="3">Watch</option>
+                                                            <option data-group="apple" data-subgroup="Mac" value="4">Mac</option>
+                                                            <option data-group="apple" data-subgroup="other" value="5">その他</option>
+                                                            <!-- MNO -->
+                                                            <option data-group="mno" data-subgroup="docomo" value="1">docomo</option>
+                                                            <option data-group="mno" data-subgroup="au" value="2">au</option>
+                                                            <option data-group="mno" data-subgroup="softbank" value="3">Softbank</option>
+                                                            <option data-group="mno" data-subgroup="other" value="4">その他</option>
+                                                            <!-- MVNO -->
+                                                            <option data-group="mvno" data-subgroup="ymobile" value="1">Y!mobile</option>
+                                                            <option data-group="mvno" data-subgroup="uq" value="2">UQ mobile</option>
+                                                            <option data-group="mvno" data-subgroup="rakuten" value="3">rakuten mobile</option>
+                                                            <option data-group="mvno" data-subgroup="other" value="4">その他</option>
+                                                            <!-- ゲーム -->
+                                                            <option data-group="game" data-subgroup="nintendo" value="1">Nintendo</option>
+                                                            <option data-group="game" data-subgroup="sony" value="2">SONY</option>
+                                                            <option data-group="game" data-subgroup="other" value="3">その他</option>
+                                                            <!-- OAタップ・電池 -->
+                                                            <option data-group="oa" data-subgroup="oatappu" value="1">OAタップ</option>
+                                                            <option data-group="oa" data-subgroup="battery" value="2">電池</option>
+                                                            <option data-group="oa" data-subgroup="other" value="3">その他</option>
+                                                            <!-- Internet -->
+                                                            <option data-group="internet" data-subgroup="light" value="1">光・固定代替</option>
+                                                            <option data-group="internet" data-subgroup="pocketwifi" value="2">モバイルルーター</option>
+                                                            <!-- 学習機器 -->
+                                                            <option data-group="study" data-subgroup="transelator" value="1">翻訳機</option>
+                                                            <option data-group="study" data-subgroup="dictionary" value="2">電子辞書</option>
+                                                            <option data-group="study" data-subgroup="other" value="3">その他</option>
+                                                            <!-- 通常業務 -->
+                                                            <option data-group="normal" data-subgroup="decided" value="1">----------</option>
+                                                            <!-- その他 -->
+                                                            <option data-group="other" data-subgroup="decided" value="1">----------</option>
+                                                        </select>
+                                                        <select name="select3" id="select3">
+                                                            <option value="">選択してください</option>
+                                                            <!-- 一眼・ミラーレス -->
+                                                            <option data-group="mirror" value="1">Canon</option>
+                                                            <option data-group="mirror" value="2">SONY</option>
+                                                            <option data-group="mirror" value="3">OLYMPUS</option>
+                                                            <option data-group="mirror" value="4">Nikon</option>
+                                                            <!-- コンデジ -->
+                                                            <option data-group="comdigi" value="1">Canon</option>
+                                                            <option data-group="comdigi" value="2">SONY</option>
+                                                            <option data-group="comdigi" value="3">その他</option>
+                                                            <!-- 周辺 -->
+                                                            <option data-group="around" value="1">SD</option>
+                                                            <option data-group="around" value="2">アクセサリー</option>
+                                                            <option data-group="around" value="3">その他</option>
+                                                            <!-- プリンター本体 -->
+                                                            <option data-group="printerHontai" value="1">Canon</option>
+                                                            <option data-group="printerHontai" value="2">EPSON</option>
+                                                            <option data-group="printerHontai" value="3">brother</option>
+                                                            <option data-group="printerHontai" value="4">その他</option>
+                                                            <!-- プリンターインク -->
+                                                            <option data-group="ink" value="1">Canon</option>
+                                                            <option data-group="ink" value="2">EPSON</option>
+                                                            <option data-group="ink" value="3">brother</option>
+                                                            <option data-group="ink" value="4">その他</option>
+                                                            <!-- PC本体 -->
+                                                            <option data-group="pcHontai" value="1">FUJITSU</option>
+                                                            <option data-group="pcHontai" value="2">NEC</option>
+                                                            <option data-group="pcHontai" value="3">dynabook</option>
+                                                            <option data-group="pcHontai" value="4">Lemovo</option>
+                                                            <option data-group="pcHontai" value="5">その他</option>
+                                                            <!-- PC周辺 -->
+                                                            <option data-group="pcAround" value="1">ケース</option>
+                                                            <option data-group="pcAround" value="2">キーボード・マウス</option>
+                                                            <option data-group="pcAround" value="3">ストレージ</option>
+                                                            <option data-group="pcAround" value="4">ハブ</option>
+                                                            <option data-group="pcAround" value="5">ソフトウェア</option>
+                                                            <option data-group="pcAround" value="6">ドライブ</option>
+                                                            <option data-group="pcAround" value="7">その他</option>
+                                                            <!-- 光・固定代替 -->
+                                                            <option data-group="light" value="1">ドコモ光</option>
+                                                            <option data-group="light" value="2">auひかり・Home</option>
+                                                            <option data-group="light" value="3">Softbank光・Air</option>
+                                                            <option data-group="light" value="4">Nifty光</option>
+                                                            <option data-group="light" value="5">NURO光</option>
+                                                            <option data-group="light" value="6">その他</option>
+                                                            <!-- モバイルルーター -->
+                                                            <option data-group="pocketwifi" value="1">Y!mobile</option>
+                                                            <option data-group="pocketwifi" value="2">UQ mobile</option>
+                                                            <option data-group="pocketwifi" value="3">その他</option>                                                            
+                                                        </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="font-weight-bold" for="questionContent"><span class="marker-light">質問内容</span></label>
@@ -1046,5 +1143,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+        <script src="script.js"></script>
     </body>
 </html>
