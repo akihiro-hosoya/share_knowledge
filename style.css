@@ -59,50 +59,70 @@ ul {
     margin-top: 0.3rem;
 }
 
-.dm_menu_2nd {
-	position: absolute;
+.dm_1st_sub {
+    color: #fff;
+}
+.dm_1st_sub:hover {
+    color: #00008b;
+}
+
+.dm_2nd {
+    position: absolute;
     width: 190px;
     background: #EEE;
     visibility: hidden;
     }		   
-.dm_menu_2nd_sub {
+.dm_2nd_sub {
     position: relative;
     }
-.dm_menu_2nd_sub:hover .dm_menu_3rd {
+.dm_2nd_sub:hover .dm_3rd {
     visibility: visible;
     }
 
-
-.dm:hover .dm_menu_2nd {
+.dm_1st:hover .dm_2nd {
     visibility: visible; 
     }
 
-.dm_menu_3rd {
+.dm_3rd {
     position: absolute;
     top: 0;
     left: 190px;
     width: 100%;
-    background: #CCC;
+    background: #EEE;
     visibility: hidden;
     }
-.dm_menu_3rd_sub {
+.dm_3rd_sub {
     position: relative;
     }
 
-.dm_menu_4th {
+.dm_4th {
     position: absolute;
     top: 0;
     left: 190px;
     width: 100%;
-    background: #CCC;
+    background: #EEE;
     visibility: hidden;
     }
-.dm_menu_3rd_sub:hover .dm_menu_4th {
+.dm_3rd_sub:hover .dm_4th {
     visibility: visible;
     }
 
+.k-search {
+    width: 100%;
+}
+
+.dropdown-item:hover {
+    background-color: tomato;
+}
 
 
+/* ---------- パンくずリスト ---------- */
+.breadcrumb {
+    background-color: #fff;
+}
+breadcrumb-item + .breadcrumb-item::before { 
+    content: "\00bb" 
+    }
 
 
 
@@ -119,16 +139,8 @@ ul {
 .Qsearcher {
     background-color: #fff;
 }
-.Ksearch, .Nsearch {
-    display: inline;
-}
 
 /* ---------- カテゴリ検索欄 ---------- */
-.category-icon:hover {
-    border: red solid 0.5px;
-    color: red;
-    cursor: pointer;
-}
 .category-item {
     text-align: center;
 }
@@ -141,6 +153,53 @@ ul {
     text-align: center;
     margin-bottom: 0px;
 }
+
+
+
+.c_dm_1:hover {
+    position: relative;
+}
+.c_dm_1_sub {
+    z-index: 1;
+}
+
+.c_dm_2 {
+    position: absolute;
+    width: 190px;
+    background-color: #EEE;
+    visibility: hidden;
+    z-index: 5;
+}
+
+.c_dm_1:hover .c_dm_2 {
+    visibility: visible;
+}
+
+.c_dm_2_sub {
+    position: relative;
+}
+
+.c_dm_3 {
+    position: absolute;
+    top: 0;
+    left: 190px;
+    background-color: #EEE;
+    visibility: hidden;
+}
+
+.c_dm_2_sub:hover .c_dm_3 {
+    visibility: visible;
+}
+
+
+
+
+
+
+
+
+
+
 
 /* 質問フォーム */
 .Qform h3, .Aform h3 {
