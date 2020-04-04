@@ -135,90 +135,27 @@ a {
 }
 
 
-/* ---------- 質問検索欄 ---------- */
-.Qsearcher {
-    background-color: #fff;
+/* ---------- 質問リスト ---------- */
+.all-bgc {
+    background-color: #f08080;
 }
-
-/* ---------- カテゴリ検索欄 ---------- */
-.category-item {
-    text-align: center;
+.text-all {
+    color: #f08080;
 }
-.card-img-top {
-    font-size: 3rem;
-    margin: auto;
-    text-align: center;
-}
-.category-name1 {
-    text-align: center;
-    margin-bottom: 0px;
+.fa-comment {
+    transform: scale(-1, 1);
 }
 
 
-
-.c_dm_1:hover {
-    position: relative;
-    color: #ff7f50;
+/* ---------- ページネーション ----------- */
+.previous::before {
+    content: "\0ab";
 }
-.c_dm_1_sub {
-    z-index: 1;
-}
-
-.c_dm_2 {
-    position: absolute;
-    width: 190px;
-    background-color: #EEE;
-    visibility: hidden;
-    z-index: 5;
-}
-
-.c_dm_1:hover .c_dm_2 {
-    visibility: visible;
-}
-
-.c_dm_2_sub {
-    position: relative;
-}
-
-.c_dm_3 {
-    position: absolute;
-    top: 0;
-    left: 190px;
-    background-color: #EEE;
-    visibility: hidden;
-}
-
-.c_dm_2_sub:hover .c_dm_3 {
-    visibility: visible;
-}
-
-.category-icon-other {
-    color: #000;
-}
-
-.category-icon-other:hover {
-    text-decoration: none;
+.next::after {
+    content: "\0bb";
 }
 
 
-
-/* 質問フォーム */
-.Qform h2, .Aform h2 {
-    text-align: center;
-}
-.Qconfirm {
-    display: flex;
-    justify-content: center;
-}
-
-/* 回答 */
-.C-icon {
-    font-size: 3rem;
-}
-
-.media-detail {
-    font-size: 12px;
-}
 
 
 /* footer */
