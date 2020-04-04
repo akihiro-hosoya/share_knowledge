@@ -74,17 +74,17 @@ a {
     width: 190px;
     background: #EEE;
     visibility: hidden;
-    }		   
+}		   
 .dm_2nd_sub {
     position: relative;
-    }
+}
 .dm_2nd_sub:hover .dm_3rd {
     visibility: visible;
-    }
+}
 
 .dm_1st:hover .dm_2nd {
     visibility: visible; 
-    }
+}
 
 .dm_3rd {
     position: absolute;
@@ -93,10 +93,10 @@ a {
     width: 100%;
     background: #EEE;
     visibility: hidden;
-    }
+}
 .dm_3rd_sub {
     position: relative;
-    }
+}
 
 .dm_4th {
     position: absolute;
@@ -105,10 +105,10 @@ a {
     width: 100%;
     background: #EEE;
     visibility: hidden;
-    }
+}
 .dm_3rd_sub:hover .dm_4th {
     visibility: visible;
-    }
+}
 
 .k-search {
     width: 100%;
@@ -125,7 +125,7 @@ a {
 }
 .breadcrumb-item + .breadcrumb-item::before { 
     content: "\0bb" 
-    }
+}
 
 
 /* ---------- 背景調整 ---------- */
@@ -252,33 +252,3 @@ footer {
     padding-top: 1rem;
     text-align: center;
 }
-
-
-
-
-/*---Media Queries --*/
-@media (max-width: 992px) {
-}
-
-@media (max-width: 768px) {
-}
-
-@media (max-width: 576px) {
-}
-
-/*
-Extra small (xs) devices (portrait phones, less than 576px)
-No media query since this is the default in Bootstrap
-
-Small (sm) devices (landscape phones, 576px and up)
-@media (min-width: 576px) { ... }
-
-Medium (md) devices (tablets, 768px and up)
-@media (min-width: 768px) { ... }
-
-Large (lg) devices (desktops, 992px and up)
-@media (min-width: 992px) { ... }
-
-Extra (xl) large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { ... }
-*/
