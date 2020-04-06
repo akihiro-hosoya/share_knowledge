@@ -1,0 +1,288 @@
+/* Reset */
+html, body {
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    display: block;
+}
+
+
+/* 全体 */
+.section-wrapper {
+    background-color: #87cefa;
+}
+
+.marker {
+    background: linear-gradient(transparent 60%, #dc143c 90%);
+    font-weight: bold;
+}
+.marker-light {
+    background: linear-gradient(transparent 70%, #dc143c 90%);
+    font-weight: bold;
+}
+
+/* ---------- Navigation ---------- */
+.navbar, .navbar-expand-lg {
+    background-color: #6495ed;
+    /* border-bottom: solid 0.01rem white; */
+}
+.navbar-brand, .nav-link {
+    color: white;
+    font-family: 'Fredoka One', cursive;
+}
+.navbar-brand {
+    font-size: 25px;
+    position: absolute;
+    top: 0.5rem;
+}
+.navbar-toggler {
+    border: solid 0.5px white;
+}
+.fa-bars {
+    color: white;
+}
+.N-items {
+    text-align: end;
+}
+
+/* ---------- Search欄 ---------- */
+.fa-caret-right {
+    float: right;
+    margin-top: 0.3rem;
+}
+
+.dm_1st_sub {
+    color: #fff;
+}
+.dm_1st_sub:hover {
+    color: #00008b;
+}
+
+.dm_2nd {
+    position: absolute;
+    width: 190px;
+    background: #EEE;
+    visibility: hidden;
+    }		   
+.dm_2nd_sub {
+    position: relative;
+    }
+.dm_2nd_sub:hover .dm_3rd {
+    visibility: visible;
+    }
+
+.dm_1st:hover .dm_2nd {
+    visibility: visible; 
+    }
+
+.dm_3rd {
+    position: absolute;
+    top: 0;
+    left: 190px;
+    width: 100%;
+    background: #EEE;
+    visibility: hidden;
+    }
+.dm_3rd_sub {
+    position: relative;
+    }
+
+.dm_4th {
+    position: absolute;
+    top: 0;
+    left: 190px;
+    width: 100%;
+    background: #EEE;
+    visibility: hidden;
+    }
+.dm_3rd_sub:hover .dm_4th {
+    visibility: visible;
+    }
+
+.k-search {
+    width: 100%;
+}
+
+.dropdown-item a {
+    display: block;
+}
+.dropdown-item:hover {
+    background-color: #f08080;
+}
+
+
+/* ---------- パンくずリスト ---------- */
+.breadcrumb {
+    background-color: #fff;
+}
+.breadcrumb-item + .breadcrumb-item::before { 
+    content: "\0bb" 
+    }
+
+
+/* ---------- 背景調整 ---------- */
+.main-wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+/* ---------- 質問検索欄 ---------- */
+.Qsearcher {
+    background-color: #fff;
+}
+
+/* ---------- カテゴリ検索欄 ---------- */
+.category-item {
+    text-align: center;
+}
+.card-img-top {
+    font-size: 3rem;
+    margin: auto;
+    text-align: center;
+}
+.category-name1 {
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+
+
+.c_dm_1:hover {
+    position: relative;
+    color: #ff7f50;
+}
+.c_dm_1_sub {
+    z-index: 1;
+}
+
+.c_dm_2 {
+    position: absolute;
+    width: 190px;
+    background-color: #EEE;
+    visibility: hidden;
+    z-index: 5;
+}
+
+.c_dm_1:hover .c_dm_2 {
+    visibility: visible;
+}
+
+.c_dm_2_sub {
+    position: relative;
+}
+
+.c_dm_3 {
+    position: absolute;
+    top: 0;
+    left: 190px;
+    background-color: #EEE;
+    visibility: hidden;
+}
+
+.c_dm_2_sub:hover .c_dm_3 {
+    visibility: visible;
+}
+
+.category-icon-other {
+    color: #000;
+}
+
+.category-icon-other:hover {
+    text-decoration: none;
+}
+
+
+
+/* 質問フォーム */
+.Qform h2, .Aform h2 {
+    text-align: center;
+}
+.Qconfirm {
+    display: flex;
+    justify-content: center;
+}
+
+/* 回答 */
+.C-icon {
+    font-size: 3rem;
+}
+
+.media-detail {
+    font-size: 12px;
+}
+
+
+/* footer */
+footer {
+    background-color: #6495ed;
+    font-family: 'Fredoka One', cursive;
+}
+.footer-wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+.page-intro, .about-intro, .copy-w {
+    text-align: center;
+    color: #fff;
+}
+.page-intro a, .about-intro a, .copy-w a {
+    color: #fff;
+}
+.page-intro h5, .about-intro h5 {
+    border-top: #fff 0.5px solid;
+    border-bottom: #fff 0.5px solid;
+    padding: 1rem 0rem;
+}
+.page-intro a:hover, .about-intro a:hover, .copy-w a:hover {
+    color: #00008b;
+    text-decoration: none;
+}
+.copy-w {
+    margin-top: 1.5rem;
+    border-top: #fff solid 1px;
+    padding-top: 1rem;
+    text-align: center;
+}
+
+
+
+
+/*---Media Queries --*/
+@media (max-width: 992px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 576px) {
+}
+
+/*
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+*/
