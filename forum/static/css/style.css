@@ -15,7 +15,7 @@ ul {
 
 a {
     text-decoration: none;
-    display: block;
+    display: none;
 }
 
 
@@ -222,6 +222,26 @@ a {
 
 .media-detail {
     font-size: 12px;
+}
+
+/* ---------- 質問リスト ---------- */
+.all-bgc {
+    background-color: #f08080;
+}
+.text-all {
+    color: #f08080;
+}
+.fa-comment {
+    transform: scale(-1, 1);
+}
+
+
+/* ---------- ページネーション ----------- */
+.previous::before {
+    content: "\0ab";
+}
+.next::after {
+    content: "\0bb";
 }
 
 

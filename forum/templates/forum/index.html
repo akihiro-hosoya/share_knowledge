@@ -1,1178 +1,730 @@
-<!doctype html>
+{% extends 'forum/base.html' %}
 {% load static %}
-<html lang="ja">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-        <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
-
-        <title>Qulle</title>
-    </head>
-
-    <body>
-        <!-- ---------- Navigation ---------- -->
-        <nav class="navbar navbar-expand-md sticky-top">
-            <a class="navbar-brand" href="{% url 'top' %}"><h3>Quelle</h3></a>
-            <div class="flex-fill">
-                <div class="N-items">
-                    <button class="navbar-toggler my-1 shadow" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="collapse navbar-collapse d-md-flex justify-content-end" id="navbarToggler">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">News</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Question</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Answer</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Logout</a>
+{% block content %}
+<!-- ---------- 質問検索欄 ---------- -->
+<div class="Qsearcher mt-5">
+    <div class="container-fluid padding">
+        <h2 class="text-center">質問を探す</h2>
+        <hr>
+        <div class="section-wrapper row padding">
+            <!-- ---------- カテゴリーから探す ---------- -->
+            <div class="col-12 my-3">
+                <div class="card shadow">
+                    <div class="card-header shadow-sm mb-2">
+                        <h4><span class="marker">カテゴリーから探す</span></h4>
+                    </div>
+                    <div class="row no-gutters d-flex justify-content-around">
+                        <ul class="col-5 col-md-3 mr-2 mt-2">
+                            <li class="category-icon c_dm_1">
+                                <div class="card shadow-sm c_dm_1_sub">
+                                    <i class="card-img-top fas fa-camera mt-3"></i>
+                                    <div class="card-body p-2">
+                                        <p class="card-text category-name1">カメラ</p>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-center p-1">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <ul class="flex-column c_dm_2">
+                                    <li class="c_dm_2_sub">
+                                        <button class="dropdown-item">
+                                            <span>一眼・ミラーレス</span><i class="fas fa-caret-right"></i>
+                                        </button>
+                                        <ul class="flex-column c_dm_3">
+                                            <li class="dropdown-item">
+                                                <a class="d-block" href="{% url 'post_list' %}">Canon</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">Sony</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">Olympus</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">その他</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="c_dm_2_sub">
+                                        <button class="dropdown-item">
+                                            <span>コンデジ</span><i class="fas fa-caret-right"></i>
+                                        </button>
+                                        <ul class="flex-column c_dm_3">
+                                            <li class="dropdown-item">
+                                                <a href="#">Canon</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">Sony</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">その他</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="c_dm_2_sub">
+                                        <button class="dropdown-item">
+                                            <span>周辺</span><i class="fas fa-caret-right"></i>
+                                        </button>
+                                        <ul class="flex-column c_dm_3">
+                                            <li class="dropdown-item">
+                                                <a href="#">SD</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">アクセサリー</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">その他</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">保証・サポート</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
-                    </div>
-                </div>
-                <!-- ---------- Search欄 ---------- -->
-                <div class="search-bar">
-                    <div class="container">
-                        <div class="row d-md-flex justify-content-around d-sm-flex align-items-center">
-                            <div class="col-6 col-lg-4">
-                                <ul class="mb-0">
-                                    <li class="dm_1st">
-                                        <button class="btn dropdown-toggle dm_1st_sub" type="button">
-                                            <i class="fas fa-th-list"></i>
-                                            <span>カテゴリーから探す</span>
+                        <ul class="col-5 col-md-3 mr-2 mt-2">
+                            <li class="category-icon c_dm_1">
+                                <div class="card shadow-sm c_dm_1_sub">
+                                    <i class="card-img-top fas fa-print mt-3"></i>
+                                    <div class="card-body p-2">
+                                        <p class="card-text category-name1">プリンター</p>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-center p-1">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <ul class="flex-column c_dm_2">
+                                    <li class="c_dm_2_sub">
+                                        <button class="dropdown-item">
+                                            <span>本体</span><i class="fas fa-caret-right"></i>
                                         </button>
-                                        <ul class="flex-column dm_2nd">
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>カメラ</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>一眼・ミラーレス</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="{% url 'post_list' %}">Canon</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Sony</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Olympus</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>コンデジ</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Canon</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Sony</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>周辺</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">SD</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">アクセサリー</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">保証・サポート</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>プリンター</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>本体</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Canon</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">EPSON</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">brother</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>インク</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Canon</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">EPSON</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">brother</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">保証・サポート</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">その他</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>PC</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>本体</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">FUJITSU</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">NEC</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Dynabook</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Lenovo</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>周辺</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">ケース</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">キーボード・マウス</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">ストレージ</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">ハブ</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">ソフトウェア</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">ドライブ</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">保証・サポート関連</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>Apple</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">iPhone</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">iPad</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">Watch</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">Mac</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">保証・サポート</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>MNO</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">docomo</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">au</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">Softbank</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">その他</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>MVNO</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">共通・機種</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">Y!mobile</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">UQ mobile</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">rakuten mobile</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">その他</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>ゲーム</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">Nintendo</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">Sony</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">その他</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>OAタップ・電池</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">OAタップ</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">電池</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">その他</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>インターネット</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>光・固定代替</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">ドコモ光</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">au光・Home</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Softbank光・Air</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Nifty光</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">NURO光</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>モバイルルーター</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Y!mobile</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">UQ Wimax</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>学習機器</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">翻訳機</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">電子辞書</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">その他</a>
-                                                    </li>
-                                                </ul>
+                                        <ul class="flex-column c_dm_3">
+                                            <li class="dropdown-item">
+                                                <a href="#">Canon</a>
                                             </li>
                                             <li class="dropdown-item">
-                                                <a class="d-block" href="#">通常業務</a>
+                                                <a href="#">EPSON</a>
                                             </li>
                                             <li class="dropdown-item">
-                                                <a class="d-block" href="#">その他</a>
+                                                <a href="#">brother</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">その他</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="c_dm_2_sub">
+                                        <button class="dropdown-item">
+                                            <span>インク</span><i class="fas fa-caret-right"></i>
+                                        </button>
+                                        <ul class="flex-column c_dm_3">
+                                            <li class="dropdown-item">
+                                                <a href="#">Canon</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">EPSON</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">brother</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">その他</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">保証・サポート</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">その他</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="col-5 col-md-3 mr-2 mt-2">
+                            <li class="category-icon c_dm_1">
+                                <div class="card shadow-sm c_dm_1_sub">
+                                    <i class="card-img-top fas fa-laptop mt-3"></i>
+                                    <div class="card-body p-2">
+                                        <p class="card-text category-name1">PC</p>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-center p-1">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <ul class="flex-column c_dm_2">
+                                    <li class="c_dm_2_sub">
+                                        <button class="dropdown-item">
+                                            <span>本体</span><i class="fas fa-caret-right"></i>
+                                        </button>
+                                        <ul class="flex-column c_dm_3">
+                                            <li class="dropdown-item">
+                                                <a href="#">FUJITSU</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">NEC</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">dynabook</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">Lenovo</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">その他</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="c_dm_2_sub">
+                                        <button class="dropdown-item">
+                                            <span>周辺</span><i class="fas fa-caret-right"></i>
+                                        </button>
+                                        <ul class="flex-column c_dm_3">
+                                            <li class="dropdown-item">
+                                                <a href="#">ケース</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">キーボード・マウス</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">ストレージ</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">ハブ</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">ソフトウェア</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">ドライブ</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">その他</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">保証・サポート関連</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="col-5 col-md-3 mr-2 mt-2">
+                            <li class="category-icon c_dm_1">
+                                <div class="card shadow-sm c_dm_1_sub">
+                                    <i class="card-img-top fab fa-apple mt-3"></i>
+                                    <div class="card-body p-2">
+                                        <p class="card-text category-name1">Apple</p>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-center p-1">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <ul class="flex-column c_dm_2">
+                                    <li class="dropdown-item">
+                                        <a href="#">iPhone</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">iPad</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">Watch</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">Mac</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">保証・サポート</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="col-5 col-md-3 mr-2 mt-2">
+                            <li class="category-icon c_dm_1">
+                                <div class="card shadow-sm c_dm_1_sub">
+                                    <i class="card-img-top fas fa-mobile-alt mt-3"></i>
+                                    <div class="card-body p-2">
+                                        <p class="card-text category-name1">MNO</p>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-center p-1">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <ul class="flex-column c_dm_2">
+                                    <li class="dropdown-item">
+                                        <a href="#">docomo</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">au</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">Softbank</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">その他</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="col-5 col-md-3 mr-2 mt-2">
+                            <li class="category-icon c_dm_1">
+                                <div class="card shadow-sm c_dm_1_sub">
+                                    <i class="card-img-top material-icons mt-3">sim_card</i>
+                                    <div class="card-body p-2">
+                                        <p class="card-text category-name1">MVNO</p>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-center p-1">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <ul class="flex-column c_dm_2">
+                                    <li class="dropdown-item">
+                                        <a href="#">Y!mobile</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">UQ mobile</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">rakuten mobile</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">その他</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="col-5 col-md-3 mr-2 mt-2">
+                            <li class="category-icon c_dm_1">
+                                <div class="card shadow-sm c_dm_1_sub">
+                                    <i class="card-img-top fas fa-gamepad mt-3"></i>
+                                    <div class="card-body p-2">
+                                        <p class="card-text category-name1">ゲーム</p>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-center p-1">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <ul class="flex-column c_dm_2">
+                                    <li class="dropdown-item">
+                                        <a href="#">Nintendo</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">Sony</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">その他</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="col-5 col-md-3 mr-2 mt-2">
+                            <li class="category-icon c_dm_1">
+                                <div class="card shadow-sm c_dm_1_sub">
+                                    <i class="card-img-top fas fa-battery-full mt-3"></i>
+                                    <div class="card-body p-2">
+                                        <p class="card-text category-name1">OAタップ・電池</p>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-center p-1">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <ul class="flex-column c_dm_2">
+                                    <li class="dropdown-item">
+                                        <a href="#">OAタップ</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">電池</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">その他</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="col-5 col-md-3 mr-2 mt-2">
+                            <li class="category-icon c_dm_1">
+                                <div class="card shadow-sm c_dm_1_sub">
+                                    <i class="card-img-top fas fa-wifi mt-3"></i>
+                                    <div class="card-body p-2">
+                                        <p class="card-text category-name1">インターネット</p>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-center p-1">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <ul class="flex-column c_dm_2">
+                                    <li class="c_dm_2_sub">
+                                        <button class="dropdown-item">
+                                            <span>光・固定代替</span><i class="fas fa-caret-right"></i>
+                                        </button>
+                                        <ul class="flex-column c_dm_3">
+                                            <li class="dropdown-item">
+                                                <a href="#">ドコモ光</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">auひかり・Home</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">Softbank光・Air</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">Nifty光</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">NURO光</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">その他</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="c_dm_2_sub">
+                                        <button class="dropdown-item">
+                                            <span>モバイルルーター</span><i class="fas fa-caret-right"></i>
+                                        </button>
+                                        <ul class="flex-column c_dm_3">
+                                            <li class="dropdown-item">
+                                                <a href="#">Y!mobile</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">UQ Wimax</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">その他</a>
                                             </li>
                                         </ul>
                                     </li>
                                 </ul>
-                            </div>
-                            <div class="col-6 col-lg-8">
-                                <form class="form-inline k-search">
-                                    <div class="form-row">
-                                        <div class="col-12">
-                                            <input type="search" class="form-control-sm mr-sm-1" placeholder="キーワードから探す" aria-label="Search">
-                                            <button class="btn btn-sm btn-primary active my-sm-0" type="submit">Search</button>
+                            </li>
+                        </ul>
+                        <ul class="col-5 col-md-3 mr-2 mt-2">
+                            <li class="category-icon c_dm_1">
+                                <div class="card shadow-sm c_dm_1_sub">
+                                    <i class="card-img-top fas fa-language mt-3"></i>
+                                    <div class="card-body p-2">
+                                        <p class="card-text category-name1">学習機器</p>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-center p-1">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <ul class="flex-column c_dm_2">
+                                    <li class="dropdown-item">
+                                        <a href="#">翻訳機</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">電子辞書</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="#">その他</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="col-5 col-md-3 mr-2 mt-2">
+                            <a href="#" class="category-icon-other">
+                                <li class="category-icon c_dm_1">
+                                    <div class="card shadow-sm c_dm_1_sub">
+                                        <i class="card-img-top fas fa-clipboard mt-3"></i>
+                                        <div class="card-body p-2">
+                                            <p class="card-text category-name1">通常業務</p>
                                         </div>
                                     </div>
+                                </li>
+                            </a>
+                        </ul>
+                        <ul class="col-5 col-md-3 mr-2 mt-2">
+                            <a href="#" class="category-icon-other">
+                                <li class="category-icon c_dm_1">
+                                    <div class="card shadow-sm c_dm_1_sub">
+                                        <i class="card-img-top fas fa-asterisk mt-3"></i>
+                                        <div class="card-body p-2">
+                                            <p class="card-text category-name1">その他</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ---------- 質問 ---------- -->
+<div class="q&aform mt-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="Qform">
+                    <h2>質問してみる</h2>
+                    <hr>
+                    <div class="section-wrapper p-3">
+                        <div class="card shadow">
+                            <div class="alert alert-info m-2 shadow" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h6><strong>質問する前に：</strong></h6>
+                                <p>これから投稿しようとしている質問は過去に投稿されている可能性があります。</p>
+                                <p>次のリンクから投稿前に確認をしておきましょう。</p>
+                                <a href="#" class="alert-link">質問を探す</a>
+                            </div>
+                            <div class="card-body">
+                                <form action="">
+                                    <div class="form-group">
+                                        <label class="font-weight-bold" for="questionTitle"><span
+                                                class="marker-light">質問タイトル</span></label>
+                                        <input type="text" class="form-control" id="questionTitle" placeholder="">
+                                    </div>
+                                    <div>
+                                        <label class="font-weight-bold" for="questionCategorySelect1"><span
+                                                class="marker-light">カテゴリ選択</span></label><br>
+                                        <select name="select1" id="select1">
+                                            <option data-subgroup="" value="">選択してください</option>
+                                            <option data-subgroup="camera" value="0">カメラ</option>
+                                            <option data-subgroup="printer" value="1">プリンター</option>
+                                            <option data-subgroup="pc" value="2">PC</option>
+                                            <option data-subgroup="apple" value="3">Apple</option>
+                                            <option data-subgroup="mno" value="4">MNO</option>
+                                            <option data-subgroup="mvno" value="5">MVNO</option>
+                                            <option data-subgroup="game" value="6">ゲーム</option>
+                                            <option data-subgroup="oa" value="7">OAタップ・電池</option>
+                                            <option data-subgroup="internet" value="8">インターネット</option>
+                                            <option data-subgroup="study" value="9">学習機器</option>
+                                            <option data-subgroup="normal" value="10">通常業務</option>
+                                            <option data-subgroup="other" value="11">その他</option>
+                                        </select>
+                                        <br>
+                                        <select name="select2" id="select2">
+                                            <option value="">選択してください</option>
+                                            <!-- カメラ -->
+                                            <option data-group="camera" data-subgroup="mirror" value="1">一眼・ミラーレス
+                                            </option>
+                                            <option data-group="camera" data-subgroup="comdigi" value="2">コンデジ</option>
+                                            <option data-group="camera" data-subgroup="around" value="3">周辺</option>
+                                            <option data-group="camera" data-subgroup="support" value="4">保証・サポート
+                                            </option>
+                                            <!-- プリンター -->
+                                            <option data-group="printer" data-subgroup="printerHontai" value="1">本体
+                                            </option>
+                                            <option data-group="printer" data-subgroup="ink" value="2">インク</option>
+                                            <option data-group="printer" data-subgroup="support" value="3">保証・サポート
+                                            </option>
+                                            <option data-group="printer" data-subgroup="other" value="4">その他</option>
+                                            <!-- PC -->
+                                            <option data-group="pc" data-subgroup="pcHontai" value="1">本体</option>
+                                            <option data-group="pc" data-subgroup="pcAround" value="2">周辺</option>
+                                            <option data-group="pc" data-subgroup="support" value="3">保証・サポート関連</option>
+                                            <!-- Apple -->
+                                            <option data-group="apple" data-subgroup="iPhone" value="1">iPhone</option>
+                                            <option data-group="apple" data-subgroup="iPad" value="2">iPad</option>
+                                            <option data-group="apple" data-subgroup="Watch" value="3">Watch</option>
+                                            <option data-group="apple" data-subgroup="Mac" value="4">Mac</option>
+                                            <option data-group="apple" data-subgroup="other" value="5">その他</option>
+                                            <!-- MNO -->
+                                            <option data-group="mno" data-subgroup="docomo" value="1">docomo</option>
+                                            <option data-group="mno" data-subgroup="au" value="2">au</option>
+                                            <option data-group="mno" data-subgroup="softbank" value="3">Softbank
+                                            </option>
+                                            <option data-group="mno" data-subgroup="other" value="4">その他</option>
+                                            <!-- MVNO -->
+                                            <option data-group="mvno" data-subgroup="common" value="1">共通・機種</option>
+                                            <option data-group="mvno" data-subgroup="ymobile" value="2">Y!mobile
+                                            </option>
+                                            <option data-group="mvno" data-subgroup="uq" value="3">UQ mobile</option>
+                                            <option data-group="mvno" data-subgroup="rakuten" value="4">rakuten mobile
+                                            </option>
+                                            <option data-group="mvno" data-subgroup="other" value="5">その他</option>
+                                            <!-- ゲーム -->
+                                            <option data-group="game" data-subgroup="nintendo" value="1">Nintendo
+                                            </option>
+                                            <option data-group="game" data-subgroup="sie" value="2">SONY</option>
+                                            <option data-group="game" data-subgroup="other" value="3">その他</option>
+                                            <!-- OAタップ・電池 -->
+                                            <option data-group="oa" data-subgroup="oatappu" value="1">OAタップ</option>
+                                            <option data-group="oa" data-subgroup="battery" value="2">電池</option>
+                                            <option data-group="oa" data-subgroup="other" value="3">その他</option>
+                                            <!-- Internet -->
+                                            <option data-group="internet" data-subgroup="light" value="1">光・固定代替
+                                            </option>
+                                            <option data-group="internet" data-subgroup="pocketwifi" value="2">モバイルルーター
+                                            </option>
+                                            <!-- 学習機器 -->
+                                            <option data-group="study" data-subgroup="transelator" value="1">翻訳機
+                                            </option>
+                                            <option data-group="study" data-subgroup="dictionary" value="2">電子辞書
+                                            </option>
+                                            <option data-group="study" data-subgroup="other" value="3">その他</option>
+                                            <!-- 通常業務 -->
+                                            <option data-group="normal" data-subgroup="decided" value="1">----------
+                                            </option>
+                                            <!-- その他 -->
+                                            <option data-group="other" data-subgroup="decided" value="1">----------
+                                            </option>
+                                        </select>
+                                        <br>
+                                        <select name="select3" id="select3">
+                                            <option value="">選択してください</option>
+                                            <!-- 一眼・ミラーレス -->
+                                            <option data-group="mirror" value="1">Canon</option>
+                                            <option data-group="mirror" value="2">SONY</option>
+                                            <option data-group="mirror" value="3">OLYMPUS</option>
+                                            <option data-group="mirror" value="4">Nikon</option>
+                                            <!-- コンデジ -->
+                                            <option data-group="comdigi" value="1">Canon</option>
+                                            <option data-group="comdigi" value="2">SONY</option>
+                                            <option data-group="comdigi" value="3">その他</option>
+                                            <!-- 周辺 -->
+                                            <option data-group="around" value="1">SD</option>
+                                            <option data-group="around" value="2">アクセサリー</option>
+                                            <option data-group="around" value="3">その他</option>
+                                            <!-- プリンター本体 -->
+                                            <option data-group="printerHontai" value="1">Canon</option>
+                                            <option data-group="printerHontai" value="2">EPSON</option>
+                                            <option data-group="printerHontai" value="3">brother</option>
+                                            <option data-group="printerHontai" value="4">その他</option>
+                                            <!-- プリンターインク -->
+                                            <option data-group="ink" value="1">Canon</option>
+                                            <option data-group="ink" value="2">EPSON</option>
+                                            <option data-group="ink" value="3">brother</option>
+                                            <option data-group="ink" value="4">その他</option>
+                                            <!-- PC本体 -->
+                                            <option data-group="pcHontai" value="1">FUJITSU</option>
+                                            <option data-group="pcHontai" value="2">NEC</option>
+                                            <option data-group="pcHontai" value="3">dynabook</option>
+                                            <option data-group="pcHontai" value="4">Lemovo</option>
+                                            <option data-group="pcHontai" value="5">その他</option>
+                                            <!-- PC周辺 -->
+                                            <option data-group="pcAround" value="1">ケース</option>
+                                            <option data-group="pcAround" value="2">キーボード・マウス</option>
+                                            <option data-group="pcAround" value="3">ストレージ</option>
+                                            <option data-group="pcAround" value="4">ハブ</option>
+                                            <option data-group="pcAround" value="5">ソフトウェア</option>
+                                            <option data-group="pcAround" value="6">ドライブ</option>
+                                            <option data-group="pcAround" value="7">その他</option>
+                                            <!-- 光・固定代替 -->
+                                            <option data-group="light" value="1">ドコモ光</option>
+                                            <option data-group="light" value="2">auひかり・Home</option>
+                                            <option data-group="light" value="3">Softbank光・Air</option>
+                                            <option data-group="light" value="4">Nifty光</option>
+                                            <option data-group="light" value="5">NURO光</option>
+                                            <option data-group="light" value="6">その他</option>
+                                            <!-- モバイルルーター -->
+                                            <option data-group="pocketwifi" value="1">Y!mobile</option>
+                                            <option data-group="pocketwifi" value="2">UQ mobile</option>
+                                            <option data-group="pocketwifi" value="3">その他</option>
+                                            <!-- 保証・サポート -->
+                                            <option data-group="support" value="1">----------</option>
+                                            <!-- その他 -->
+                                            <option data-group="iPhone" value="1">----------</option>
+                                            <option data-group="iPad" value="1">----------</option>
+                                            <option data-group="Watch" value="1">----------</option>
+                                            <option data-group="Mac" value="1">----------</option>
+                                            <option data-group="docomo" value="1">----------</option>
+                                            <option data-group="au" value="1">----------</option>
+                                            <option data-group="softbank" value="1">----------</option>
+                                            <option data-group="common" value="1">----------</option>
+                                            <option data-group="ymobile" value="1">----------</option>
+                                            <option data-group="uq" value="1">----------</option>
+                                            <option data-group="rakuten" value="1">----------</option>
+                                            <option data-group="nintendo" value="1">----------</option>
+                                            <option data-group="sie" value="1">----------</option>
+                                            <option data-group="tappu" value="1">----------</option>
+                                            <option data-group="battery" value="1">----------</option>
+                                            <option data-group="transelator" value="1">----------</option>
+                                            <option data-group="dictionary" value="1">----------</option>
+                                            <option data-group="decided" value="1">----------</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="font-weight-bold" for="questionContent"><span
+                                                class="marker-light">質問内容</span></label>
+                                        <textarea class="form-control" name="" id="questionContent" cols="30"
+                                            rows="10"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="font-weight-bold" for="formControlFile"><span
+                                                class="marker-light">添付ファイル</span></label>
+                                        <input type="file" class="form-control-file" id="formControlFile">
+                                    </div>
+                                    <a href="#" class="Qconfirm">
+                                        <button class="btn btn-primary mt-2" type="submit">確認する</button>
+                                    </a>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </nav>
 
-        <!-- ---------- パンくずリスト ---------- -->
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mt-0">
-                <li class="breadcrumb-item active" aria-current="page">Top</li>
-            </ol>
-        </nav>
-        
-        <!-- ---------- 背景調整 ---------- -->
-        <div class="main-wrapper">
 
-            <!-- ---------- 質問検索欄 ---------- -->
-            <div class="Qsearcher mt-5">
-                <div class="container-fluid padding">
-                    <h2 class="text-center">質問を探す</h2>
-                    <hr>    
-                    <div class="section-wrapper row padding">
-                        <!-- ---------- カテゴリーから探す ---------- -->
-                        <div class="col-12 my-3">
-                            <div class="card shadow">
-                                <div class="card-header shadow-sm mb-2"><h4><span class="marker">カテゴリーから探す</span></h4></div>
-                                <div class="row no-gutters d-flex justify-content-around">
-                                    <ul class="col-5 col-md-3 mr-2 mt-2">
-                                        <li class="category-icon c_dm_1">
-                                            <div class="card shadow-sm c_dm_1_sub">
-                                                <i class="card-img-top fas fa-camera mt-3"></i>
-                                                <div class="card-body p-2">
-                                                    <p class="card-text category-name1">カメラ</p>
-                                                </div>
-                                                <div class="card-footer d-flex justify-content-center p-1">
-                                                    <i class="fas fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                            <ul class="flex-column c_dm_2">
-                                                <li class="c_dm_2_sub">
-                                                    <button class="dropdown-item">
-                                                        <span>一眼・ミラーレス</span><i class="fas fa-caret-right"></i>
-                                                    </button>
-                                                    <ul class="flex-column c_dm_3">
-                                                        <li class="dropdown-item">
-                                                            <a class="d-block" href="{% url 'post_list' %}">Canon</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a class="d-block" href="#">Sony</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a class="d-block" href="#">Olympus</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a class="d-block" href="#">その他</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="c_dm_2_sub">
-                                                    <button class="dropdown-item">
-                                                        <span>コンデジ</span><i class="fas fa-caret-right"></i>
-                                                    </button>
-                                                    <ul class="flex-column c_dm_3">
-                                                        <li class="dropdown-item">
-                                                            <a href="#">Canon</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">Sony</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">その他</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="c_dm_2_sub">
-                                                    <button class="dropdown-item">
-                                                        <span>周辺</span><i class="fas fa-caret-right"></i>
-                                                    </button>
-                                                    <ul class="flex-column c_dm_3">
-                                                        <li class="dropdown-item">
-                                                            <a href="#">SD</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">アクセサリー</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">その他</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">保証・サポート</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <ul class="col-5 col-md-3 mr-2 mt-2">
-                                        <li class="category-icon c_dm_1">
-                                            <div class="card shadow-sm c_dm_1_sub">
-                                                <i class="card-img-top fas fa-print mt-3"></i>
-                                                <div class="card-body p-2">
-                                                    <p class="card-text category-name1">プリンター</p>
-                                                </div>
-                                                <div class="card-footer d-flex justify-content-center p-1">
-                                                    <i class="fas fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                            <ul class="flex-column c_dm_2">
-                                                <li class="c_dm_2_sub">
-                                                    <button class="dropdown-item">
-                                                        <span>本体</span><i class="fas fa-caret-right"></i>
-                                                    </button>
-                                                    <ul class="flex-column c_dm_3">
-                                                        <li class="dropdown-item">
-                                                            <a href="#">Canon</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">EPSON</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">brother</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">その他</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="c_dm_2_sub">
-                                                    <button class="dropdown-item">
-                                                        <span>インク</span><i class="fas fa-caret-right"></i>
-                                                    </button>
-                                                    <ul class="flex-column c_dm_3">
-                                                        <li class="dropdown-item">
-                                                            <a href="#">Canon</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">EPSON</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">brother</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">その他</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">保証・サポート</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">その他</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <ul class="col-5 col-md-3 mr-2 mt-2">
-                                        <li class="category-icon c_dm_1">
-                                            <div class="card shadow-sm c_dm_1_sub">
-                                                <i class="card-img-top fas fa-laptop mt-3"></i>
-                                                <div class="card-body p-2">
-                                                    <p class="card-text category-name1">PC</p>
-                                                </div>
-                                                <div class="card-footer d-flex justify-content-center p-1">
-                                                    <i class="fas fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                            <ul class="flex-column c_dm_2">
-                                                <li class="c_dm_2_sub">
-                                                    <button class="dropdown-item">
-                                                        <span>本体</span><i class="fas fa-caret-right"></i>
-                                                    </button>
-                                                    <ul class="flex-column c_dm_3">
-                                                        <li class="dropdown-item">
-                                                            <a href="#">FUJITSU</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">NEC</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">dynabook</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">Lenovo</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">その他</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="c_dm_2_sub">
-                                                    <button class="dropdown-item">
-                                                        <span>周辺</span><i class="fas fa-caret-right"></i>
-                                                    </button>
-                                                    <ul class="flex-column c_dm_3">
-                                                        <li class="dropdown-item">
-                                                            <a href="#">ケース</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">キーボード・マウス</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">ストレージ</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">ハブ</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">ソフトウェア</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">ドライブ</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">その他</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">保証・サポート関連</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <ul class="col-5 col-md-3 mr-2 mt-2">
-                                        <li class="category-icon c_dm_1">
-                                            <div class="card shadow-sm c_dm_1_sub">
-                                                <i class="card-img-top fab fa-apple mt-3"></i>
-                                                <div class="card-body p-2">
-                                                    <p class="card-text category-name1">Apple</p>
-                                                </div>
-                                                <div class="card-footer d-flex justify-content-center p-1">
-                                                    <i class="fas fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                            <ul class="flex-column c_dm_2">
-                                                <li class="dropdown-item">
-                                                    <a href="#">iPhone</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">iPad</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">Watch</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">Mac</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">保証・サポート</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <ul class="col-5 col-md-3 mr-2 mt-2">
-                                        <li class="category-icon c_dm_1">
-                                            <div class="card shadow-sm c_dm_1_sub">
-                                                <i class="card-img-top fas fa-mobile-alt mt-3"></i>
-                                                <div class="card-body p-2">
-                                                    <p class="card-text category-name1">MNO</p>
-                                                </div>
-                                                <div class="card-footer d-flex justify-content-center p-1">
-                                                    <i class="fas fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                            <ul class="flex-column c_dm_2">
-                                                <li class="dropdown-item">
-                                                    <a href="#">docomo</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">au</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">Softbank</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">その他</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <ul class="col-5 col-md-3 mr-2 mt-2">
-                                        <li class="category-icon c_dm_1">
-                                            <div class="card shadow-sm c_dm_1_sub">
-                                                <i class="card-img-top material-icons mt-3">sim_card</i>
-                                                <div class="card-body p-2">
-                                                    <p class="card-text category-name1">MVNO</p>
-                                                </div>
-                                                <div class="card-footer d-flex justify-content-center p-1">
-                                                    <i class="fas fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                            <ul class="flex-column c_dm_2">
-                                                <li class="dropdown-item">
-                                                    <a href="#">Y!mobile</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">UQ mobile</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">rakuten mobile</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">その他</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <ul class="col-5 col-md-3 mr-2 mt-2">
-                                        <li class="category-icon c_dm_1">
-                                            <div class="card shadow-sm c_dm_1_sub">
-                                                <i class="card-img-top fas fa-gamepad mt-3"></i>
-                                                <div class="card-body p-2">
-                                                    <p class="card-text category-name1">ゲーム</p>
-                                                </div>
-                                                <div class="card-footer d-flex justify-content-center p-1">
-                                                    <i class="fas fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                            <ul class="flex-column c_dm_2">
-                                                <li class="dropdown-item">
-                                                    <a href="#">Nintendo</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">Sony</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">その他</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <ul class="col-5 col-md-3 mr-2 mt-2">
-                                        <li class="category-icon c_dm_1">
-                                            <div class="card shadow-sm c_dm_1_sub">
-                                                <i class="card-img-top fas fa-battery-full mt-3"></i>
-                                                <div class="card-body p-2">
-                                                    <p class="card-text category-name1">OAタップ・電池</p>
-                                                </div>
-                                                <div class="card-footer d-flex justify-content-center p-1">
-                                                    <i class="fas fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                            <ul class="flex-column c_dm_2">
-                                                <li class="dropdown-item">
-                                                    <a href="#">OAタップ</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">電池</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">その他</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <ul class="col-5 col-md-3 mr-2 mt-2">
-                                        <li class="category-icon c_dm_1">
-                                            <div class="card shadow-sm c_dm_1_sub">
-                                                <i class="card-img-top fas fa-wifi mt-3"></i>
-                                                <div class="card-body p-2">
-                                                    <p class="card-text category-name1">インターネット</p>
-                                                </div>
-                                                <div class="card-footer d-flex justify-content-center p-1">
-                                                    <i class="fas fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                            <ul class="flex-column c_dm_2">
-                                                <li class="c_dm_2_sub">
-                                                    <button class="dropdown-item">
-                                                        <span>光・固定代替</span><i class="fas fa-caret-right"></i>
-                                                    </button>
-                                                    <ul class="flex-column c_dm_3">
-                                                        <li class="dropdown-item">
-                                                            <a href="#">ドコモ光</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">auひかり・Home</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">Softbank光・Air</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">Nifty光</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">NURO光</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">その他</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="c_dm_2_sub">
-                                                    <button class="dropdown-item">
-                                                        <span>モバイルルーター</span><i class="fas fa-caret-right"></i>
-                                                    </button>
-                                                    <ul class="flex-column c_dm_3">
-                                                        <li class="dropdown-item">
-                                                            <a href="#">Y!mobile</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">UQ Wimax</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">その他</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <ul class="col-5 col-md-3 mr-2 mt-2">
-                                        <li class="category-icon c_dm_1">
-                                            <div class="card shadow-sm c_dm_1_sub">
-                                                <i class="card-img-top fas fa-language mt-3"></i>
-                                                <div class="card-body p-2">
-                                                    <p class="card-text category-name1">学習機器</p>
-                                                </div>
-                                                <div class="card-footer d-flex justify-content-center p-1">
-                                                    <i class="fas fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                            <ul class="flex-column c_dm_2">
-                                                <li class="dropdown-item">
-                                                    <a href="#">翻訳機</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">電子辞書</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">その他</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <ul class="col-5 col-md-3 mr-2 mt-2">
-                                        <a href="#" class="category-icon-other">
-                                            <li class="category-icon c_dm_1">
-                                                <div class="card shadow-sm c_dm_1_sub">
-                                                    <i class="card-img-top fas fa-clipboard mt-3"></i>
-                                                    <div class="card-body p-2">
-                                                        <p class="card-text category-name1">通常業務</p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </a>
-                                    </ul>
-                                    <ul class="col-5 col-md-3 mr-2 mt-2">
-                                        <a href="#" class="category-icon-other">
-                                            <li class="category-icon c_dm_1">
-                                                <div class="card shadow-sm c_dm_1_sub">
-                                                    <i class="card-img-top fas fa-asterisk mt-3"></i>
-                                                    <div class="card-body p-2">
-                                                        <p class="card-text category-name1">その他</p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </a>
-                                    </ul>
+
+
+
+            <!-- ---------- 回答 ---------- -->
+            <div class="col-lg-6 mt-lg-0 mt-5">
+                <div class="Aform">
+                    <h2>回答する</h2>
+                    <hr>
+                    <div class="section-wrapper p-3">
+                        <div class="Aoptions bg-white py-3 shadow">
+                            <h5 class="ml-3"><span class="marker-light">新着の質問</span></h5>
+                            <div class="p-2 medium">
+                                <div class="media m-3 p-2 btn-outline-info shadow">
+                                    <a class="text-info d-flex justify-content-start" href="#">
+                                        <span class="mr-3 fas fa-camera C-icon"></span>
+                                        <div class="media-body">
+                                            <h5 class="font-weight-bold mt-0">質問タイトル</h5>
+                                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                                eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
+                                            <p class="media-detail text-right m-0 font-weight-light">投稿者：〇〇
+                                                &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="media m-3 p-2 btn-outline-info shadow">
+                                    <a class="text-info d-flex justify-content-start" href="#">
+                                        <span class="mr-3 fas fa-camera C-icon"></span>
+                                        <div class="media-body">
+                                            <h5 class="font-weight-bold mt-0">質問タイトル</h5>
+                                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                                eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
+                                            <p class="media-detail text-right m-0 font-weight-light">投稿者：〇〇
+                                                &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="media m-3 p-2 btn-outline-info shadow">
+                                    <a class="text-info d-flex justify-content-start" href="#">
+                                        <span class="mr-3 fas fa-camera C-icon"></span>
+                                        <div class="media-body">
+                                            <h5 class="font-weight-bold mt-0">質問タイトル</h5>
+                                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                                eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
+                                            <p class="media-detail text-right m-0 font-weight-light">投稿者：〇〇
+                                                &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <a href="#">
+                                    <h6 class="text-center mt-4 mb-4">他の新着質問もみる</h6>
+                                </a>
+                                <hr class="mx-4 my-4">
+                                <div class="text-center">
+                                    <button class="mx-3 btn btn-outline-info p-3 text-center shadow">
+                                        <h6 class="mx-5 mb-0">未解決の質問をみる</h6>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- ---------- 質問 ---------- -->
-            <div class="q&aform mt-5">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="Qform">
-                                <h2>質問してみる</h2>
-                                <hr>
-                                <div class="section-wrapper p-3">
-                                    <div class="card shadow">
-                                        <div class="alert alert-info m-2 shadow" role="alert">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            <h6><strong>質問する前に：</strong></h6>
-                                            <p>これから投稿しようとしている質問は過去に投稿されている可能性があります。</p>
-                                            <p>次のリンクから投稿前に確認をしておきましょう。</p>
-                                            <a href="#" class="alert-link">質問を探す</a>
-                                        </div>
-                                        <div class="card-body">
-                                            <form action="">
-                                                <div class="form-group">
-                                                    <label class="font-weight-bold" for="questionTitle"><span class="marker-light">質問タイトル</span></label>                                    
-                                                    <input type="text" class="form-control" id="questionTitle" placeholder="">
-                                                </div>
-                                                <div>
-                                                        <label class="font-weight-bold" for="questionCategorySelect1"><span class="marker-light">カテゴリ選択</span></label><br>
-                                                        <select name="select1" id="select1">
-                                                            <option data-subgroup="" value="">選択してください</option>
-                                                            <option data-subgroup="camera" value="0">カメラ</option>
-                                                            <option data-subgroup="printer" value="1">プリンター</option>
-                                                            <option data-subgroup="pc" value="2">PC</option>
-                                                            <option data-subgroup="apple" value="3">Apple</option>
-                                                            <option data-subgroup="mno" value="4">MNO</option>
-                                                            <option data-subgroup="mvno" value="5">MVNO</option>
-                                                            <option data-subgroup="game" value="6">ゲーム</option>
-                                                            <option data-subgroup="oa" value="7">OAタップ・電池</option>
-                                                            <option data-subgroup="internet" value="8">インターネット</option>
-                                                            <option data-subgroup="study" value="9">学習機器</option>
-                                                            <option data-subgroup="normal" value="10">通常業務</option>
-                                                            <option data-subgroup="other" value="11">その他</option>
-                                                        </select>
-                                                        <br>
-                                                        <select name="select2" id="select2">
-                                                            <option value="">選択してください</option>
-                                                            <!-- カメラ -->
-                                                            <option data-group="camera" data-subgroup="mirror" value="1">一眼・ミラーレス</option>
-                                                            <option data-group="camera" data-subgroup="comdigi" value="2">コンデジ</option>
-                                                            <option data-group="camera" data-subgroup="around" value="3">周辺</option>
-                                                            <option data-group="camera" data-subgroup="support" value="4">保証・サポート</option>
-                                                            <!-- プリンター -->
-                                                            <option data-group="printer" data-subgroup="printerHontai" value="1">本体</option>
-                                                            <option data-group="printer" data-subgroup="ink" value="2">インク</option>
-                                                            <option data-group="printer" data-subgroup="support" value="3">保証・サポート</option>
-                                                            <option data-group="printer" data-subgroup="other" value="4">その他</option>
-                                                            <!-- PC -->
-                                                            <option data-group="pc" data-subgroup="pcHontai" value="1">本体</option>
-                                                            <option data-group="pc" data-subgroup="pcAround" value="2">周辺</option>
-                                                            <option data-group="pc" data-subgroup="support" value="3">保証・サポート関連</option>
-                                                            <!-- Apple -->
-                                                            <option data-group="apple" data-subgroup="iPhone" value="1">iPhone</option>
-                                                            <option data-group="apple" data-subgroup="iPad" value="2">iPad</option>
-                                                            <option data-group="apple" data-subgroup="Watch" value="3">Watch</option>
-                                                            <option data-group="apple" data-subgroup="Mac" value="4">Mac</option>
-                                                            <option data-group="apple" data-subgroup="other" value="5">その他</option>
-                                                            <!-- MNO -->
-                                                            <option data-group="mno" data-subgroup="docomo" value="1">docomo</option>
-                                                            <option data-group="mno" data-subgroup="au" value="2">au</option>
-                                                            <option data-group="mno" data-subgroup="softbank" value="3">Softbank</option>
-                                                            <option data-group="mno" data-subgroup="other" value="4">その他</option>
-                                                            <!-- MVNO -->
-                                                            <option data-group="mvno" data-subgroup="common" value="1">共通・機種</option>
-                                                            <option data-group="mvno" data-subgroup="ymobile" value="2">Y!mobile</option>
-                                                            <option data-group="mvno" data-subgroup="uq" value="3">UQ mobile</option>
-                                                            <option data-group="mvno" data-subgroup="rakuten" value="4">rakuten mobile</option>
-                                                            <option data-group="mvno" data-subgroup="other" value="5">その他</option>
-                                                            <!-- ゲーム -->
-                                                            <option data-group="game" data-subgroup="nintendo" value="1">Nintendo</option>
-                                                            <option data-group="game" data-subgroup="sie" value="2">SONY</option>
-                                                            <option data-group="game" data-subgroup="other" value="3">その他</option>
-                                                            <!-- OAタップ・電池 -->
-                                                            <option data-group="oa" data-subgroup="oatappu" value="1">OAタップ</option>
-                                                            <option data-group="oa" data-subgroup="battery" value="2">電池</option>
-                                                            <option data-group="oa" data-subgroup="other" value="3">その他</option>
-                                                            <!-- Internet -->
-                                                            <option data-group="internet" data-subgroup="light" value="1">光・固定代替</option>
-                                                            <option data-group="internet" data-subgroup="pocketwifi" value="2">モバイルルーター</option>
-                                                            <!-- 学習機器 -->
-                                                            <option data-group="study" data-subgroup="transelator" value="1">翻訳機</option>
-                                                            <option data-group="study" data-subgroup="dictionary" value="2">電子辞書</option>
-                                                            <option data-group="study" data-subgroup="other" value="3">その他</option>
-                                                            <!-- 通常業務 -->
-                                                            <option data-group="normal" data-subgroup="decided" value="1">----------</option>
-                                                            <!-- その他 -->
-                                                            <option data-group="other" data-subgroup="decided" value="1">----------</option>
-                                                        </select>
-                                                        <br>
-                                                        <select name="select3" id="select3">
-                                                            <option value="">選択してください</option>
-                                                            <!-- 一眼・ミラーレス -->
-                                                            <option data-group="mirror" value="1">Canon</option>
-                                                            <option data-group="mirror" value="2">SONY</option>
-                                                            <option data-group="mirror" value="3">OLYMPUS</option>
-                                                            <option data-group="mirror" value="4">Nikon</option>
-                                                            <!-- コンデジ -->
-                                                            <option data-group="comdigi" value="1">Canon</option>
-                                                            <option data-group="comdigi" value="2">SONY</option>
-                                                            <option data-group="comdigi" value="3">その他</option>
-                                                            <!-- 周辺 -->
-                                                            <option data-group="around" value="1">SD</option>
-                                                            <option data-group="around" value="2">アクセサリー</option>
-                                                            <option data-group="around" value="3">その他</option>
-                                                            <!-- プリンター本体 -->
-                                                            <option data-group="printerHontai" value="1">Canon</option>
-                                                            <option data-group="printerHontai" value="2">EPSON</option>
-                                                            <option data-group="printerHontai" value="3">brother</option>
-                                                            <option data-group="printerHontai" value="4">その他</option>
-                                                            <!-- プリンターインク -->
-                                                            <option data-group="ink" value="1">Canon</option>
-                                                            <option data-group="ink" value="2">EPSON</option>
-                                                            <option data-group="ink" value="3">brother</option>
-                                                            <option data-group="ink" value="4">その他</option>
-                                                            <!-- PC本体 -->
-                                                            <option data-group="pcHontai" value="1">FUJITSU</option>
-                                                            <option data-group="pcHontai" value="2">NEC</option>
-                                                            <option data-group="pcHontai" value="3">dynabook</option>
-                                                            <option data-group="pcHontai" value="4">Lemovo</option>
-                                                            <option data-group="pcHontai" value="5">その他</option>
-                                                            <!-- PC周辺 -->
-                                                            <option data-group="pcAround" value="1">ケース</option>
-                                                            <option data-group="pcAround" value="2">キーボード・マウス</option>
-                                                            <option data-group="pcAround" value="3">ストレージ</option>
-                                                            <option data-group="pcAround" value="4">ハブ</option>
-                                                            <option data-group="pcAround" value="5">ソフトウェア</option>
-                                                            <option data-group="pcAround" value="6">ドライブ</option>
-                                                            <option data-group="pcAround" value="7">その他</option>
-                                                            <!-- 光・固定代替 -->
-                                                            <option data-group="light" value="1">ドコモ光</option>
-                                                            <option data-group="light" value="2">auひかり・Home</option>
-                                                            <option data-group="light" value="3">Softbank光・Air</option>
-                                                            <option data-group="light" value="4">Nifty光</option>
-                                                            <option data-group="light" value="5">NURO光</option>
-                                                            <option data-group="light" value="6">その他</option>
-                                                            <!-- モバイルルーター -->
-                                                            <option data-group="pocketwifi" value="1">Y!mobile</option>
-                                                            <option data-group="pocketwifi" value="2">UQ mobile</option>
-                                                            <option data-group="pocketwifi" value="3">その他</option>   
-                                                            <!-- 保証・サポート -->
-                                                            <option data-group="support" value="1">----------</option>
-                                                            <!-- その他 -->
-                                                            <option data-group="iPhone" value="1">----------</option>
-                                                            <option data-group="iPad" value="1">----------</option>
-                                                            <option data-group="Watch" value="1">----------</option>
-                                                            <option data-group="Mac" value="1">----------</option>
-                                                            <option data-group="docomo" value="1">----------</option>
-                                                            <option data-group="au" value="1">----------</option>
-                                                            <option data-group="softbank" value="1">----------</option>
-                                                            <option data-group="common" value="1">----------</option>
-                                                            <option data-group="ymobile" value="1">----------</option>
-                                                            <option data-group="uq" value="1">----------</option>
-                                                            <option data-group="rakuten" value="1">----------</option>
-                                                            <option data-group="nintendo" value="1">----------</option>
-                                                            <option data-group="sie" value="1">----------</option>
-                                                            <option data-group="tappu" value="1">----------</option>
-                                                            <option data-group="battery" value="1">----------</option>
-                                                            <option data-group="transelator" value="1">----------</option>
-                                                            <option data-group="dictionary" value="1">----------</option>
-                                                            <option data-group="decided" value="1">----------</option>
-                                                        </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="font-weight-bold" for="questionContent"><span class="marker-light">質問内容</span></label>
-                                                    <textarea class="form-control" name="" id="questionContent" cols="30" rows="10"></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="font-weight-bold" for="formControlFile"><span class="marker-light">添付ファイル</span></label>
-                                                    <input type="file" class="form-control-file" id="formControlFile">
-                                                </div>
-                                                <a href="#" class="Qconfirm">
-                                                    <button class="btn btn-primary mt-2" type="submit">確認する</button>
-                                                </a>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    
-                    
-                
-
-
-                    <!-- ---------- 回答 ---------- -->
-                        <div class="col-lg-6 mt-lg-0 mt-5">
-                            <div class="Aform">
-                                <h2>回答する</h2>
-                                <hr>
-                                <div class="section-wrapper p-3">
-                                    <div class="Aoptions bg-white py-3 shadow">
-                                        <h5 class="ml-3"><span class="marker-light">新着の質問</span></h5>
-                                        <div class="p-2 medium">
-                                            <div class="media m-3 p-2 btn-outline-info shadow">
-                                                <a class="text-info d-flex justify-content-start" href="#">
-                                                    <span class="mr-3 fas fa-camera C-icon"></span>
-                                                    <div class="media-body">
-                                                        <h5 class="font-weight-bold mt-0">質問タイトル</h5>
-                                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
-                                                        <p class="media-detail text-right m-0 font-weight-light">投稿者：〇〇 &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="media m-3 p-2 btn-outline-info shadow">
-                                                <a class="text-info d-flex justify-content-start" href="#">
-                                                    <span class="mr-3 fas fa-camera C-icon"></span>
-                                                    <div class="media-body">
-                                                        <h5 class="font-weight-bold mt-0">質問タイトル</h5>
-                                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
-                                                        <p class="media-detail text-right m-0 font-weight-light">投稿者：〇〇 &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="media m-3 p-2 btn-outline-info shadow">
-                                                <a class="text-info d-flex justify-content-start" href="#">
-                                                    <span class="mr-3 fas fa-camera C-icon"></span>
-                                                    <div class="media-body">
-                                                        <h5 class="font-weight-bold mt-0">質問タイトル</h5>
-                                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
-                                                        <p class="media-detail text-right m-0 font-weight-light">投稿者：〇〇 &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <h6 class="text-center mt-4 mb-4">他の新着質問もみる</h6>
-                                            </a>
-                                            <hr class="mx-4 my-4">
-                                            <div class="text-center">
-                                                <button class="mx-3 btn btn-outline-info p-3 text-center shadow">
-                                                    <h6 class="mx-5 mb-0">未解決の質問をみる</h6>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
-
-
-        <!-- ---------- Footer ---------- -->
-        <footer>
-            <div class="footer-wrapper mt-4 pt-4">
-                <div class="container-fluid padding">
-                    <div class="row">
-                        <!-- ページ -->
-                        <div class="col-sm-6">
-                            <div class="page-intro">
-                                <h5>Pages</h5>
-                                <p><a href="#">Top</a></p>
-                                <p><a href="#">News</a></p>
-                                <p><a href="#">Profile</a></p>
-                                <p><a href="#">Logout</a></p>
-                            </div>
-                        </div>
-                        <!-- 固定ページ -->
-                        <div class="col-sm-6">
-                            <div class="about-intro">
-                                <h5>About</h5>
-                                <p><a href="#">製作者</a></p>
-                                <p><a href="#">ご利用規約</a></p>
-                                <p><a href="#">プライバシーポリシー</a></p>
-                                <p><a href="#">お問い合わせ</a></p>
-                                <a class="my-2" href="#"><span><i class="fab fa-github-square"></i></span> Github</a>
-                            </div>
-                        </div>
-                        <!-- コピーライト系 -->
-                        <div class="col-12 my-1">
-                            <div class="copy-w">
-                                <h3>Quelle</h3>
-                                <p class="mb-1">知識共有サイト</p>
-                                <p>&copy; Quelle</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-
-
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
-        <script src="{% static 'css/script.js' %}"></script>
-    </body>
-</html>
+    </div>
+</div>
+{% endblock content %}
