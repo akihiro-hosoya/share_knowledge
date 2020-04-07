@@ -21,15 +21,12 @@
             <div>
                 <div class="section-wrapper mt-3 p-3">
                     {% for post in post_list %}
-                        <div>
-                        <p>published: {{ post.published_date }}</p>
-                        <a href="{% url 'post_detail' pk=post.pk %}">
-                            <h2>
-                                {{ post.title }}
-                            </h2>
-                        </a>                        
-                        <p>{{ post.text|linebreaksbr }}</p>
-                        </div>
+                    <div>
+                        <h2><a href="#">{{ post.title }}</a></h2>
+                        <p>{{ post.published_date }}</p>
+                        <p>{{ post.text|linebreaksbr|truncatechars:100 }}</p>
+                    </div>
+                    <hr>
                     {% endfor %}
                 </div>
             </div>
