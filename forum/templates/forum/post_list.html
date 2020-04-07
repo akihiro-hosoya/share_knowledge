@@ -40,9 +40,13 @@
                             <div class="p-2 medium">
                                 {% for post in post_list %}
                                 <div>
-                                    <a href="#">
-                                        <p>{{ post.title }}</p>
-                                    </a>
+                                    <h5>{{ post.title }}</h5>
+                                </div>
+                                {% endfor %}
+
+                                {% for post in post_list %}
+                                <div>
+                                    <h5>{{ post.title }}</h5>
                                     <p>{{ post.text|linebreaksbr|truncatechars:100 }}</p>
                                     <p>{{ post.author }}</p>
                                     <p>投稿日時: {{ post.published_date }}</p>
