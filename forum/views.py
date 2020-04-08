@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import (TemplateView, ListView, CreateView, DetailView)
+from django.utils import timezone
 from forum.models import Post
+from django.views.generic import (TemplateView, ListView, CreateView, DetailView)
 from forum.forms import PostForm
 from django.utils import timezone
 
