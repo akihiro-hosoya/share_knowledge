@@ -15,6 +15,7 @@ ul {
 
 a {
     text-decoration: none;
+    display: block;
 }
 
 
@@ -259,6 +260,7 @@ footer {
 }
 .page-intro a, .about-intro a, .copy-w a {
     color: #fff;
+    display: block;
 }
 .page-intro h5, .about-intro h5 {
     border-top: #fff 0.5px solid;
