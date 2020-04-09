@@ -9,13 +9,21 @@
             <h3>質問</h3>
             <hr>
             <div>
-                <h5>{{ post.title }}</h5>
-                <p>{{ post.text|linebreaksbr }}</p>
-                {% if post.published_date %}
-                <span>{{ post.published_date }}</span>
+                {% for post in post_list %}
+                    <a class="d-block" href="{% url 'post_detail' pk=post.pk %}">
+                        <h5>{{ post.title }}</h5>
+                    </a>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                    {% if post.published_date %}
+                        <span>{{ post.published_date }}</span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div>
+                {% if not post.published_date %}
+                    <a class="btn btn-warning" href="{% url 'post_publish' pk=post.pk %}" role="button">公開</a>
                 {% endif %}
             </div>
-            <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-success d-block" role="button">編集する</a>
         </div>
 
         <!-- ---------- サブメニュー --------- -->

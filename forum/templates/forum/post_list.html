@@ -39,33 +39,19 @@
                                     <div class="p-2 medium">
                                         {% for post in post_list %}
                                         <div class="media m-3 p-2 btn-outline-info bg-white shadow">
-                                            <a class="text-dark d-flex justify-content-start" href="#">
+                                            <a class="text-dark d-flex justify-content-start d-block" href="#">
                                                 <div class="media-body">
                                                     <h5 class="text-all font-weight-bold mt-0">{{ post.title }}</h5>
                                                     <p>{{ post.text|linebreaksbr|truncatechars:100 }}</p>
                                                     <p class="media-detail text-right m-0 font-weight-light">
                                                         <span class="float-left"><i class="fas fa-comment"></i> 1件</span>
-                                                        投稿者：{{ post.author }} {{ post.published_date }}
+                                                        投稿者：{{ post.author }} {{ post.created_date }}
                                                     </p>
                                                 </div>
                                             </a>
                                         </div>
                                         {% endfor %}
                                     </div>
-                                    <!-- ----- ページネーション ----- -->
-                                    <nav aria-label="page navigation example">
-                                        <ul class="pagination justify-content-center">
-                                            <li class="page-item disabled">
-                                                <a href="#" class="page-link previous" tabindex="-1">前へ</a>
-                                            </li>
-                                            <li class="page-item disabled"><a href="#" class="page-link">1</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">3</a></li>
-                                            <li class="page-item">
-                                                <a href="#" class="page-link next">次へ</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
                                 </div>
                                 <!-- ----- 未解決 ----- -->
                                 <div class="tab-pane fade bg-info pb-2" id="nav-pending" role="tabpanel" aria-labelledby="nav-pending-tab">
@@ -107,20 +93,6 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <!-- ----- ページネーション ----- -->
-                                    <nav aria-label="page navigation example">
-                                        <ul class="pagination justify-content-center">
-                                            <li class="page-item disabled">
-                                                <a href="#" class="page-link previous" tabindex="-1">前へ</a>
-                                            </li>
-                                            <li class="page-item disabled"><a href="#" class="page-link">1</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">3</a></li>
-                                            <li class="page-item">
-                                                <a href="#" class="page-link next">次へ</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
                                 </div>
                             </div>
                         </div>
