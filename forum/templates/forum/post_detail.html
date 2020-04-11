@@ -15,7 +15,10 @@
                 <span>{{ post.published_date }}</span>
                 {% endif %}
             </div>
-            <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-success d-block" role="button">編集する</a>
+            <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-success" role="button">編集する</a>
+            {% if not post.published_date %}
+                <a class="btn btn-warning" href="{% url 'post_publish' pk=post.pk %}" role="button">公開する</a>
+            {% endif %}
         </div>
 
         <!-- ---------- サブメニュー --------- -->

@@ -6,110 +6,32 @@
     <div class="row">
         <!-- ----- 質問フォーム ----- -->
         <div class="col-12 col-md-8">
+            <div class="alert alert-primary fade show">
+                <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <p>下書きに保存されました！</p>
+            </div>
             <h3>質問</h3>
             <hr>
             <div>
-                {% for post in post_list %}
-                    <a class="d-block" href="{% url 'post_detail' pk=post.pk %}">
-                        <h5>{{ post.title }}</h5>
-                    </a>
-                    <p>{{ post.text|linebreaksbr }}</p>
-                    {% if post.published_date %}
-                        <span>{{ post.published_date }}</span>
-                    {% endif %}
-                {% endfor %}
+                <a class="d-block" href="{% url 'post_detail' pk=post.pk %}">
+                    <h5>{{ post.title }}</h5>
+                </a>
+                <p>{{ post.text|linebreaksbr }}</p>
+                {% if post.published_date %}
+                <span>{{ post.published_date }}</span>
+                {% endif %}
             </div>
             <div>
                 {% if not post.published_date %}
-                    <a class="btn btn-warning" href="{% url 'post_publish' pk=post.pk %}" role="button">公開</a>
+                <a class="btn btn-warning" href="{% url 'post_publish' pk=post.pk %}" role="button">公開する</a>
                 {% endif %}
+                <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-success" role="button">編集する</a>
+                <a href="{% url 'post_draft_list' %}" class="btn btn-secondary">下書き一覧</a>
             </div>
         </div>
 
-        <!-- ---------- サブメニュー --------- -->
-        <div class="col-12 col-md-4">
-            <!-- ----- 新着情報一覧 ----- -->
-            <div class="mt-5">
-                <h4 class="text-center">新着情報<span class="badge badge-info">New!!</span></h4>
-                <hr>
-                <div class="section-wrapper p-3">
-                    <div class="medium">
-                        <div class="media p-2 btn-outline-info bg-white shadow">
-                            <a class="text-dark d-flex justify-content-start" href="#">
-                                <div class="media-body">
-                                    <h5 class="text-info font-weight-bold mt-0">タイトル</h5>
-                                    <p class="media-detail text-right m-0 font-weight-light">投稿日時：YYYY/ MM/ DD</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="media p-2 mt-2 btn-outline-info bg-white shadow">
-                            <a class="text-dark d-flex justify-content-start" href="#">
-                                <div class="media-body">
-                                    <h5 class="text-info font-weight-bold mt-0">タイトル</h5>
-                                    <p class="media-detail text-right m-0 font-weight-light">投稿日時：YYYY/ MM/ DD</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="media p-2 mt-2 btn-outline-info bg-white shadow">
-                            <a class="text-dark d-flex justify-content-start" href="#">
-                                <div class="media-body">
-                                    <h5 class="text-info font-weight-bold mt-0">タイトル</h5>
-                                    <p class="media-detail text-right m-0 font-weight-light">投稿日時：YYYY/ MM/ DD</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ----- 新着投稿 ----- -->
-            <div class="mt-5">
-                <h4 class="text-center">新着投稿</h4>
-                <hr>
-                <div class="section-wrapper p-3">
-                    <div class="medium">
-                        <div class="media p-2 btn-outline-info bg-white shadow">
-                            <a class="text-dark d-flex justify-content-start" href="#">
-                                <div class="media-body">
-                                    <h5 class="text-info font-weight-bold mt-0">質問タイトル</h5>
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                        tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
-                                    <p class="media-detail text-right m-0 font-weight-light">
-                                        <span class="float-left"><i class="fas fa-comment"></i> 1件</span>
-                                        投稿者：〇〇 &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="media p-2 mt-3 btn-outline-info bg-white shadow">
-                            <a class="text-dark d-flex justify-content-start" href="#">
-                                <div class="media-body">
-                                    <h5 class="text-info font-weight-bold mt-0">質問タイトル</h5>
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                        tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
-                                    <p class="media-detail text-right m-0 font-weight-light">
-                                        <span class="float-left"><i class="fas fa-comment"></i> 1件</span>
-                                        投稿者：〇〇 &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="media p-2 mt-3 btn-outline-info bg-white shadow">
-                            <a class="text-dark d-flex justify-content-start" href="#">
-                                <div class="media-body">
-                                    <h5 class="text-info font-weight-bold mt-0">質問タイトル</h5>
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                        tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
-                                    <p class="media-detail text-right m-0 font-weight-light">
-                                        <span class="float-left"><i class="fas fa-comment"></i> 1件</span>
-                                        投稿者：〇〇 &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 {% endblock content %}

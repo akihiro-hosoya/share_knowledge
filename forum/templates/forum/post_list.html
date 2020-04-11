@@ -28,41 +28,52 @@
                             <!-- ----- タブ ----- -->
                             <nav>
                                 <div class="nav nab-tabs nav-fill" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link all-bgc active" id="nav-all-tab" data-toggle="tab" href="#nav-all" role="tab" aria-controls="nav-all" aria-selected="true">すべて</a>
-                                    <a class="nav-item nav-link bg-info" id="nav-pending-tab" data-toggle="tab" href="#nav-pending" role="tab" aria-controls="nav-pending" aria-selected="false">未解決</a>
+                                    <a class="nav-item nav-link all-bgc active" id="nav-all-tab" data-toggle="tab"
+                                        href="#nav-all" role="tab" aria-controls="nav-all" aria-selected="true">すべて</a>
+                                    <a class="nav-item nav-link bg-info" id="nav-pending-tab" data-toggle="tab"
+                                        href="#nav-pending" role="tab" aria-controls="nav-pending"
+                                        aria-selected="false">未解決</a>
                                 </div>
                             </nav>
                             <!-- ----- メイン ----- -->
                             <div class="tab-content" id="nav-tabContent">
                                 <!-- ----- すべて ----- -->
-                                <div class="tab-pane fade show active pb-2 all-bgc" id="nav-all" role="tabpanel" aria-labelledby="nab-all">
+                                <div class="tab-pane fade show active pb-2 all-bgc" id="nav-all" role="tabpanel"
+                                    aria-labelledby="nab-all">
                                     <div class="p-2 medium">
                                         {% for post in post_list %}
-                                        <div class="media m-3 p-2 btn-outline-info bg-white shadow">
-                                            <a class="text-dark d-flex justify-content-start d-block" href="#">
+                                        <div class="media m-3 p-2 bg-white shadow">
+                                            <div class="d-flex justify-content-start d-block">
                                                 <div class="media-body">
-                                                    <h5 class="text-all font-weight-bold mt-0">{{ post.title }}</h5>
+                                                    <a class="d-block" href="{% url 'post_detail' pk=post.pk %}">
+                                                        <h5 class="text-all font-weight-bold mt-0">{{ post.title }}</h5>
+                                                    </a>
                                                     <p>{{ post.text|linebreaksbr|truncatechars:100 }}</p>
                                                     <p class="media-detail text-right m-0 font-weight-light">
-                                                        <span class="float-left"><i class="fas fa-comment"></i> 1件</span>
+                                                        <span class="float-left"><i class="fas fa-comment"></i>
+                                                            1件</span>
                                                         投稿者：{{ post.author }} {{ post.created_date }}
                                                     </p>
                                                 </div>
-                                            </a>
+                                            </div>
                                         </div>
                                         {% endfor %}
                                     </div>
                                 </div>
                                 <!-- ----- 未解決 ----- -->
-                                <div class="tab-pane fade bg-info pb-2" id="nav-pending" role="tabpanel" aria-labelledby="nav-pending-tab">
+                                <div class="tab-pane fade bg-info pb-2" id="nav-pending" role="tabpanel"
+                                    aria-labelledby="nav-pending-tab">
                                     <div class="p-2 medium">
                                         <div class="media m-3 p-2 btn-outline-info bg-white shadow">
                                             <a class="text-dark d-flex justify-content-start" href="#">
                                                 <div class="media-body">
                                                     <h5 class="text-info font-weight-bold mt-0">質問タイトル</h5>
-                                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
+                                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                                                        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                                                        erat, ....</p>
                                                     <p class="media-detail text-right m-0 font-weight-light">
-                                                        <span class="float-left"><i class="fas fa-comment"></i> 1件</span>
+                                                        <span class="float-left"><i class="fas fa-comment"></i>
+                                                            1件</span>
                                                         投稿者：〇〇 &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD
                                                     </p>
                                                 </div>
@@ -72,9 +83,12 @@
                                             <a class="text-dark d-flex justify-content-start" href="#">
                                                 <div class="media-body">
                                                     <h5 class="text-info font-weight-bold mt-0">質問タイトル</h5>
-                                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
+                                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                                                        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                                                        erat, ....</p>
                                                     <p class="media-detail text-right m-0 font-weight-light">
-                                                        <span class="float-left"><i class="fas fa-comment"></i> 1件</span>
+                                                        <span class="float-left"><i class="fas fa-comment"></i>
+                                                            1件</span>
                                                         投稿者：〇〇 &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD
                                                     </p>
                                                 </div>
@@ -84,9 +98,12 @@
                                             <a class="text-dark d-flex justify-content-start" href="#">
                                                 <div class="media-body">
                                                     <h5 class="text-info font-weight-bold mt-0">質問タイトル</h5>
-                                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
+                                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                                                        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                                                        erat, ....</p>
                                                     <p class="media-detail text-right m-0 font-weight-light">
-                                                        <span class="float-left"><i class="fas fa-comment"></i> 1件</span>
+                                                        <span class="float-left"><i class="fas fa-comment"></i>
+                                                            1件</span>
                                                         投稿者：〇〇 &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD
                                                     </p>
                                                 </div>

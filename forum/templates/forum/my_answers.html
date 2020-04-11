@@ -9,16 +9,16 @@
         <div class="col-12 col-md-4 mt-4 mt-md-5">
             <div class="list-group text-center">
                 <a href="{% url 'profile' %}" class="list-group-item list-group-item-action">登録情報の確認・変更</a>
-                <a href="{% url 'post_draft_list' %}" class="list-group-item list-group-item-action active">下書き一覧</a>
+                <a href="{% url 'post_draft_list' %}" class="list-group-item list-group-item-action">下書き一覧</a>
                 <a href="{% url 'my_posts' %}" class="list-group-item list-group-item-action">投稿した質問</a>
-                <a href="{% url 'my_answers' %}" class="list-group-item list-group-item-action">回答した質問</a>
+                <a href="{% url 'my_answers' %}" class="list-group-item list-group-item-action active">回答した質問</a>
             </div>
         </div>
 
         <!-- ---------- 質問 ---------- -->
         <div class="col-12 col-md-8 mt-5 mt-md-4">
             <div>
-                <h4 class="mb-3 text-center">下書き一覧</h4>
+                <h4 class="mb-3 text-center">回答した質問</h4>
                 <hr>
                 <div class="section-wrapper mt-3 p-3">
                     <!-- ----- タブ ----- -->
@@ -36,22 +36,7 @@
                         <div class="tab-pane fade show active pb-2 all-bgc" id="nav-all" role="tabpanel"
                             aria-labelledby="nab-all">
                             <div class="p-2 medium">
-                                {% for post in post_list %}
-                                <div class="media m-3 p-2 btn-outline-info bg-white shadow">
-                                    <div class="text-dark d-flex justify-content-start d-block">
-                                        <div class="media-body">
-                                            <a class="d-block" href="{% url 'post_detail' pk=post.pk %}">
-                                                <h5 class="text-all font-weight-bold mt-0">{{ post.title }}</h5>
-                                            </a>
-                                            <p>{{ post.text|truncatechars:100 }}</p>
-                                            <p class="media-detail text-right m-0 font-weight-light">
-                                                <span class="float-left"><i class="fas fa-comment"></i> 1件</span>
-                                                {{ post.author }} &nbsp;&nbsp;&nbsp; {{ post.created_date }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endfor %}
+                                
                             </div>
                         </div>
                         <!-- ----- 未解決 ----- -->

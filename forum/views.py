@@ -19,7 +19,7 @@ class PostListView(ListView):
 
 class CreatePostView(CreateView):
     template_name = "forum/post_form.html"
-    redirect_field_name = 'forum/post_detail.html'
+    redirect_field_name = 'forum/post_confirm.html'
     form_class = PostForm
     model = Post
 
@@ -44,3 +44,25 @@ class PostUpdateView(UpdateView):
     redirect_field_name = 'forum/post_detail.html'
     form_class = PostForm
     model = Post
+
+class PostConfirmView(DetailView):
+    model = Post
+    template_name = "forum/post_confirm.html"
+
+def post_save(request, pk):
+    post = get_object_or_404(Post, pk)
+    post.save()
+    return redirect('post_draft_list', pk=pk)
+
+class ProfileListView(TemplateView):
+    template_name = 'forum/profile.html'
+
+class MyPostsView(ListView):
+    model = Post
+    template_name = 'forum/my_posts.html'
+
+    def get_queryset(self):
+        return Post.objects.filter(published_date__isnull=False).order_by('published_date')
+
+class MyAnswersView(TemplateView):
+    template_name = 'forum/my_answers.html'
