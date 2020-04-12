@@ -19,6 +19,7 @@
             {% if not post.published_date %}
                 <a class="btn btn-warning" href="{% url 'post_publish' pk=post.pk %}" role="button">公開する</a>
             {% endif %}
+            <a href="{% url 'post_remove' pk=post.pk %}" class="btn btn-danger">削除</a>
         </div>
 
         <!-- ---------- サブメニュー --------- -->

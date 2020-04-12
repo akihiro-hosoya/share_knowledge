@@ -1,0 +1,46 @@
+{% extends 'forum/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- ---------- 質問 ---------- -->
+                <div class="col-12 col-md-8">
+                    <div class="">
+                        <h3 class="text-center">NEWS</h3>
+                        <hr>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">表示順</div>
+                                <select class="form-control" name="" id="">
+                                    <option value="">新着順</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="section-wrapper mt-3 p-3">
+                            <div class="medium p-2">
+                                {% for newspost in newspost_list %}
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h5><a href="{% url 'news_detail' pk=newspost.pk %}">{{ newspost.title }}</a></h5>
+                                        <p>{{ newspost.text|linebreaksbr|truncatechars:100 }}</p>
+                                        <p>{{ newspost.author }}</p>
+                                        <p>{{ newspost.published_date }}</p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

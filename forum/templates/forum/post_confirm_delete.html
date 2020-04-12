@@ -1,0 +1,24 @@
+{% extends 'forum/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h4>投稿削除</h4>
+            <hr>
+            <div class="justify-content-center">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="text-center">
+                        <p>{{ object }}を削除してもよろしいですか？</p>
+                        <p>
+                            <button type="submit" class="save btn btn-danger" role="button">Delete</button>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

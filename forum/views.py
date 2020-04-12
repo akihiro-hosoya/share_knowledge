@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from forum.models import Post
-from django.views.generic import (TemplateView, ListView, CreateView, DetailView, UpdateView)
+from django.urls import reverse_lazy
+from forum.models import Post, NewsPost
+from django.views.generic import (TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView)
 from forum.forms import PostForm
 from django.utils import timezone
-
 
 # Create your views here.
 class IndexView(TemplateView):
@@ -66,3 +66,19 @@ class MyPostsView(ListView):
 
 class MyAnswersView(TemplateView):
     template_name = 'forum/my_answers.html'
+
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name = "forum/post_confirm_delete.html"
+    success_url = reverse_lazy('post_list')
+
+class NewsListView(ListView):
+    model = NewsPost
+    template_name = 'forum/news_list.html'
+
+    def get_queryset(self):
+        return NewsPost.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+
+class NewsDetailView(DetailView):
+    model = NewsPost
+    template_name = "forum/news_detail.html"
