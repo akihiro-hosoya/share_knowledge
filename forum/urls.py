@@ -16,4 +16,7 @@ urlpatterns = [
     path('post/<int:pk>/remove/', views.PostDeleteView.as_view(), name='post_remove'),
     path('news/top/', views.NewsListView.as_view(), name='news_list'),
     path('news/<int:pk>/', views.NewsDetailView.as_view(), name='news_detail'),
+    path('post/<int:pk>/comment/', views.post_comment, name='post_comment'),
+    path('comment/<int:pk>/approve/', views.comment_approve, name='comment_approve'),
+    path('comment/<int:pk>/remove/', views.comment_remove, name='comment_remove'),
 ]

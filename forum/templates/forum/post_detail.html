@@ -4,7 +4,7 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <!-- ----- 質問フォーム ----- -->
+        <!-- ----- 質問詳細 ----- -->
         <div class="col-12 col-md-8">
             <h3>質問</h3>
             <hr>
@@ -22,90 +22,30 @@
             <a href="{% url 'post_remove' pk=post.pk %}" class="btn btn-danger">削除</a>
         </div>
 
-        <!-- ---------- サブメニュー --------- -->
-        <div class="col-12 col-md-4">
-            <!-- ----- 新着情報一覧 ----- -->
-            <div class="mt-5">
-                <h4 class="text-center">新着情報<span class="badge badge-info">New!!</span></h4>
-                <hr>
-                <div class="section-wrapper p-3">
-                    <div class="medium">
-                        <div class="media p-2 btn-outline-info bg-white shadow">
-                            <a class="text-dark d-flex justify-content-start" href="#">
-                                <div class="media-body">
-                                    <h5 class="text-info font-weight-bold mt-0">タイトル</h5>
-                                    <p class="media-detail text-right m-0 font-weight-light">投稿日時：YYYY/ MM/ DD</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="media p-2 mt-2 btn-outline-info bg-white shadow">
-                            <a class="text-dark d-flex justify-content-start" href="#">
-                                <div class="media-body">
-                                    <h5 class="text-info font-weight-bold mt-0">タイトル</h5>
-                                    <p class="media-detail text-right m-0 font-weight-light">投稿日時：YYYY/ MM/ DD</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="media p-2 mt-2 btn-outline-info bg-white shadow">
-                            <a class="text-dark d-flex justify-content-start" href="#">
-                                <div class="media-body">
-                                    <h5 class="text-info font-weight-bold mt-0">タイトル</h5>
-                                    <p class="media-detail text-right m-0 font-weight-light">投稿日時：YYYY/ MM/ DD</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ----- 新着投稿 ----- -->
-            <div class="mt-5">
-                <h4 class="text-center">新着投稿</h4>
-                <hr>
-                <div class="section-wrapper p-3">
-                    <div class="medium">
-                        <div class="media p-2 btn-outline-info bg-white shadow">
-                            <a class="text-dark d-flex justify-content-start" href="#">
-                                <div class="media-body">
-                                    <h5 class="text-info font-weight-bold mt-0">質問タイトル</h5>
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                        tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
-                                    <p class="media-detail text-right m-0 font-weight-light">
-                                        <span class="float-left"><i class="fas fa-comment"></i> 1件</span>
-                                        投稿者：〇〇 &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="media p-2 mt-3 btn-outline-info bg-white shadow">
-                            <a class="text-dark d-flex justify-content-start" href="#">
-                                <div class="media-body">
-                                    <h5 class="text-info font-weight-bold mt-0">質問タイトル</h5>
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                        tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
-                                    <p class="media-detail text-right m-0 font-weight-light">
-                                        <span class="float-left"><i class="fas fa-comment"></i> 1件</span>
-                                        投稿者：〇〇 &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="media p-2 mt-3 btn-outline-info bg-white shadow">
-                            <a class="text-dark d-flex justify-content-start" href="#">
-                                <div class="media-body">
-                                    <h5 class="text-info font-weight-bold mt-0">質問タイトル</h5>
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                        tempor invidunt ut labore et dolore magna aliquyam erat, ....</p>
-                                    <p class="media-detail text-right m-0 font-weight-light">
-                                        <span class="float-left"><i class="fas fa-comment"></i> 1件</span>
-                                        投稿者：〇〇 &nbsp;&nbsp;&nbsp; 投稿日時：YYYY/ MM/ DD
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        <!-- ----- 回答フォーム ----- -->
+        <div class="col-12">
+            <h5>回答する</h5>
+            <hr>
+            <p>
+                <a class="btn btn-outline-info" href="{% url 'post_comment' pk=post.pk %}" role="button">コメントを追加</a>
+            </p>
+            <div>
+                {% for comment in post.comments.all %}
+                    {% if not comment.approved_comment %}
+                        <p>
+                            <a class="btn-danger" href="{% url 'comment_remove' pk=comment.pk %}" role="button">削除</a>
+                            <a class="btn-primary" href="{% url 'comment_approve' pk=comment.pk %}" role="button">承認</a>
+                        </p>
+                    {% endif %}
+                    <p>{{ comment.published_date }}</p>
+                    <strong>{{ comment.author }}</strong>
+                    <p>{{ comment.text|linebreaks }}</p>
+                    {% empty %}
+                        <p>まだコメントはありません。</p>
+                {% endfor %}
             </div>
         </div>
     </div>
 </div>
+
 {% endblock content %}

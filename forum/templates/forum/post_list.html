@@ -48,8 +48,12 @@
                                                     </a>
                                                     <p>{{ post.text|linebreaksbr|truncatechars:100 }}</p>
                                                     <p class="media-detail text-right m-0 font-weight-light">
-                                                        <span class="float-left"><i class="fas fa-comment"></i>
-                                                            1件</span>
+                                                        <span class="float-left post-comment"><i class="fas fa-comment"></i>
+                                                            {% if not post.approved_comment.count %}
+                                                            0件
+                                                            {% endif %}
+                                                            {{ post.approved_comments.count }}件
+                                                        </span>
                                                         投稿者：{{ post.author }} {{ post.created_date }}
                                                     </p>
                                                 </div>
