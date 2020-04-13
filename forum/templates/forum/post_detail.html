@@ -22,7 +22,7 @@
             <a href="{% url 'post_remove' pk=post.pk %}" class="btn btn-danger">削除</a>
         </div>
 
-        <!-- ----- 回答フォーム ----- -->
+        <!-- ----- 回答 ----- -->
         <div class="col-12">
             <h5>回答する</h5>
             <hr>
@@ -31,17 +31,11 @@
             </p>
             <div>
                 {% for comment in post.comments.all %}
-                    {% if not comment.approved_comment %}
-                        <p>
-                            <a class="btn-danger" href="{% url 'comment_remove' pk=comment.pk %}" role="button">削除</a>
-                            <a class="btn-primary" href="{% url 'comment_approve' pk=comment.pk %}" role="button">承認</a>
-                        </p>
-                    {% endif %}
-                    <p>{{ comment.published_date }}</p>
+                    <p class="comment-meta">{{ comment.created_date }}</p>
                     <strong>{{ comment.author }}</strong>
                     <p>{{ comment.text|linebreaks }}</p>
                     {% empty %}
-                        <p>まだコメントはありません。</p>
+                    <p>まだコメントはありません。</p>
                 {% endfor %}
             </div>
         </div>

@@ -1,0 +1,37 @@
+{% extends 'forum/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- ----- 質問フォーム ----- -->
+        <div class="col-12 col-md-8">
+            <div class="alert alert-primary fade show">
+                <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <p>下書きに保存されました！</p>
+            </div>
+            <h3>回答確認</h3>
+            <hr>
+            <div>
+                <h5>質問内容</h5>
+                <p class="">{{ post.title }}</p>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+            <div>
+                <h5>回答内容</h5>
+                <p>{{ comment.text|linebreaksbr }}</p>
+            </div>
+            <div>
+                {% if not post.published_date %}
+                <a class="btn btn-warning" href="{% url 'answer_publish' pk=post.pk %}" role="button">公開する</a>
+                {% endif %}
+                <a href="{% url 'answer_edit' pk=comment.pk %}" class="btn btn-success" role="button">編集する</a>
+                <a href="{% url 'answer_draft_list' %}" class="btn btn-secondary">下書き一覧</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}
