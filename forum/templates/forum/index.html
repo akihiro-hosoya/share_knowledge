@@ -32,9 +32,9 @@
                                             <span>一眼・ミラーレス</span><i class="fas fa-caret-right"></i>
                                         </button>
                                         <ul class="flex-column c_dm_3">
-                                            {% for camera in canon_list %}
-                                            <a href="{% url 'camera_list' camera %}">
-                                                <li class="dropdown-item">{{ camera.name }}</li>
+                                            {% for category in category_list %}
+                                            <a href="{% url 'category' category %}">
+                                                <li class="dropdown-item">{{ category.name }}</li>
                                             </a>
                                             {% endfor %}
                                             <li class="dropdown-item">

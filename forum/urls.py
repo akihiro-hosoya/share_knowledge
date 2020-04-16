@@ -17,5 +17,5 @@ urlpatterns = [
     path('news/top/', views.NewsListView.as_view(), name='news_list'),
     path('news/<int:pk>/', views.NewsDetailView.as_view(), name='news_detail'),
     path('post/<int:pk>/comment/', views.post_comment, name='post_comment'),
-    path('camera/<str:camera>/', views.CameraListView.as_view(), name='camera_list'),
+    path('category/<str:category>/', views.CategoryView.as_view(), name='category'),
 ]

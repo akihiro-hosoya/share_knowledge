@@ -1,10 +1,7 @@
-from .models import Camera
+from .models import Category
 
 def common(request):
     context = {
-        'canon_list': Camera.objects.all(),
-        'sony_list': Camera.objects.all(),
-        'olympus_list': Camera.objects.all(),
-        'nikon_list': Camera.objects.all(),
+        'category_list': Category.objects.all(),
     }
     return context
