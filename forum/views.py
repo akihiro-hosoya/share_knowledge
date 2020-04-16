@@ -95,3 +95,22 @@ def post_comment(request, pk):
 	else:
 		form = CommentForm()
 	return render(request, 'forum/post_comment.html', {'form': form})
+
+
+# カメラカテゴリー
+from forum.models import Camera
+
+class CameraListView(ListView):
+    model = Post
+    template_name = 'forum/post_list.html'
+
+    def get_queryset(self):
+        camera = Camera.objects.get(name=self.kwargs['camera'])
+        queryset = Post.objects.order_by('-id').filter(camera=camera)
+        return queryset
+
+    def get_content_data(self, **kwargs):
+        context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
+        context['camera_key'] = self.kwargs['camera'] # context_processorのcontext（辞書）のキーと
+        return context
+

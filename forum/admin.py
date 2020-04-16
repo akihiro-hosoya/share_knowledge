@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Category, Post, NewsPost,Comment
+from .models import Post, NewsPost, Comment, Camera
 
 # Register your models here.
-admin.site.register(Category)
 admin.site.register(Post)
 admin.site.register(NewsPost)
 admin.site.register(Comment)
+admin.site.register(Camera)

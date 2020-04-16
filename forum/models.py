@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.urls import reverse
 
 # Create your models here.
-class Category(models.Model):
+class Camera(models.Model):
     name = models.CharField(max_length=50)
 
     def __str__(self):
@@ -12,7 +12,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.PROTECT)
+    category = models.ForeignKey(Camera, on_delete=models.PROTECT)
     title = models.CharField(max_length=200)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
@@ -50,7 +50,7 @@ class NewsPost(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey('forum.Post', on_delete=models.CASCADE, related_name='comments')
-    author = models.CharField(max_length=200)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     approved_comment = models.BooleanField(default=False)
