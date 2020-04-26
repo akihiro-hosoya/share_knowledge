@@ -1,7 +1,8 @@
-from .models import Category
+from .models import Camera, Printer
 
 def common(request):
     context = {
-        'category_list': Category.objects.all(),
+        'camera_list': Camera.objects.all(),
+        'printer_list': Printer.objects.all(),
     }
     return context

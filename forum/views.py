@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.urls import reverse_lazy
-from forum.models import Post, NewsPost, Comment, Category
+from forum.models import Post, NewsPost, Comment, GrandCategory, ParentCategory, Category
 from django.views.generic import (TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView)
 from forum.forms import PostForm, CommentForm
 from django.utils import timezone
@@ -22,6 +22,12 @@ class CreatePostView(CreateView):
     redirect_field_name = 'forum/post_confirm.html'
     form_class = PostForm
     model = Post
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['grandcategory_list'] = GrandCategory.objects.all()
+        context['parentcategory_list'] = ParentCategory.objects.all()
+        return context
 
 class PostDetailView(DetailView):
     model = Post
@@ -96,18 +102,4 @@ def post_comment(request, pk):
 		form = CommentForm()
 	return render(request, 'forum/post_comment.html', {'form': form})
 
-
-class CategoryView(ListView):
-    model = Post
-    template_name = 'forum/post_list.html'
-
-    def get_queryset(self):
-        category = Category.objects.get(name=self.kwargs['category'])
-        queryset = Post.objects.order_by('-id').filter(category=category) # -idは降順
-        return queryset
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['category_key'] = self.kwargs['category']
-        return context
 

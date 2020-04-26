@@ -1,42 +1,74 @@
-//地域セレクトボックスイベント設定
-setHierarchySelectEvent('#select1', '#select2');
-// setHierarchySelectEvent('#area2', '#area3');
-//セレクトボックスの初期値
-$('#select1').val('').change();
-$('#select2').val('').change();
-// 
-
-
-/**
- * 階層のあるプルダウンのイベントを設定します.
- * 親のselectタグには属性data-subgroupが設定されている必要があります。
- * 子のselectタグには属性data-groupが設定されている必要があります。
- * @param parentSelect 親となるselectタグのセレクタ
- * @param childSelect 子となるselectタグのセレクタ
- */
-
-function setHierarchySelectEvent(parentSelect, childSelect){
-    var initCategorySmallHtml = $(childSelect).html();
-    $(parentSelect).change(function(){
-        if( 1 < $(this).find('option:selected').length ){
-            $(childSelect).find("option").each(function(index, element){
-                $(element).remove();
-            });
-        }else{
-            var subgroup =  $(this).find('option:selected').attr('data-subgroup');
-            $(childSelect).html(initCategorySmallHtml);
-            $(childSelect).find("option").each(function(index, element){
-                var group = $(element).attr('data-group');
-                if( group ){
-                    if( subgroup == group ){
-                        //$(element).css('display', 'block');//IEではoptionタグに対してdisplayは効かないため
-                    }else{
-                        //$(element).css('display', 'none');//IEではoptionタグに対してdisplayは効かないため
-                        $(element).remove();
-                    }
-                }
-            });
+const grandCategoryElement = document.querySelector('#id_grand_category');
+        const parentCategoryElement = document.querySelector('#id_parent_category');
+        const categoryElement = document.querySelector('#id_category');
+        const categories = {
+            {% for parent in parentcategory_list %}
+                '{{ parent.pk }}': [
+                    {% for category in parent.category_set.all %}
+                        {
+                            'pk': '{{ category.pk }}',
+                            'name': '{{ category.name }}'
+                        },
+                    {% endfor %}
+                ],
+            {% endfor %}
+        };
+        const categories2 = {
+            {% for grand in grandcategory_list %}
+                '{{ grand.pk }}': [
+                    {% for category in grand.parentcategory_set.all %}
+                        {
+                            'pk': '{{ category.pk }}',
+                            'name': '{{ category.name }}'
+                        },
+                    {% endfor %}
+                ],
+            {% endfor %}
+        };
+        const changeCategory = (select) => {
+            const optionAll = document.querySelectorAll('#id_category option');
+            for (const option of optionAll) {
+                categoryElement.removeChild(option);
+            }
+            const parentId = parentCategoryElement.value;
+            const categoryList = categories[parentId];
+            for (const category of categoryList) {
+                const option = document.createElement("option")
+                option.value = category['pk'];
+                option.textContent = category['name'];
+                categoryElement.appendChild(option);
+            }
+            if (select !== undefined) {
+                categoryElement.value = select;
+            }
+        };
+        const changeCategory2 = (select) => {
+            const optionAll = document.querySelectorAll('#id_parent_category option');
+            for (const option of optionAll) {
+                parentCategoryElement.removeChild(option);
+            }
+            const grandId = grandCategoryElement.value;
+            const categoryList2 = categories2[grandId];
+            for (const category2 of categoryList2) {
+                const option2 = document.createElement("option")
+                option2.value = category2['pk'];
+                option2.textContent = category2['name'];
+                parentCategoryElement.appendChild(option2);
+            }
+            if (select !== undefined) {
+                parentCategoryElement.value = select;
+            }
+        };
+        parentCategoryElement.addEventListener('change', () => {
+            changeCategory();
+        });
+        grandCategoryElement.addEventListener('change', () => {
+            changeCategory2();
+            changeCategory();
+        });
+        if (parentCategoryElement.value) {
+            changeCategory(categoryElement.value);
         }
-        $(childSelect).val('').change();//未選択時の値は''じゃない場合は書き換えてね
-    });
-}
+        if (grandCategoryElement.value) {
+            changeCategory2(parentCategoryElement.value);
+        }
