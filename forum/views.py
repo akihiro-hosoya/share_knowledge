@@ -15,8 +15,15 @@ class PostListView(ListView):
     template_name = "forum/post_list.html"
 
     def get_queryset(self):
-        return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        category = Category.objects.get(id=self.kwargs['category'])
+        queryset = Post.objects.order_by('-id').filter(category=category)
+        return queryset
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category_key'] = self.kwargs['category']
+        return context
+        
 class CreatePostView(CreateView):
     template_name = "forum/post_form.html"
     redirect_field_name = 'forum/post_confirm.html'

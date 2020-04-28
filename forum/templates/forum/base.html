@@ -57,344 +57,36 @@
                                             <span>カテゴリーから探す</span>
                                         </button>
                                         <ul class="flex-column dm_2nd">
+                                            {% for grandcategory in grand_list %}
                                             <li class="dm_2nd_sub">
                                                 <button class="dropdown-item">
-                                                    <span>カメラ</span><i class="fas fa-caret-right"></i>
+                                                {{ grandcategory.name }}
                                                 </button>
                                                 <ul class="flex-column dm_3rd">
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>一眼・ミラーレス</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="{% url 'post_list' %}">Canon</a>
+                                                    {% for parentcategory in parent_list %}
+                                                        {% if parentcategory.grand.id == grandcategory.id %}
+                                                            <li class="dm_3rd_sub">
+                                                                <button class="dropdown-item">
+                                                                    {{ parentcategory.name }}
+                                                                </button>
+                                                                <ul class="flex-column dm_4th">
+                                                                    {% for category in category_list %}
+                                                                        {% if category.parent.id == parentcategory.id %}
+                                                                        <li class="dropdown-item">
+                                                                            <a href="{% url 'post_list' category.id %}">
+                                                                                {{ category.name }}
+                                                                            </a>
+                                                                        </li>
+                                                                        {% endif %}
+                                                                    {% endfor %}
+                                                                </ul>
                                                             </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Sony</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Olympus</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>コンデジ</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Canon</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Sony</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>周辺</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">SD</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">アクセサリー</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">保証・サポート</a>
-                                                    </li>
+                                                        {% endif %}
+                                                    {% endfor %}
                                                 </ul>
+                                            {% endfor %}
                                             </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>プリンター</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>本体</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Canon</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">EPSON</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">brother</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>インク</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Canon</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">EPSON</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">brother</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">保証・サポート</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">その他</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>PC</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>本体</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">FUJITSU</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">NEC</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Dynabook</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Lenovo</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>周辺</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">ケース</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">キーボード・マウス</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">ストレージ</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">ハブ</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">ソフトウェア</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">ドライブ</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">保証・サポート関連</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>Apple</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">iPhone</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">iPad</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">Watch</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">Mac</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">保証・サポート</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>MNO</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">docomo</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">au</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">Softbank</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">その他</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>MVNO</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">共通・機種</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">Y!mobile</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">UQ mobile</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">rakuten mobile</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">その他</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>ゲーム</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">Nintendo</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">Sony</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">その他</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>OAタップ・電池</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">OAタップ</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">電池</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">その他</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>インターネット</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>光・固定代替</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">ドコモ光</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">au光・Home</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Softbank光・Air</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Nifty光</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">NURO光</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dm_3rd_sub">
-                                                        <button class="dropdown-item">
-                                                            <span>モバイルルーター</span><i class="fas fa-caret-right"></i>
-                                                        </button>
-                                                        <ul class="flex-column dm_4th">
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">Y!mobile</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">UQ Wimax</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a class="d-block" href="#">その他</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
-                                                    <span>学習機器</span><i class="fas fa-caret-right"></i>
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">翻訳機</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">電子辞書</a>
-                                                    </li>
-                                                    <li class="dropdown-item">
-                                                        <a class="d-block" href="#">その他</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown-item">
-                                                <a class="d-block" href="#">通常業務</a>
-                                            </li>
-                                            <li class="dropdown-item">
-                                                <a class="d-block" href="#">その他</a>
-                                            </li>
-                                        </ul>
+                                        </ul>                
                                     </li>
                                 </ul>
                             </div>
@@ -474,7 +166,5 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
-        <script src="{% static 'js/script.js' %}"></script>
     </body>
 </html>
