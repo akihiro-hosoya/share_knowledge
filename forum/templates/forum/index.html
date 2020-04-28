@@ -15,8 +15,8 @@
                         <h4><span class="marker">カテゴリーから探す</span></h4>
                     </div>
                     <div class="row no-gutters d-flex justify-content-around">
+                        {% for grandcategory in grand_list %}
                         <ul class="col-5 col-md-3 mr-2 mt-2">
-                            {% for grandcategory in grand_list %}
                             <li class="category-icon c_dm_1">
                                 <div class="card shadow-sm c_dm_1_sub">
                                     <i class="card-img-top {{grandcategory.icon}} mt-3"></i>
@@ -50,39 +50,8 @@
                                     {% endfor %}
                                 </ul>
                             </li>
-                            {% endfor %}
                         </ul>
-                        <ul class="flex-column dm_2nd">
-                            {% for grandcategory in grand_list %}
-                            <li class="dm_2nd_sub">
-                                <button class="dropdown-item">
-                                    {{ grandcategory.name }}
-                                </button>
-                                <ul class="flex-column dm_3rd">
-                                    {% for parentcategory in parent_list %}
-                                    {% if parentcategory.grand.id == grandcategory.id %}
-                                    <li class="dm_3rd_sub">
-                                        <button class="dropdown-item">
-                                            {{ parentcategory.name }}
-                                        </button>
-                                        <ul class="flex-column dm_4th">
-                                            {% for category in category_list %}
-                                            {% if category.parent.id == parentcategory.id %}
-                                            <li class="dropdown-item">
-                                                <a href="{% url 'post_list' category.id %}">
-                                                    {{ category.name }}
-                                                </a>
-                                            </li>
-                                            {% endif %}
-                                            {% endfor %}
-                                        </ul>
-                                    </li>
-                                    {% endif %}
-                                    {% endfor %}
-                                </ul>
-                                {% endfor %}
-                            </li>
-                        </ul>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

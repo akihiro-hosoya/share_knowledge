@@ -72,13 +72,14 @@ a {
 
 .dm_2nd {
     position: absolute;
+    height: 230px;
     width: 190px;
     background: #EEE;
     visibility: hidden;
     }		   
-.dm_2nd_sub {
+/* .dm_2nd_sub {
     position: relative;
-    }
+    } */
 .dm_2nd_sub:hover .dm_3rd {
     visibility: visible;
     }
@@ -91,19 +92,21 @@ a {
     position: absolute;
     top: 0;
     left: 190px;
+    height: 230px;
     width: 100%;
     background: #EEE;
     visibility: hidden;
     }
-.dm_3rd_sub {
+/* .dm_3rd_sub {
     position: relative;
-    }
+    } */
 
 .dm_4th {
     position: absolute;
     top: 0;
     left: 190px;
-    width: 100%;
+    height: 230px;
+    width: 120%;
     background: #EEE;
     visibility: hidden;
     }
@@ -134,7 +137,7 @@ a {
 
 /* ---------- 背景調整 ---------- */
 .main-wrapper {
-    width: 90%;
+    width: 75%;
     margin: 0 auto;
 }
 
@@ -170,6 +173,7 @@ a {
 
 .c_dm_2 {
     position: absolute;
+    height: 150px;
     width: 190px;
     background-color: #EEE;
     visibility: hidden;
@@ -180,14 +184,16 @@ a {
     visibility: visible;
 }
 
-.c_dm_2_sub {
+/* .c_dm_2_sub {
     position: relative;
-}
+} */
 
 .c_dm_3 {
     position: absolute;
     top: 0;
     left: 190px;
+    height: 180px;
+    width: 150px;
     background-color: #EEE;
     visibility: hidden;
 }
