@@ -68,33 +68,16 @@
                             <hr>
                             <div class="section-wrapper p-3">
                                 <div class="medium">
+                                    {% for postnews in news_list %}
                                     <div class="media p-2 btn-outline-info bg-white shadow">
                                         <a class="text-dark d-flex justify-content-start" href="#">
                                             <div class="media-body">
-                                                <h5 class="text-info font-weight-bold mt-0">タイトル</h5>
-                                                <p class="media-detail text-right m-0 font-weight-light">投稿日時：YYYY/ MM/
-                                                    DD</p>
+                                                <h5 class="text-info font-weight-bold mt-0">{{ postnews.title }}</h5>
+                                                <p class="media-detail text-right m-0 font-weight-light">投稿日時：{{ postnews.published_date }}</p>
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="media p-2 mt-2 btn-outline-info bg-white shadow">
-                                        <a class="text-dark d-flex justify-content-start" href="#">
-                                            <div class="media-body">
-                                                <h5 class="text-info font-weight-bold mt-0">タイトル</h5>
-                                                <p class="media-detail text-right m-0 font-weight-light">投稿日時：YYYY/ MM/
-                                                    DD</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="media p-2 mt-2 btn-outline-info bg-white shadow">
-                                        <a class="text-dark d-flex justify-content-start" href="#">
-                                            <div class="media-body">
-                                                <h5 class="text-info font-weight-bold mt-0">タイトル</h5>
-                                                <p class="media-detail text-right m-0 font-weight-light">投稿日時：YYYY/ MM/
-                                                    DD</p>
-                                            </div>
-                                        </a>
-                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
@@ -102,5 +85,4 @@
                 </div>
             </div>
         </div>
-
 {% endblock content %}
