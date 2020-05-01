@@ -5,6 +5,8 @@ from forum.models import Post, NewsPost, Comment, GrandCategory, ParentCategory,
 from django.views.generic import (TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView)
 from forum.forms import PostForm, CommentForm
 from django.utils import timezone
+from django.contrib import messages
+from django.db.models import Q
 
 # Create your views here.
 class IndexView(TemplateView):
@@ -23,7 +25,7 @@ class PostListView(ListView):
         context = super().get_context_data(**kwargs)
         context['category_key'] = self.kwargs['category']
         return context
-        
+
 class CreatePostView(CreateView):
     template_name = "forum/post_form.html"
     redirect_field_name = 'forum/post_confirm.html'
@@ -108,5 +110,4 @@ def post_comment(request, pk):
 	else:
 		form = CommentForm()
 	return render(request, 'forum/post_comment.html', {'form': form})
-
 

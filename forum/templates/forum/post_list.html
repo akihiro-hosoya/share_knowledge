@@ -3,86 +3,87 @@
 
 {% block content %}
 
-        <div class="container-fluid">
-            <div class="row">
-                <!-- ---------- 質問 ---------- -->
-                <div class="col-12 col-md-8">
-                    <div class="">
-                        <p>検索結果：全〇〇件</p>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">表示順</div>
-                                <select class="form-control" name="" id="">
-                                    <option value="">新着順</option>
-                                </select>
-                            </div>
-                        </div>
+<div class="container-fluid">
+    <div class="row">
+        <!-- ---------- 質問 ---------- -->
+        <div class="col-12 col-md-8">
+            <div class="">
+                <p>検索結果：全〇〇件</p>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">表示順</div>
+                        <select class="form-control" name="" id="">
+                            <option value="">新着順</option>
+                        </select>
                     </div>
-                    <div>
-                        <div class="section-wrapper mt-3 p-3">
-                            <div class="text-center d-flex justify-content-around">
-                                <h4 class="mb-3">{{ category.name }}</h4>
-                            </div>
-                            <!-- ----- タブ ----- -->
-                            <nav>
-                                <div class="nav nab-tabs nav-fill" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link all-bgc active" id="nav-all-tab" data-toggle="tab"
-                                        href="#nav-all" role="tab" aria-controls="nav-all" aria-selected="true">すべて</a>
-                                </div>
-                            </nav>
-                            <!-- ----- メイン ----- -->
-                            <div class="tab-content" id="nav-tabContent">
-                                <!-- ----- すべて ----- -->
-                                <div class="tab-pane fade show active pb-2 all-bgc" id="nav-all" role="tabpanel"
-                                    aria-labelledby="nab-all">
-                                    <div class="p-2 medium">
-                                        {% for post in post_list %}
-                                        <div class="media m-3 p-2 bg-white shadow">
-                                            <div class="d-flex justify-content-start d-block">
-                                                <div class="media-body">
-                                                    <a class="d-block" href="{% url 'post_detail' pk=post.pk %}">
-                                                        <h5 class="text-all font-weight-bold mt-0">{{ post.title }}</h5>
-                                                    </a>
-                                                    <p>{{ post.text|linebreaksbr|truncatechars:100 }}</p>
-                                                    <p class="media-detail text-right m-0 font-weight-light">
-                                                        <span class="float-left post-comment"><i class="fas fa-comment"></i>
-                                                            {{ post.comments.count }}件
-                                                        </span>
-                                                        投稿者：{{ post.author }} {{ post.created_date }}
-                                                    </p>
-                                                </div>
-                                            </div>
+                </div>
+            </div>
+            <div>
+                <div class="section-wrapper mt-3 p-3">
+                    <div class="text-center d-flex justify-content-around">
+                        <h4 class="mb-3">{{ category.name }}の投稿一覧</h4>
+                    </div>
+                    <!-- ----- タブ ----- -->
+                    <nav>
+                        <div class="nav nab-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link all-bgc active" id="nav-all-tab" data-toggle="tab"
+                                href="#nav-all" role="tab" aria-controls="nav-all" aria-selected="true"></a>
+                        </div>
+                    </nav>
+                    <!-- ----- メイン ----- -->
+                    <div class="tab-content" id="nav-tabContent">
+                        <!-- ----- すべて ----- -->
+                        <div class="tab-pane fade show active pb-2 all-bgc" id="nav-all" role="tabpanel"
+                            aria-labelledby="nab-all">
+                            <div class="p-2 medium">
+                                {% for post in post_list %}
+                                <div class="media m-3 p-2 bg-white shadow">
+                                    <div class="d-flex justify-content-start d-block">
+                                        <div class="media-body">
+                                            <a class="d-block" href="{% url 'post_detail' pk=post.pk %}">
+                                                <h5 class="text-all font-weight-bold mt-0">{{ post.title }}</h5>
+                                            </a>
+                                            <p>{{ post.text|linebreaksbr|truncatechars:100 }}</p>
+                                            <p class="media-detail text-right m-0 font-weight-light">
+                                                <span class="float-left post-comment"><i class="fas fa-comment"></i>
+                                                    {{ post.comments.count }}件
+                                                </span>
+                                                投稿者：{{ post.author }} {{ post.created_date }}
+                                            </p>
                                         </div>
-                                        {% endfor %}
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ---------- サブメニュー --------- -->
-                    <div class="col-12 col-md-4">
-                        <!-- ----- 新着情報一覧 ----- -->
-                        <div class="mt-5">
-                            <h4 class="text-center">新着情報<span class="badge badge-info">New!!</span></h4>
-                            <hr>
-                            <div class="section-wrapper p-3">
-                                <div class="medium">
-                                    {% for postnews in news_list %}
-                                    <div class="media p-2 btn-outline-info bg-white shadow">
-                                        <a class="text-dark d-flex justify-content-start" href="#">
-                                            <div class="media-body">
-                                                <h5 class="text-info font-weight-bold mt-0">{{ postnews.title }}</h5>
-                                                <p class="media-detail text-right m-0 font-weight-light">投稿日時：{{ postnews.published_date }}</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    {% endfor %}
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- ---------- サブメニュー --------- -->
+            <div class="col-12 col-md-4">
+                <!-- ----- 新着情報一覧 ----- -->
+                <div class="mt-5">
+                    <h4 class="text-center">新着情報<span class="badge badge-info">New!!</span></h4>
+                    <hr>
+                    <div class="section-wrapper p-3">
+                        <div class="medium">
+                            {% for postnews in news_list %}
+                            <div class="media p-2 btn-outline-info bg-white shadow">
+                                <a class="text-dark d-flex justify-content-start" href="#">
+                                    <div class="media-body">
+                                        <h5 class="text-info font-weight-bold mt-0">{{ postnews.title }}</h5>
+                                        <p class="media-detail text-right m-0 font-weight-light">
+                                            投稿日時：{{ postnews.published_date }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+</div>
 {% endblock content %}
