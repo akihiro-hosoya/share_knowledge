@@ -132,7 +132,7 @@ a {
 }
 .breadcrumb-item + .breadcrumb-item::before { 
     content: "\0bb" 
-    }
+}
 
 
 /* ---------- 背景調整 ---------- */

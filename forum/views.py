@@ -7,8 +7,30 @@ from forum.forms import PostForm, CommentForm
 from django.utils import timezone
 from django.contrib import messages
 from django.db.models import Q
+from functools import reduce
+from operator import and_
 
 # Create your views here.
+def post_search(request):
+    foundPost = Post.objects.order_by('-id')
+    keyword = request.GET.get('keyword')
+    if keyword:
+        # 除外リスト作成
+        exclusion_list = set([' ', '　'])
+        q_list = ''
+        for i in keyword:
+            # 全角半角の空文字が含まれていたら無視
+            if i in exclusion_list:
+                pass
+            else:
+                q_list += i
+        query = reduce(
+            and_, [Q(title__icontains=q) | Q(text__icontains=q) for q in q_list]
+        )
+        foundPost = post.filter(query)
+        messages.success(request, '「{}」の検索結果'.format(keyword))
+    return render(request, 'forum/result.html', {'foundPost': foundPost})
+
 class IndexView(TemplateView):
     template_name = "forum/index.html"
 
@@ -16,15 +38,26 @@ class PostListView(ListView):
     model = Post
     template_name = "forum/post_list.html"
 
-    def get_queryset(self):
-        category = Category.objects.get(id=self.kwargs['category'])
-        queryset = Post.objects.order_by('-id').filter(category=category)
-        return queryset
+    def get(self, request, *args, **kwargs):
+        if request.user.is_anonymous:
+            return redirect('account_login')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['category_key'] = self.kwargs['category']
-        return context
+        category = Category.objects.get(id=self.kwargs['category'])
+        post_list = Post.objects.order_by('-id').filter(category=category)
+
+        context = {'post_list': post_list, 'category_name': Category.objects.filter(id=self.kwargs['category'])[0]}
+        return render(request, 'forum/post_list.html', context)
+
+    # def get_queryset(self):
+    #     category = Category.objects.get(id=self.kwargs['category'])
+    #     queryset = Post.objects.order_by('-id').filter(category=category)
+    #     return queryset
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['category_key'] = self.kwargs['category']
+    #     context['category_name'] = Category.objects.filter(id=self.kwargs['category'])[0]
+    #     return context
 
 class CreatePostView(CreateView):
     template_name = "forum/post_form.html"

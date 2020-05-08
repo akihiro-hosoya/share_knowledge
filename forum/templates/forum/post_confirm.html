@@ -1,6 +1,12 @@
 {% extends 'forum/base.html' %}
 {% load static %}
 
+{% block bread %}
+<li><a href="/">Home</a></li>
+<li><a href="{ url 'post_edit' pk=post.pk }">投稿する</a></li>
+<li class="active">投稿内容確認</li>
+{% endblock %}
+
 {% block content %}
 <div class="container-fluid">
     <div class="row">

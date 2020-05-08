@@ -1,6 +1,12 @@
 {% extends 'forum/base.html' %}
 {% load static %}
 
+{% block bread %}
+<li class="breadcrumb-item"><a href="/">Home</a></li>
+<li class="breadcrumb-item">プロフィール</li>
+<li class="breadcrumb-item active">下書き一覧</li>
+{% endblock %}
+
 {% block content %}
 <div class="container-fluid">
     <div class="row">

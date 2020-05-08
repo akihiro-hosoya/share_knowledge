@@ -1,170 +1,202 @@
 <!doctype html>
 {% load static %}
 <html lang="ja">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-        <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>Qulle</title>
-    </head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
 
-    <body>
-        <!-- ---------- Navigation ---------- -->
-        <nav class="navbar navbar-expand-md sticky-top">
-            <a class="navbar-brand" href="/"><h3>Quelle</h3></a>
-            <div class="flex-fill">
-                <div class="N-items">
-                    <button class="navbar-toggler my-1 shadow" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="collapse navbar-collapse d-md-flex justify-content-end" id="navbarToggler">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a href="{% url 'news_list' %}" class="nav-link">News</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'post_new' %}" class="nav-link">Question</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'post_draft_list' %}" class="nav-link">Draft</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'profile' %}" class="nav-link">Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'account_logout' %}" class="nav-link">Logout</a>
-                            </li>
-                        </ul>
-                    </div>
+    <title>Qulle</title>
+</head>
+
+<body>
+    <!-- ---------- Navigation ---------- -->
+    <nav class="navbar navbar-expand-md sticky-top">
+        <a class="navbar-brand" href="/">
+            <h3>Quelle</h3>
+        </a>
+        <div class="flex-fill">
+            <div class="N-items">
+                <button class="navbar-toggler my-1 shadow" type="button" data-toggle="collapse"
+                    data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse d-md-flex justify-content-end" id="navbarToggler">
+                    <ul class="navbar-nav">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a href="{% url 'news_list' %}" class="nav-link">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'post_new' %}" class="nav-link">Question</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'post_draft_list' %}" class="nav-link">Draft</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'profile' %}" class="nav-link">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'account_logout' %}" class="nav-link">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                        </li>
+                        {% endif %}
+                    </ul>
                 </div>
-                <!-- ---------- Search欄 ---------- -->
-                <div class="search-bar">
-                    <div class="container">
-                        <div class="row d-md-flex justify-content-around d-sm-flex align-items-center">
-                            <div class="col-6 col-lg-4">
-                                <ul class="mb-0">
-                                    <li class="dm_1st">
-                                        <button class="btn dropdown-toggle dm_1st_sub" type="button">
-                                            <i class="fas fa-th-list"></i>
-                                            <span>カテゴリーから探す</span>
-                                        </button>
-                                        <ul class="flex-column dm_2nd">
-                                            {% for grandcategory in grand_list %}
-                                            <li class="dm_2nd_sub">
-                                                <button class="dropdown-item">
+            </div>
+            {% if user.is_authenticated %}
+            <!-- ---------- Search欄 ---------- -->
+            <div class="search-bar">
+                <div class="container">
+                    <div class="row d-md-flex justify-content-around d-sm-flex align-items-center">
+                        <div class="col-6 col-lg-4">
+                            <ul class="mb-0">
+                                <li class="dm_1st">
+                                    <button class="btn dropdown-toggle dm_1st_sub" type="button">
+                                        <i class="fas fa-th-list"></i>
+                                        <span>カテゴリーから探す</span>
+                                    </button>
+                                    <ul class="flex-column dm_2nd">
+                                        {% for grandcategory in grand_list %}
+                                        <li class="dm_2nd_sub">
+                                            <button class="dropdown-item">
                                                 {{ grandcategory.name }}
-                                                </button>
-                                                <ul class="flex-column dm_3rd">
-                                                    {% for parentcategory in parent_list %}
-                                                        {% if parentcategory.grand.id == grandcategory.id %}
-                                                            <li class="dm_3rd_sub">
-                                                                <button class="dropdown-item">
-                                                                    {{ parentcategory.name }}
-                                                                </button>
-                                                                <ul class="flex-column dm_4th">
-                                                                    {% for category in category_list %}
-                                                                        {% if category.parent.id == parentcategory.id %}
-                                                                        <li class="dropdown-item">
-                                                                            <a href="{% url 'post_list' category.id %}">
-                                                                                {{ category.name }}
-                                                                            </a>
-                                                                        </li>
-                                                                        {% endif %}
-                                                                    {% endfor %}
-                                                                </ul>
-                                                            </li>
+                                            </button>
+                                            <ul class="flex-column dm_3rd">
+                                                {% for parentcategory in parent_list %}
+                                                {% if parentcategory.grand.id == grandcategory.id %}
+                                                <li class="dm_3rd_sub">
+                                                    <button class="dropdown-item">
+                                                        {{ parentcategory.name }}
+                                                    </button>
+                                                    <ul class="flex-column dm_4th">
+                                                        {% for category in category_list %}
+                                                        {% if category.parent.id == parentcategory.id %}
+                                                        <li class="dropdown-item">
+                                                            <a href="{% url 'post_list' category.id %}">
+                                                                {{ category.name }}
+                                                            </a>
+                                                        </li>
                                                         {% endif %}
-                                                    {% endfor %}
-                                                </ul>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </li>
+                                                {% endif %}
+                                                {% endfor %}
+                                            </ul>
                                             {% endfor %}
-                                            </li>
-                                        </ul>                
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-6 col-lg-8">
-                                <form class="form-inline k-search">
-                                    <div class="form-row">
-                                        <div class="col-12">
-                                            <input type="search" class="form-control-sm mr-sm-1" placeholder="キーワードから探す" aria-label="Search">
-                                            <button class="btn btn-sm btn-primary active my-sm-0" type="submit">Search</button>
-                                        </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-lg-8">
+                            <form class="form-inline k-search">
+                                <div class="form-row">
+                                    <div class="col-12">
+                                        <!-- 検索フォーム -->
+                                        <form class="form-inline my-2 my-lg-0" method="GET"
+                                            action="{% url 'post_search' %}">
+                                            <input class="form-control mr-sm-2" type="text" placeholder="キーワードで検索"
+                                                aria-label="Search" name="keyword">
+                                            <button class="btn btn-outline-success my-2 my-sm-0"
+                                                type="submit">Search</button>
+                                        </form>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </nav>
-
-        <!-- ---------- パンくずリスト ---------- -->
-        <!-- <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mt-0">
-                <li class="breadcrumb-item active" aria-current="page">Top</li>
-            </ol>
-        </nav> -->
-        
-        <!-- ---------- 背景調整 ---------- -->
-        <div class="main-wrapper">
-            {% block content %}
-            {% endblock content %}
+            {% endif %}
         </div>
+    </nav>
 
-        <!-- ---------- Footer ---------- -->
-        <footer>
-            <div class="footer-wrapper mt-4 pt-4">
-                <div class="container-fluid padding">
-                    <div class="row">
-                        <!-- ページ -->
-                        <div class="col-sm-6">
-                            <div class="page-intro">
-                                <h5>Pages</h5>
-                                <p><a class="d-block" href="#">Home</a></p>
-                                <p><a class="d-block" href="#">News</a></p>
-                                <p><a class="d-block" href="#">Question</a></p>
-                                <p><a class="d-block" href="#">Profile</a></p>
-                                <p><a class="d-block" href="#">Logout</a></p>
-                            </div>
+    <!-- ---------- パンくずリスト ---------- -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {% block bread %}
+            {% endblock %}
+        </ol>
+    </nav>
+
+    <!-- ---------- 背景調整 ---------- -->
+    <div class="main-wrapper">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+    <!-- ---------- Footer ---------- -->
+    <footer>
+        <div class="footer-wrapper mt-4 pt-4">
+            <div class="container-fluid padding">
+                <div class="row">
+                    <!-- ページ -->
+                    <div class="col-sm-6">
+                        <div class="page-intro">
+                            <h5>Pages</h5>
+                            <p><a class="d-block" href="#">Home</a></p>
+                            <p><a class="d-block" href="#">News</a></p>
+                            <p><a class="d-block" href="#">Question</a></p>
+                            <p><a class="d-block" href="#">Profile</a></p>
+                            <p><a class="d-block" href="#">Logout</a></p>
                         </div>
-                        <!-- 固定ページ -->
-                        <div class="col-sm-6">
-                            <div class="about-intro">
-                                <h5>About</h5>
-                                <p><a class="d-block" href="#">製作者</a></p>
-                                <p><a class="d-block" href="#">ご利用規約</a></p>
-                                <p><a class="d-block" href="#">プライバシーポリシー</a></p>
-                                <p><a class="d-block" href="#">お問い合わせ</a></p>
-                                <a class="my-2 d-block" href="#"><span><i class="fab fa-github-square"></i></span> Github</a>
-                            </div>
+                    </div>
+                    <!-- 固定ページ -->
+                    <div class="col-sm-6">
+                        <div class="about-intro">
+                            <h5>About</h5>
+                            <p><a class="d-block" href="#">製作者</a></p>
+                            <p><a class="d-block" href="#">ご利用規約</a></p>
+                            <p><a class="d-block" href="#">プライバシーポリシー</a></p>
+                            <p><a class="d-block" href="#">お問い合わせ</a></p>
+                            <a class="my-2 d-block" href="#"><span><i class="fab fa-github-square"></i></span>
+                                Github</a>
                         </div>
-                        <!-- コピーライト系 -->
-                        <div class="col-12 my-1">
-                            <div class="copy-w">
-                                <h3>Quelle</h3>
-                                <p class="mb-1">知識共有サイト</p>
-                                <p>&copy; Quelle</p>
-                            </div>
+                    </div>
+                    <!-- コピーライト系 -->
+                    <div class="col-12 my-1">
+                        <div class="copy-w">
+                            <h3>Quelle</h3>
+                            <p class="mb-1">知識共有サイト</p>
+                            <p>&copy; Quelle</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
 
 
 
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    </body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>
