@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
     'forum',
-    'accounts.apps.AccountsConfig',
+    'accounts',
     # django-allauth
     'django.contrib.sites',
     'allauth',
@@ -132,9 +133,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
-# signup時に確認Emailアドレスを送信
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'gmail adress'
-EMAIL_HOST_PASSWORD = 'gmail password'
-EMAIL_USE_TLS = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+# # signup時に確認Emailアドレスを送信
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'gmail adress'
+# EMAIL_HOST_PASSWORD = 'gmail password'
+# EMAIL_USE_TLS = True

@@ -103,7 +103,7 @@ def post_save(request, pk):
     return redirect('post_draft_list', pk=pk)
 
 class ProfileListView(TemplateView):
-    template_name = 'forum/profile.html'
+    template_name = 'accounts/profile.html'
 
 class MyPostsView(ListView):
     model = Post

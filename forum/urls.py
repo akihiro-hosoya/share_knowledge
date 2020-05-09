@@ -10,7 +10,6 @@ urlpatterns = [
     path('post/<int:pk>/publish/', views.post_publish, name='post_publish'),
     path('post/<int:pk>/edit/', views.PostUpdateView.as_view(), name='post_edit'),
     path('post/<int:pk>/confirm/', views.PostConfirmView.as_view(), name='post_confirm'),
-    path('post/profile/', views.ProfileListView.as_view(), name='profile'),
     path('myposts/', views.MyPostsView.as_view(), name='my_post_list'),
     path('myanswers/', views.MyAnswersView.as_view(), name='my_answer_list'),
     path('post/<int:pk>/remove/', views.PostDeleteView.as_view(), name='post_remove'),
