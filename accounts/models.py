@@ -1,75 +1,66 @@
 from django.db import models
-from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
+from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.models import UserManager, PermissionsMixin
 
 # Create your models here.
-# ユーザーを生成する時使うヘルパー(Helper)クラス
-class UserManager(BaseUserManager):
-    def create_user(self, username, email, affiliation, position, password=None):
-        if not email:
-            raise ValueError('Users must have an email address')
-
-        if not username:
-            raise ValueError('Users must have an username')
-
-        user = self.model(
-            username=username,
-            email=self.normalize_email(email),
-            affiliation=affiliation,
-            position=position,
-        )
-
+class UserManager(UserManager):
+    # メールアドレス認証
+    def _create_user(self, email, password, **extra_fields):
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
-    
-    def create_superuser(self, username, email, affiliation, position, password):
-        user = self.create_user(
-            username=username,
-            email=email,
-            password=password,
-            affiliation=affiliation,
-            position=position,
-        )
-        user.is_admin = True
-        user.save(using=self._db)
-        return user
 
-# 実際のモデル(Model)で、AbstractBaseUserを相続して作るクラス
-class User(AbstractBaseUser):
-    username = models.CharField(
-        verbose_name='名前',
-        max_length=255,
+    def create_user(self, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', False)
+        extra_fields.setdefault('is_superuser', False)
+        return self._create_user(email, password, **extra_fields)
+
+    def create_superuser(self, email, password, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
+
+        return self._create_user(email, password, **extra_fields)
+
+
+class CustomUser(AbstractBaseUser, PermissionsMixin):
+    # 必要な項目を定義
+    email = models.EmailField('メールアドレス', unique=True)
+    first_name = models.CharField(('姓'), max_length=30)
+    last_name = models.CharField(('名'), max_length=30)
+    department = models.CharField(('所属'), max_length=30, blank=True)
+    position = models.CharField(('役職'), max_length=30, blank=True)
+
+    is_staff = models.BooleanField(
+        ('staff status'),
+        default=False,
+        help_text=('Designates whether the user can log into this admin site.'),
     )
-    email = models.EmailField(
-        verbose_name='email',
-        max_length=255,
-        unique=True,
+    is_active = models.BooleanField(
+        ('active'),
+        default=True,
+        help_text=(
+            'Designates whether this user should be treated as active. '
+            'Unselect this instead of deleting accounts.'
+        ),
     )
-    affiliation = models.CharField(
-        verbose_name='所属',
-        max_length=255,
-    )
-    position = models.CharField(
-        verbose_name='役職',
-        max_length=255,
-    )
-    is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email', 'affiliation', 'position']
+    USERNAME_FIELD = 'email'
+    EMAIL_FIELD = 'email'
+    REQUIRED_FIELDS = []
 
-    def __str__(self):
-        return self.username
+    class Meta:
+        verbose_name = ('user')
+        verbose_name_plural = ('users')
 
-    def has_perm(self, perm, obj=None):
-        return True
-
-    def has_module_perms(self, app_label):
-        return True
-
-    @property
-    def is_staff(self):
-        return self.is_admin
+    def clean(self):
+        super().clean()
+        self.email = self.__class__.objects.normalize_email(self.email)

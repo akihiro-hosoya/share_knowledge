@@ -38,26 +38,26 @@ class PostListView(ListView):
     model = Post
     template_name = "forum/post_list.html"
 
-    def get(self, request, *args, **kwargs):
-        if request.user.is_anonymous:
-            return redirect('account_login')
+    # def get(self, request, *args, **kwargs):
+    #     if request.user.is_anonymous:
+    #         return redirect('account_login')
 
-        category = Category.objects.get(id=self.kwargs['category'])
-        post_list = Post.objects.order_by('-id').filter(category=category)
-
-        context = {'post_list': post_list, 'category_name': Category.objects.filter(id=self.kwargs['category'])[0]}
-        return render(request, 'forum/post_list.html', context)
-
-    # def get_queryset(self):
     #     category = Category.objects.get(id=self.kwargs['category'])
-    #     queryset = Post.objects.order_by('-id').filter(category=category)
-    #     return queryset
+    #     post_list = Post.objects.order_by('-id').filter(category=category)
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['category_key'] = self.kwargs['category']
-    #     context['category_name'] = Category.objects.filter(id=self.kwargs['category'])[0]
-    #     return context
+    #     context = {'post_list': post_list, 'category_name': Category.objects.filter(id=self.kwargs['category'])[0]}
+    #     return render(request, 'forum/post_list.html', context)
+
+    def get_queryset(self):
+        category = Category.objects.get(id=self.kwargs['category'])
+        queryset = Post.objects.order_by('-id').filter(category=category)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category_key'] = self.kwargs['category']
+        context['category_name'] = Category.objects.filter(id=self.kwargs['category'])[0]
+        return context
 
 class CreatePostView(CreateView):
     template_name = "forum/post_form.html"
@@ -102,9 +102,6 @@ def post_save(request, pk):
     post.save()
     return redirect('post_draft_list', pk=pk)
 
-class ProfileListView(TemplateView):
-    template_name = 'accounts/profile.html'
-
 class MyPostsView(ListView):
     model = Post
     template_name = 'forum/my_posts.html'
@@ -143,4 +140,3 @@ def post_comment(request, pk):
 	else:
 		form = CommentForm()
 	return render(request, 'forum/post_comment.html', {'form': form})
-

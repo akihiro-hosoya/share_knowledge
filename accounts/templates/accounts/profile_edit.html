@@ -1,6 +1,8 @@
 {% extends 'forum/base.html' %}
 {% load static %}
 
+{% load widget_tweaks %}
+
 {% block bread %}
 <li class="breadcrumb-item"><a href="/">Home</a></li>
 <li class="breadcrumb-item">プロフィール</li>
@@ -22,28 +24,38 @@
             </div>
         </div>
 
-        <!-- ---------- プロフィール欄 ---------- -->
+        <!-- ---------- プロフィール編集欄 ---------- -->
         <div class="col-12 col-md-8 mt-5 mt-md-4">
             <div>
-                <h4 class="mb-3 text-center">登録情報の確認・変更</h4>
+                <h4 class="mb-3 text-center">登録情報の編集</h4>
                 <hr>
                 <div class="section-wrapper mt-3 p-3">
                     <div class="d-flex justify-content-around">
-                        <form class="" action="">
+                        <form class="" action="" method="post">
+                            <!-- 登録するボタンを押した時に、ビューのpost関数がコールされる。 -->
+                            <!-- フォームでデータが改ざんされることを防ぐための記載 -->
+                            {% csrf_token %} 
                             <div class="form-group">
-                                <h5>名前：<span>{{ user_data.first_name }} {{ user_data.last_name }}</span></h5>
+                                <h5>名前：</h5>
+                                <p>
+                                    {% render_field form.first_name class="form-control" placeholder="姓" %}
+                                    {% render_field form.last_name class="form-control" placeholder="名" %}
+                                </p>
                             </div>
                             <div class="form-group">
-                                <h5>メールアドレス：<span>{{ user_data.email }}</span></h5>
+                                <h5>所属</h5>
+                                <p>
+                                    {% render_field form.department class="form-control" placeholder="所属" %}
+                                </p>
                             </div>
                             <div class="form-group">
-                                <h5>所属：<span>{{ user_data.department }}</span></h5>
-                            </div>
-                            <div class="form-group">
-                                <h5>役職：<span>{{ user_data.position }}</span></h5>
+                                <h5>所属</h5>
+                                <p>
+                                    {% render_field form.position class="form-control" placeholder="役職" %}
+                                </p>
                             </div>
                             <div class="button mx-auto">
-                                <a href="" class="btn btn-lg btn-warning btn-block">編集する</a>
+                                <a href="" class="btn btn-lg btn-warning btn-block" type="submit">登録する</a>
                             </div>
                         </form>
                     </div>

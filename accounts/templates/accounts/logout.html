@@ -1,31 +1,26 @@
-{% extends 'account/account.html' %}
+{% extends 'forum/base.html' %}
 {% load static %}
 
 {% block content %}
-<!-- ロゴ -->
-<div>
-    <h3>Quelle</h3>
-    <h5>知識共有サイト</h5>
-</div>
-
-<!-- ログインフォーム -->
-<div>
-    <form method="post" action="{% url 'account_logout' %}">
-		{% csrf_token %}
-		{% if redirect_field_value %}
-			<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-		{% endif %}
-		<div class="text-center">
-			<p>ログアウトしますか？</p>
-			<p>
-				<button type="submit" class="save btn btn-success" role="button">Log Out</button>
-            </p>
+<div class="container-fluid">
+    <div class="row">
+        <!-- ---------- ログアウト ---------- -->
+        <div class="col-12 col-md-8 mt-5 mt-md-4">
+            <div>
+                <h4 class="mb-3 text-center">ログアウト</h4>
+                <hr>
+                <div class="section-wrapper mt-3 p-3">
+                    <div class="d-flex justify-content-around">
+                        <form class="" action="" method="post">
+                            {% csrf_token %}
+                            <div class="button mx-auto">
+                                <button href="" class="btn btn-lg btn-success btn-block" type="submit">ログアウト</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>
-</div>
-<!-- ボタン -->
-<div>
-    <a href="#" class="btn btn-primary">Login</a>
-    <p>まだサインアップ がお済みでない方は<a href="#">こちら</a></p>
+    </div>
 </div>
 {% endblock content %}

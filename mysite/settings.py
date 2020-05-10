@@ -38,11 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'widget_tweaks',
+    # サイト
     'forum',
+    # カスタムユーザー
+    'widget_tweaks',
     'accounts',
-    # django-allauth
-    'django.contrib.sites',
+    'django.contrib',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -134,9 +135,11 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
-# # signup時に確認Emailアドレスを送信
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'gmail adress'
-# EMAIL_HOST_PASSWORD = 'gmail password'
-# EMAIL_USE_TLS = True
+
+# 一番下に追加
+AUTH_USER_MODEL = 'accounts.CustomUser'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+# ユーザーネームをcreatesuperuserの時に求めない
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False

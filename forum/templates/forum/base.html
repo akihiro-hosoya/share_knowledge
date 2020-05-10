@@ -34,33 +34,29 @@
                 <div class="collapse navbar-collapse d-md-flex justify-content-end" id="navbarToggler">
                     <ul class="navbar-nav">
                         {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a href="{% url 'news_list' %}" class="nav-link">News</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{% url 'post_new' %}" class="nav-link">Question</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{% url 'post_draft_list' %}" class="nav-link">Draft</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{% url 'profile' %}" class="nav-link">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{% url 'account_logout' %}" class="nav-link">Logout</a>
-                        </li>
+                            <li class="nav-item">
+                                <a href="{% url 'news_list' %}" class="nav-link">News</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'post_new' %}" class="nav-link">Question</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'post_draft_list' %}" class="nav-link">Draft</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'profile' %}" class="nav-link">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'account_logout' %}" class="nav-link">Logout</a>
+                            </li>
                         {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-                        </li>
+                            <li class="nav-item">
+                                <a href="{% url 'account_login' %}" class="nav-link">Login</a>
+                            </li>
                         {% endif %}
                     </ul>
                 </div>
             </div>
-            {% if user.is_authenticated %}
             <!-- ---------- Search欄 ---------- -->
             <div class="search-bar">
                 <div class="container">
@@ -125,7 +121,6 @@
                     </div>
                 </div>
             </div>
-            {% endif %}
         </div>
     </nav>
 
