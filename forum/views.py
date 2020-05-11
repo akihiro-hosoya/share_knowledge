@@ -14,6 +14,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 class TopView(TemplateView):
     template_name = 'forum/top.html'
+class TosView(TemplateView):
+    template_name = 'forum/tos.html'
+class PrivacyPolicyView(TemplateView):
+    template_name = 'forum/privacy_policy.html'
+class ContactView(TemplateView):
+    template_name = 'forum/contact.html'
+class GithubView(TemplateView):
+    template_name = 'forum/github.html'
 
 def post_search(request):
     foundPost = Post.objects.order_by('-id')
