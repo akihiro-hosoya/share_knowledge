@@ -17,10 +17,9 @@ urlpatterns = [
     path('news/top/', views.NewsListView.as_view(), name='news_list'),
     path('news/<int:pk>/', views.NewsDetailView.as_view(), name='news_detail'),
     path('post/<int:pk>/comment/', views.post_comment, name='post_comment'),
-    path('post/result/', views.post_search, name='post_search'),
+    # path('post/result/', views.ResultView.as_view(), name='result'),
     # 固定ページ
     path('tos/', views.TosView.as_view(), name='tos'),
     path('privacy_policy/', views.PrivacyPolicyView.as_view(), name='privacy_policy'),
     path('contact/', views.ContactView.as_view(), name='contact'),
-    path('github/', views.GithubView.as_view(), name='github'),
 ]

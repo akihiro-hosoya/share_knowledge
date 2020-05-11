@@ -20,28 +20,16 @@ class PrivacyPolicyView(TemplateView):
     template_name = 'forum/privacy_policy.html'
 class ContactView(TemplateView):
     template_name = 'forum/contact.html'
-class GithubView(TemplateView):
-    template_name = 'forum/github.html'
 
-def post_search(request):
-    foundPost = Post.objects.order_by('-id')
-    keyword = request.GET.get('keyword')
-    if keyword:
-        # 除外リスト作成
-        exclusion_list = set([' ', '　'])
-        q_list = ''
-        for i in keyword:
-            # 全角半角の空文字が含まれていたら無視
-            if i in exclusion_list:
-                pass
-            else:
-                q_list += i
-        query = reduce(
-            and_, [Q(title__icontains=q) | Q(text__icontains=q) for q in q_list]
-        )
-        foundPost = post.filter(query)
-        messages.success(request, '「{}」の検索結果'.format(keyword))
-    return render(request, 'forum/result.html', {'foundPost': foundPost})
+# def result(request):
+#     result = Post.objects.order_by('-id')
+#     keyword = request.GET.get('keyword')
+#     if keyword:
+#         result = result.filter(
+#             Q(title__icontains=keyword)
+#         )
+#         messages.success(request, '「{}」の検索結果'.format(keyword))
+#     return render(request, 'forum/result.html', {'result': result })
 
 class IndexView(LoginRequiredMixin, TemplateView):
     template_name = "forum/index.html"

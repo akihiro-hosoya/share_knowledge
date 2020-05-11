@@ -38,12 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     # サイト
     'forum',
     # カスタムユーザー
     'widget_tweaks',
     'accounts',
-    'django.contrib',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
