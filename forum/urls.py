@@ -2,6 +2,7 @@ from django.urls import path
 from forum import views
 
 urlpatterns = [
+    path('top/', views.TopView.as_view(), name='top'),
     path('', views.IndexView.as_view(), name='home'),
     path('category/<int:category>', views.PostListView.as_view(), name='post_list'),
     path('post/new/', views.CreatePostView.as_view(), name='post_new'),

@@ -1,22 +1,21 @@
 {% extends 'forum/base.html' %}
 {% load static %}
 
+{% block bread %}
+<li class="breadcrumb-item"><a href="/">Home</a></li>
+<li class="breadcrumb-item">{{ grandCategory_list }}</li>
+<li class="breadcrumb-item">{{ parentCategory_list }}</li>
+<li class="breadcrumb-item active">{{ category_name }}</li>
+{% endblock %}
+
 {% block content %}
 
 <div class="container-fluid">
     <div class="row">
         <!-- ---------- 質問 ---------- -->
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-lg-8">
             <div class="">
-                <p>検索結果：全〇〇件</p>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">表示順</div>
-                        <select class="form-control" name="" id="">
-                            <option value="">新着順</option>
-                        </select>
-                    </div>
-                </div>
+                <p>検索結果：全{{ post.count }}件</p>
             </div>
             <div>
                 <div class="section-wrapper mt-3 p-3">
@@ -61,10 +60,10 @@
             </div>
 
             <!-- ---------- サブメニュー --------- -->
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-lg-4 px-0">
                 <!-- ----- 新着情報一覧 ----- -->
                 <div class="mt-5">
-                    <h4 class="text-center">新着情報<span class="badge badge-info">New!!</span></h4>
+                    <h4 class="text-center">新着情報　<span class="badge badge-info">New!!</span></h4>
                     <hr>
                     <div class="section-wrapper p-3">
                         <div class="medium">

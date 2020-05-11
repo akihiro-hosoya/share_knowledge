@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from .models import CustomUser
-from .forms import ProfileForm
+from .forms import ProfileForm, SignupUserForm
 from allauth.account import views
 
 # Create your views here.
@@ -62,3 +62,7 @@ class LogoutView(views.LogoutView):
             # self.logout()でログアウトする
             self.logout()
         return redirect('/')
+
+class SignupView(views.SignupView):
+    template_name = 'account/signup.html'
+    form_class = SignupUserForm

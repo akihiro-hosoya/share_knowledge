@@ -9,8 +9,12 @@ from django.contrib import messages
 from django.db.models import Q
 from functools import reduce
 from operator import and_
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
+class TopView(TemplateView):
+    template_name = 'forum/top.html'
+
 def post_search(request):
     foundPost = Post.objects.order_by('-id')
     keyword = request.GET.get('keyword')
@@ -31,10 +35,11 @@ def post_search(request):
         messages.success(request, '「{}」の検索結果'.format(keyword))
     return render(request, 'forum/result.html', {'foundPost': foundPost})
 
-class IndexView(TemplateView):
+class IndexView(LoginRequiredMixin, TemplateView):
     template_name = "forum/index.html"
+    login_url = '/accounts/login/'
 
-class PostListView(ListView):
+class PostListView(LoginRequiredMixin, ListView):
     model = Post
     template_name = "forum/post_list.html"
 
@@ -59,7 +64,7 @@ class PostListView(ListView):
         context['category_name'] = Category.objects.filter(id=self.kwargs['category'])[0]
         return context
 
-class CreatePostView(CreateView):
+class CreatePostView(LoginRequiredMixin, CreateView):
     template_name = "forum/post_form.html"
     redirect_field_name = 'forum/post_confirm.html'
     form_class = PostForm
@@ -71,11 +76,11 @@ class CreatePostView(CreateView):
         context['parentcategory_list'] = ParentCategory.objects.all()
         return context
 
-class PostDetailView(DetailView):
+class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
     template_name = "forum/post_detail.html"
 
-class DraftListView(ListView):
+class DraftListView(LoginRequiredMixin, ListView):
     model = Post
     template_name = "forum/post_draft_list.html"
 
@@ -87,13 +92,13 @@ def post_publish(request, pk):
     post.publish()
     return redirect('post_detail', pk=pk)
 
-class PostUpdateView(UpdateView):
+class PostUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "forum/post_form.html"
     redirect_field_name = 'forum/post_detail.html'
     form_class = PostForm
     model = Post
 
-class PostConfirmView(DetailView):
+class PostConfirmView(LoginRequiredMixin, DetailView):
     model = Post
     template_name = "forum/post_confirm.html"
 
@@ -102,29 +107,29 @@ def post_save(request, pk):
     post.save()
     return redirect('post_draft_list', pk=pk)
 
-class MyPostsView(ListView):
+class MyPostsView(LoginRequiredMixin, ListView):
     model = Post
     template_name = 'forum/my_posts.html'
 
     def get_queryset(self):
         return Post.objects.filter(published_date__isnull=False).order_by('published_date')
 
-class MyAnswersView(TemplateView):
+class MyAnswersView(LoginRequiredMixin, TemplateView):
     template_name = 'forum/my_answers.html'
 
-class PostDeleteView(DeleteView):
+class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     template_name = "forum/post_confirm_delete.html"
     success_url = reverse_lazy('post_list')
 
-class NewsListView(ListView):
+class NewsListView(LoginRequiredMixin, ListView):
     model = NewsPost
     template_name = 'forum/news_list.html'
 
     def get_queryset(self):
         return NewsPost.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
 
-class NewsDetailView(DetailView):
+class NewsDetailView(LoginRequiredMixin, DetailView):
     model = NewsPost
     template_name = "forum/news_detail.html"
 

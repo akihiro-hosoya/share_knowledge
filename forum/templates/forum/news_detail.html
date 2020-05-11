@@ -1,6 +1,12 @@
 {% extends 'forum/base.html' %}
 {% load static %}
 
+{% block bread %}
+<li class="breadcrumb-item"><a href="/">Home</a></li>
+<li class="breadcrumb-item"><a href="{% url 'news_list' %}">NEWS</a></li>
+<li class="breadcrumb-item active">{{ newspost.title }}</li>
+{% endblock %}
+
 {% block content %}
 <div class="container-fluid">
     <div class="row">
