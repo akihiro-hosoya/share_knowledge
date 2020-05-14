@@ -41,7 +41,6 @@
                             aria-labelledby="nab-all">
                             <div class="p-2 medium">
                                 {% for post in post_list %}
-                                {% if author %}
                                 <div class="media m-3 p-2 btn-outline-info bg-white shadow">
                                     <div class="text-dark d-flex justify-content-start d-block">
                                         <div class="media-body">
@@ -50,13 +49,12 @@
                                             </a>
                                             <p>{{ post.text|truncatechars:100 }}</p>
                                             <p class="media-detail text-right m-0 font-weight-light">
-                                                <span class="float-left"><i class="fas fa-comment"></i> 1件</span>
-                                                {{ post.author }} &nbsp;&nbsp;&nbsp; {{ post.created_date }}
+                                                <span class="float-left"><i class="fas fa-comment"></i> {{ post.comments.count }}件</span>
+                                                {{ post.author }} &nbsp;&nbsp;&nbsp; {{ post.published_date }}
                                             </p>
                                         </div>
                                     </div>
                                 </div>
-                                {% endif %}
                                 {% endfor %}
                             </div>
                         </div>

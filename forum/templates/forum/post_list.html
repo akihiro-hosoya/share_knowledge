@@ -3,8 +3,8 @@
 
 {% block bread %}
 <li class="breadcrumb-item"><a href="/">Home</a></li>
-<li class="breadcrumb-item">{{ grandCategory_list }}</li>
-<li class="breadcrumb-item">{{ parentCategory_list }}</li>
+<li class="breadcrumb-item">#</li>
+<li class="breadcrumb-item">#</li>
 <li class="breadcrumb-item active">{{ category_name }}</li>
 {% endblock %}
 
@@ -15,7 +15,7 @@
         <!-- ---------- 質問 ---------- -->
         <div class="col-12 col-lg-8">
             <div class="">
-                <p>検索結果：全{{ post.count }}件</p>
+                <p>検索結果：全{{ post_total }}件</p>
             </div>
             <div>
                 <div class="section-wrapper mt-3 p-3">
@@ -47,7 +47,7 @@
                                                 <span class="float-left post-comment"><i class="fas fa-comment"></i>
                                                     {{ post.comments.count }}件
                                                 </span>
-                                                投稿者：{{ post.author }} {{ post.created_date }}
+                                                投稿者：{{ post.author }} {{ post.published_date }}
                                             </p>
                                         </div>
                                     </div>

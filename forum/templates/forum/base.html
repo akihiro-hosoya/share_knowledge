@@ -34,32 +34,33 @@
                 <div class="collapse navbar-collapse d-md-flex justify-content-end" id="navbarToggler">
                     <ul class="navbar-nav">
                         {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <a href="{% url 'news_list' %}" class="nav-link">News</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'post_new' %}" class="nav-link">Question</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'profile' %}" class="nav-link">Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'account_logout' %}" class="nav-link">Logout</a>
-                            </li>
+                        <li class="nav-item">
+                            <a href="{% url 'news_list' %}" class="nav-link">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'post_new' %}" class="nav-link">Question</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'profile' %}" class="nav-link">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'account_logout' %}" class="nav-link">Logout</a>
+                        </li>
                         {% else %}
-                            <li class="nav-item">
-                                <a href="{% url 'top' %}" class="nav-link">Top</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'account_signup' %}" class="nav-link">Signup</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'account_login' %}" class="nav-link">Login</a>
-                            </li>
+                        <li class="nav-item">
+                            <a href="{% url 'top' %}" class="nav-link">Top</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'account_signup' %}" class="nav-link">Signup</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'account_login' %}" class="nav-link">Login</a>
+                        </li>
                         {% endif %}
                     </ul>
                 </div>
             </div>
+            {% if user.is_authenticated %}
             <!-- ---------- Search欄 ---------- -->
             <div class="search-bar">
                 <div class="container">
@@ -110,10 +111,9 @@
                                 <div class="form-row">
                                     <div class="col-12">
                                         <!-- 検索フォーム -->
-                                        <form class="form-inline my-2 my-lg-0" method="GET"
-                                            action="#"">
-                                            <input class="form-control mr-sm-2" type="text" placeholder="キーワードで検索"
-                                                aria-label="Search" name="keyword">
+                                        <form class="form-inline my-2 my-lg-0" method="GET" action="#"">
+                                            <input class=" form-control mr-sm-2" type="text" placeholder="キーワードで検索"
+                                            aria-label="Search" name="keyword">
                                             <button class="btn btn-outline-success my-2 my-sm-0"
                                                 type="submit">Search</button>
                                         </form>
@@ -124,6 +124,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
         </div>
     </nav>
 

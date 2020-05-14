@@ -1,10 +1,10 @@
 from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import UserManager, PermissionsMixin
+from django.utils import timezone
 
-# Create your models here.
+
 class UserManager(UserManager):
-    # メールアドレス認証
     def _create_user(self, email, password, **extra_fields):
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
@@ -30,12 +30,11 @@ class UserManager(UserManager):
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    # 必要な項目を定義
     email = models.EmailField('メールアドレス', unique=True)
     first_name = models.CharField(('姓'), max_length=30)
     last_name = models.CharField(('名'), max_length=30)
     department = models.CharField(('所属'), max_length=30, blank=True)
-    position = models.CharField(('役職'), max_length=30, blank=True)
+    created = models.DateTimeField(('入会日'), default=timezone.now)
 
     is_staff = models.BooleanField(
         ('staff status'),

@@ -21,15 +21,15 @@ class PrivacyPolicyView(TemplateView):
 class ContactView(TemplateView):
     template_name = 'forum/contact.html'
 
-# def result(request):
-#     result = Post.objects.order_by('-id')
-#     keyword = request.GET.get('keyword')
-#     if keyword:
-#         result = result.filter(
-#             Q(title__icontains=keyword)
-#         )
-#         messages.success(request, '「{}」の検索結果'.format(keyword))
-#     return render(request, 'forum/result.html', {'result': result })
+def result(request):
+    result = Post.objects.order_by('-id')
+    keyword = request.GET.get('keyword')
+    if keyword:
+        result = result.filter(
+            Q(title__icontains=keyword)
+        )
+        messages.success(request, '「{}」の検索結果'.format(keyword))
+    return render(request, 'forum/result.html', {'result': result })
 
 class IndexView(LoginRequiredMixin, TemplateView):
     template_name = "forum/index.html"
@@ -38,16 +38,6 @@ class IndexView(LoginRequiredMixin, TemplateView):
 class PostListView(LoginRequiredMixin, ListView):
     model = Post
     template_name = "forum/post_list.html"
-
-    # def get(self, request, *args, **kwargs):
-    #     if request.user.is_anonymous:
-    #         return redirect('account_login')
-
-    #     category = Category.objects.get(id=self.kwargs['category'])
-    #     post_list = Post.objects.order_by('-id').filter(category=category)
-
-    #     context = {'post_list': post_list, 'category_name': Category.objects.filter(id=self.kwargs['category'])[0]}
-    #     return render(request, 'forum/post_list.html', context)
 
     def get_queryset(self):
         category = Category.objects.get(id=self.kwargs['category'])
@@ -58,6 +48,7 @@ class PostListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['category_key'] = self.kwargs['category']
         context['category_name'] = Category.objects.filter(id=self.kwargs['category'])[0]
+        context['post_total'] = Post.objects.filter(field__exact=category).count()
         return context
 
 class CreatePostView(LoginRequiredMixin, CreateView):
