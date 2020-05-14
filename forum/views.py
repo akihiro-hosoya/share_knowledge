@@ -48,7 +48,6 @@ class PostListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['category_key'] = self.kwargs['category']
         context['category_name'] = Category.objects.filter(id=self.kwargs['category'])[0]
-        context['post_total'] = Post.objects.filter(field__exact=category).count()
         return context
 
 class CreatePostView(LoginRequiredMixin, CreateView):
