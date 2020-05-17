@@ -23,11 +23,11 @@
                 <span>{{ post.published_date }}</span>
                 {% endif %}
             </div>
-            <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-success" role="button">編集する</a>
+            <a href="{% url 'forum:post_edit' pk=post.pk %}" class="btn btn-success" role="button">編集する</a>
             {% if not post.published_date %}
-            <a class="btn btn-warning" href="{% url 'post_publish' pk=post.pk %}" role="button">公開する</a>
+            <a class="btn btn-warning" href="{% url 'forum:post_publish' pk=post.pk %}" role="button">公開する</a>
             {% endif %}
-            <a href="{% url 'post_remove' pk=post.pk %}" class="btn btn-danger">削除</a>
+            <a href="{% url 'forum:post_remove' pk=post.pk %}" class="btn btn-danger">削除</a>
         </div>
 
         {% if post.published_date %}
@@ -36,7 +36,7 @@
             <h5>回答する</h5>
             <hr>
             <p>
-                <a class="btn btn-outline-info" href="{% url 'post_comment' pk=post.pk %}" role="button">コメントを追加</a>
+                <a class="btn btn-outline-info" href="{% url 'forum:post_comment' pk=post.pk %}" role="button">コメントを追加</a>
             </p>
             <div>
                 {% for comment in post.comments.all %}

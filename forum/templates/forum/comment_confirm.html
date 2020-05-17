@@ -3,8 +3,8 @@
 
 {% block bread %}
 <li class="breadcrumb-item"><a href="/">Home</a></li>
-<li class="breadcrumb-item"><a href="{% url 'post_detail' %}">質問詳細</a></li>
-<li class="breadcrumb-item"><a href="{% url 'comment_edit' pk=comment.pk %}"></a> 回答する</li>
+<li class="breadcrumb-item"><a href="{% url 'forum:post_detail' %}">質問詳細</a></li>
+<li class="breadcrumb-item"><a href="{% url 'forum:comment_edit' pk=comment.pk %}"></a> 回答する</li>
 <li class="breadcrumb-item active"></li>
 {% endblock %}
 
@@ -34,8 +34,8 @@
                 {% if not post.published_date %}
                 <a class="btn btn-warning" href="{% url 'answer_publish' pk=post.pk %}" role="button">公開する</a>
                 {% endif %}
-                <a href="{% url 'answer_edit' pk=comment.pk %}" class="btn btn-success" role="button">編集する</a>
-                <a href="{% url 'answer_draft_list' %}" class="btn btn-secondary">下書き一覧</a>
+                <a href="{% url 'forum:answer_edit' pk=comment.pk %}" class="btn btn-success" role="button">編集する</a>
+                <a href="{% url 'forum:answer_draft_list' %}" class="btn btn-secondary">下書き一覧</a>
             </div>
         </div>
 

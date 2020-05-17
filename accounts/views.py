@@ -4,7 +4,12 @@ from accounts.models import CustomUser
 from accounts.forms import ProfileForm, SignupUserForm
 from django.shortcuts import render, redirect
 from allauth.account import views
+from django.views.generic import (TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView)
 
+
+
+class TopView(TemplateView):
+    template_name = 'accounts/top.html'
 
 class SignupView(views.SignupView):
     template_name = 'accounts/signup.html'

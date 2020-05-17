@@ -24,7 +24,7 @@
                                 {% for newspost in newspost_list %}
                                 <div class="media">
                                     <div class="media-body">
-                                        <h5><a href="{% url 'news_detail' pk=newspost.pk %}">{{ newspost.title }}</a></h5>
+                                        <h5><a href="{% url 'forum:news_detail' pk=newspost.pk %}">{{ newspost.title }}</a></h5>
                                         <p>{{ newspost.text|linebreaksbr|truncatechars:100 }}</p>
                                         <p>{{ newspost.author }}</p>
                                         <p>{{ newspost.published_date }}</p>

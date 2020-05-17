@@ -39,7 +39,7 @@
                                 <div class="media m-3 p-2 bg-white shadow">
                                     <div class="d-flex justify-content-start d-block">
                                         <div class="media-body">
-                                            <a class="d-block" href="{% url 'post_detail' pk=post.pk %}">
+                                            <a class="d-block" href="{% url 'forum:post_detail' pk=post.pk %}">
                                                 <h5 class="text-all font-weight-bold mt-0">{{ post.title }}</h5>
                                             </a>
                                             <p>{{ post.text|linebreaksbr|truncatechars:100 }}</p>

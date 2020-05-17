@@ -35,10 +35,10 @@
                     <ul class="navbar-nav">
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a href="{% url 'news_list' %}" class="nav-link">News</a>
+                            <a href="{% url 'forum:news_list' %}" class="nav-link">News</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'post_new' %}" class="nav-link">Question</a>
+                            <a href="{% url 'forum:post_new' %}" class="nav-link">Question</a>
                         </li>
                         <li class="nav-item">
                             <a href="{% url 'profile' %}" class="nav-link">Profile</a>
@@ -89,7 +89,7 @@
                                                         {% for category in category_list %}
                                                         {% if category.parent.id == parentcategory.id %}
                                                         <li class="dropdown-item">
-                                                            <a href="{% url 'post_list' category.id %}">
+                                                            <a href="{% url 'forum:post_list' category.id %}">
                                                                 {{ category.name }}
                                                             </a>
                                                         </li>
@@ -107,18 +107,10 @@
                             </ul>
                         </div>
                         <div class="col-6 col-lg-8">
-                            <form class="form-inline k-search">
-                                <div class="form-row">
-                                    <div class="col-12">
-                                        <!-- 検索フォーム -->
-                                        <form class="form-inline my-2 my-lg-0" method="GET" action="#"">
-                                            <input class=" form-control mr-sm-2" type="text" placeholder="キーワードで検索"
-                                            aria-label="Search" name="keyword">
-                                            <button class="btn btn-outline-success my-2 my-sm-0"
-                                                type="submit">Search</button>
-                                        </form>
-                                    </div>
-                                </div>
+                            <!-- 検索フォーム -->
+                            <form method="GET" action="{% url 'forum:result' %}">
+                                <input type="text" name="keyword">
+                                <button type="submit">検索</button>
                             </form>
                         </div>
                     </div>
@@ -153,8 +145,8 @@
                         <div class="page-intro">
                             <h5>Pages</h5>
                             <p><a class="d-block" href="/">Home</a></p>
-                            <p><a class="d-block" href="{% url 'news_list' %}">News</a></p>
-                            <p><a class="d-block" href="{% url 'post_new' %}">Question</a></p>
+                            <p><a class="d-block" href="{% url 'forum:news_list' %}">News</a></p>
+                            <p><a class="d-block" href="{% url 'forum:post_new' %}">Question</a></p>
                             <p><a class="d-block" href="{% url 'profile' %}">Profile</a></p>
                             <p><a class="d-block" href="{% url 'account_logout' %}">Logout</a></p>
                         </div>
@@ -163,9 +155,9 @@
                     <div class="col-sm-6">
                         <div class="about-intro">
                             <h5>About</h5>
-                            <p><a class="d-block" href="{% url 'tos' %}">ご利用規約</a></p>
-                            <p><a class="d-block" href="{% url 'privacy_policy' %}">プライバシーポリシー</a></p>
-                            <p><a class="d-block" href="{% url 'contact' %}">お問い合わせ</a></p>
+                            <p><a class="d-block" href="{% url 'forum:tos' %}">ご利用規約</a></p>
+                            <p><a class="d-block" href="{% url 'forum:privacy_policy' %}">プライバシーポリシー</a></p>
+                            <p><a class="d-block" href="{% url 'forum:contact' %}">お問い合わせ</a></p>
                             <a class="my-2 d-block" href="#"><span><i class="fab fa-github-square"></i></span>
                                 Github</a>
                         </div>
@@ -175,9 +167,9 @@
                     <div class="col-12">
                         <div class="about-intro">
                             <h5>About</h5>
-                            <p><a class="d-block" href="{% url 'tos' %}">ご利用規約</a></p>
-                            <p><a class="d-block" href="{% url 'privacy_policy' %}">プライバシーポリシー</a></p>
-                            <p><a class="d-block" href="{% url 'contact' %}">お問い合わせ</a></p>
+                            <p><a class="d-block" href="{% url 'forum:tos' %}">ご利用規約</a></p>
+                            <p><a class="d-block" href="{% url 'forum:privacy_policy' %}">プライバシーポリシー</a></p>
+                            <p><a class="d-block" href="{% url 'forum:contact' %}">お問い合わせ</a></p>
                             <a class="my-2 d-block" href="#"><span><i class="fab fa-github-square"></i></span>
                                 Github</a>
                         </div>

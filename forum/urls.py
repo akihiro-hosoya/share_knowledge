@@ -1,8 +1,9 @@
 from django.urls import path
 from forum import views
 
+app_name= 'forum'
+
 urlpatterns = [
-    path('top/', views.TopView.as_view(), name='top'),
     path('', views.IndexView.as_view(), name='home'),
     path('category/<int:category>', views.PostListView.as_view(), name='post_list'),
     path('post/new/', views.CreatePostView.as_view(), name='post_new'),
@@ -17,7 +18,7 @@ urlpatterns = [
     path('news/top/', views.NewsListView.as_view(), name='news_list'),
     path('news/<int:pk>/', views.NewsDetailView.as_view(), name='news_detail'),
     path('post/<int:pk>/comment/', views.post_comment, name='post_comment'),
-    # path('post/result/', views.ResultView.as_view(), name='result'),
+    path('result/', views.ResultView.as_view(), name='result'),
     # 固定ページ
     path('tos/', views.TosView.as_view(), name='tos'),
     path('privacy_policy/', views.PrivacyPolicyView.as_view(), name='privacy_policy'),

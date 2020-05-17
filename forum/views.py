@@ -12,8 +12,6 @@ from operator import and_
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
-class TopView(TemplateView):
-    template_name = 'forum/top.html'
 class TosView(TemplateView):
     template_name = 'forum/tos.html'
 class PrivacyPolicyView(TemplateView):
@@ -21,15 +19,27 @@ class PrivacyPolicyView(TemplateView):
 class ContactView(TemplateView):
     template_name = 'forum/contact.html'
 
-def result(request):
-    result = Post.objects.order_by('-id')
-    keyword = request.GET.get('keyword')
-    if keyword:
-        result = result.filter(
-            Q(title__icontains=keyword)
-        )
-        messages.success(request, '「{}」の検索結果'.format(keyword))
-    return render(request, 'forum/result.html', {'result': result })
+class ResultView(LoginRequiredMixin, ListView):
+    model = Post
+    template_name = 'forum/result.html'
+
+    def get_queryset(self):
+        queryset = Post.objects.order_by('-id')
+        keyword = self.request.GET.get('keyword')
+        if keyword:
+            exclusion = set([' ', '　'])
+            q_list = ''
+            for i in keyword:
+                if i in exclusion:
+                    pass
+                else:
+                    q_list += i
+            query = reduce(
+                        and_, [Q(title__icontains=q) | Q(text__icontains=q) for q in q_list]
+                    )
+            queryset = queryset.filter(query)
+            messages.success(self.request, '「{}」の検索結果'.format(keyword))
+        return queryset
 
 class IndexView(LoginRequiredMixin, TemplateView):
     template_name = "forum/index.html"

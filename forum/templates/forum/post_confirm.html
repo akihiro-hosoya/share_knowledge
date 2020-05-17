@@ -21,7 +21,7 @@
             <h3>質問</h3>
             <hr>
             <div>
-                <a class="d-block" href="{% url 'post_detail' pk=post.pk %}">
+                <a class="d-block" href="{% url 'forum:post_detail' pk=post.pk %}">
                     <h5>{{ post.title }}</h5>
                 </a>
                 <p>{{ post.text|linebreaksbr }}</p>
@@ -33,8 +33,8 @@
                 {% if not post.published_date %}
                 <a class="btn btn-warning" href="{% url 'post_publish' pk=post.pk %}" role="button">公開する</a>
                 {% endif %}
-                <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-success" role="button">編集する</a>
-                <a href="{% url 'post_draft_list' %}" class="btn btn-secondary">下書き一覧</a>
+                <a href="{% url 'forum:post_edit' pk=post.pk %}" class="btn btn-success" role="button">編集する</a>
+                <a href="{% url 'forum:post_draft_list' %}" class="btn btn-secondary">下書き一覧</a>
             </div>
         </div>
 

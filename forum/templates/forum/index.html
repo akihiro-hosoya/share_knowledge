@@ -42,7 +42,7 @@
                                             {% for category in category_list %}
                                             {% if category.parent.id == parentcategory.id %}
                                             <li class="dropdown-item">
-                                                <a href="{% url 'post_list' category.id %}">
+                                                <a href="{% url 'forum:post_list' category.id %}">
                                                     {{ category.name }}
                                                 </a>
                                             </li>
@@ -62,6 +62,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- ---------- 質問 ---------- 
 <div class="q&aform mt-5">
