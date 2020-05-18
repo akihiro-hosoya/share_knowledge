@@ -1,5 +1,6 @@
 {% extends 'forum/base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block bread %}
 <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -8,19 +9,35 @@
 
 
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid main-wrapper">
     <div class="row">
-
         <!-- ----- 質問フォーム ----- -->
-        <div class="col-12 col-md-8">
+        <div class="col-12">
             <h3 class="text-center">投稿する</h3>
             <hr>
             <div>
                 <form method="POST" class="post-form">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    <div class="mb-3">
+                        <label for="">タイトル</label>
+                        {% render_field form.title class="form-control" placeholder="" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="">投稿者</label>
+                        {% render_field form.author class="form-control" placeholder="" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="">カテゴリー</label>
+                        {% render_field form.grand_category class="select form-control form-control-sm m-1"%}
+                        {% render_field form.parent_category class="select form-control form-control-sm m-1" %}
+                        {% render_field form.category class="select form-control form-control-sm m-1" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="">内容</label>
+                        {% render_field form.text class="form-control" %}
+                    </div>
                     <div class="text-center">
-                        <button class="btn btn-primary" type="submit" role="button">確認する</button>
+                        <button class="btn btn-primary" type="submit">確認する</button>
                     </div>
                 </form>
             </div>

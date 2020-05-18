@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid main-wrapper">
     <div class="row">
         <!-- ---------- ログアウト ---------- -->
         <div class="col-12 mt-5 mt-md-4">
@@ -13,8 +13,9 @@
                     <div class="d-flex justify-content-around">
                         <form class="" action="" method="post">
                             {% csrf_token %}
-                            <div class="button mx-auto">
-                                <button href="" class="btn btn-lg btn-success btn-block" type="submit">ログアウトする</button>
+                            <p class="text-center">ログアウトしますか？</p>
+                            <div class="mx-auto">
+                                <button href="" class="btn btn-warning" type="submit">ログアウトする</button>
                             </div>
                         </form>
                     </div>

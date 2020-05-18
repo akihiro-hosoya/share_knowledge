@@ -3,31 +3,47 @@
 {% load widget_tweaks %}
 
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid main-wrapper">
     <div class="row">
         <!-- ---------- サインアップ欄 ---------- -->
-        <div class="col-12 mt-5 mt-md-4">
+        <div class="col-12">
             <div>
                 <h4 class="mb-3 text-center">サインアップ</h4>
                 <hr>
-                <div class="section-wrapper mt-3 p-3">
-                    <div class="d-flex justify-content-around">
-                        <form class="" action="" method="post">
-                            {% csrf_token %}
-                            <div class="mb-1">
-                                {% render_field form.email class="form-control" placeholder="メールアドレス" %}
+                <div class="section-wrapper mt-3 p-3">                    
+                    <form class="mx-0" action="" method="post">
+                        {% csrf_token %}
+                        <div class="d-flex justify-content-between">
+                            <div class="mb-1" style="width: 45%;">
+                                <label for="">姓</label>
+                                {% render_field form.first_name class="form-control" placeholder="山田" %}
                             </div>
-                            <div class="mb-1">
-                                {% render_field form.password1 class="form-control" placeholder="パスワード" %}
+                            <div class="mb-3" style="width: 45%;">
+                                <label for="">名</label>
+                                {% render_field form.last_name class="form-control" placeholder="太郎" %}
                             </div>
-                            <div class="mb-1">
-                                {% render_field form.password2 class="form-control" placeholder="パスワード（確認）" %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="">メールアドレス</label>
+                            {% render_field form.email class="form-control" placeholder="example@gmail.com" %}
+                            <div class="small form-text text-muted">
+                                <span class="">Gmail推奨</span>
                             </div>
-                            <div class="button mx-auto">
-                                <button href="" class="btn btn-lg btn-primary btn-block" type="submit">サインアップ</button>
+                        </div>
+                        <div class="mb-1">
+                            <label for="">パスワード</label>
+                            {% render_field form.password1 class="form-control" placeholder="パスワード" %}
+                        </div>
+                        <div class="mb-1">
+                            {% render_field form.password2 class="form-control" placeholder="パスワード（確認）" %}
+                            <div class="small form-text text-muted">
+                                <span class="">半角英数字・8文字以上（推奨）</span>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-4">
+                            <button href="" class="btn btn-primary mx-auto" type="submit">登録する</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

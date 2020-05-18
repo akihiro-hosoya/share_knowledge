@@ -1,5 +1,6 @@
 {% extends 'forum/base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block bread %}
 <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -13,9 +14,16 @@
 	<hr>
 	<form method="POST" class="post-form">
 		{% csrf_token %}
-		{{ form.as_p }}
+		<div class="mb-3">
+			<label for="">回答者</label>
+			{% render_field form.author class="form-control" placeholder="" %}
+		</div>
+		<div class="mb-3">
+			<label for="">回答内容</label>
+			{% render_field form.text class="form-control" %}
+		</div>
 		<div class="text-center">
-			<button type="submit" class="save btn btn-success" role="button">Send</button>
+			<button type="submit" class="save btn btn-success" role="button">回答する</button>
 		</div>
 	</form>
 </div>

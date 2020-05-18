@@ -129,7 +129,7 @@
     </nav>
 
     <!-- ---------- 背景調整 ---------- -->
-    <div class="main-wrapper">
+    <div class="">
         {% block content %}
         {% endblock content %}
     </div>
@@ -137,7 +137,7 @@
     <!-- ---------- Footer ---------- -->
     <footer>
         <div class="footer-wrapper mt-4 pt-4">
-            <div class="container-fluid padding">
+            <div class="container-fluid main-wrapper padding">
                 <div class="row">
                     {% if user.is_authenticated %}
                     <!-- ページ -->
