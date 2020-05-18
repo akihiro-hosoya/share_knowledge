@@ -3,9 +3,9 @@
 
 {% block bread %}
 <li class="breadcrumb-item"><a href="/">Home</a></li>
-<li class="breadcrumb-item">{{ grandCategory_list }}</li>
-<li class="breadcrumb-item">{{ parentCategory_list }}</li>
-<li class="breadcrumb-item"><a href="#"></a>{{ post.category }}</li>
+<li class="breadcrumb-item">{{ grand_category }}</li>
+<li class="breadcrumb-item">{{ parent_category }}</li>
+<li class="breadcrumb-item">{{ post.category }}</li>
 <li class="breadcrumb-item active">質問内容</li>
 {% endblock %}
 

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.urls import reverse_lazy
 from forum.models import Post, NewsPost, Comment, GrandCategory, ParentCategory, Category
-from django.views.generic import (TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView)
+from django.views.generic import (TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView, View)
 from forum.forms import PostForm, CommentForm, ContactForm
 from django.utils import timezone
 from django.contrib import messages
@@ -13,6 +13,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.conf import settings
 from django.core.mail import BadHeaderError, send_mail
+from accounts.models import CustomUser
 
 # Create your views here.
 class TosView(TemplateView):
@@ -100,6 +101,22 @@ class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
     template_name = "forum/post_detail.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category = Post.objects.get(id=self.kwargs['pk']).category
+        print(category)
+        parent_category = Category.objects.filter(name=category)[0].parent
+        print(parent_category)
+        grand_category = ParentCategory.objects.filter(name=parent_category)[0].grand
+        print(grand_category)
+        context['category'] = category
+        context['parent_category'] = parent_category
+        context['grand_category'] = grand_category
+
+        # context['grandcategory_list'] = GrandCategory.objects.
+        # context['parentcategory_list'] = ParentCategory.objects.
+        return context
+
 class DraftListView(LoginRequiredMixin, ListView):
     model = Post
     template_name = "forum/post_draft_list.html"
@@ -118,6 +135,12 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
     form_class = PostForm
     model = Post
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['post'] = Post.objects.get(id=self.kwargs['pk'])
+        return context
+
+
 class PostConfirmView(LoginRequiredMixin, DetailView):
     model = Post
     template_name = "forum/post_confirm.html"
@@ -127,12 +150,15 @@ def post_save(request, pk):
     post.save()
     return redirect('post_draft_list', pk=pk)
 
-class MyPostsView(LoginRequiredMixin, ListView):
-    model = Post
-    template_name = 'forum/my_posts.html'
-
-    def get_queryset(self):
-        return Post.objects.filter(published_date__isnull=False).order_by('published_date')
+class MyPostsView(LoginRequiredMixin, View):
+    # def get_queryset(self):
+    def get(self, request, *args, **kwargs):
+        user_data = CustomUser.objects.get(id=request.user.id)
+        post_list = Post.objects.filter(author=user_data, published_date__isnull=False).order_by('published_date')
+        return render(request, 'forum/my_posts.html', {
+            'user_data': user_data,
+            'post_list': post_list,
+        })
 
 class MyAnswersView(LoginRequiredMixin, TemplateView):
     template_name = 'forum/my_answers.html'

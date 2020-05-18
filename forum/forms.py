@@ -1,5 +1,6 @@
 from django import forms
-from .models import Post, Comment, GrandCategory, ParentCategory, Category
+from forum.models import Post, Comment, GrandCategory, ParentCategory, Category
+from accounts.models import CustomUser
 # from django.conf import settings
 # from django.core.mail import BadHeaderError, send_mail
 # from django.http import HttpResponse
