@@ -40,7 +40,11 @@
                                 <h5>所属：<span>{{ user_data.department }}</span></h5>
                             </div>
                             <div class="form-group">
-                                <h5>役職：<span>{{ user_data.position }}</span></h5>
+                                {% if user_data.position %}
+                                    <h5>役職：<span>{{ user_data.position }}</span></h5>
+                                {% else %}
+                                    <h5>役職：未登録</h5>
+                                {% endif %}
                             </div>
                             <div class="button mx-auto">
                                 <a href="{% url 'profile_edit' %}" class="btn btn-lg btn-warning btn-block">編集する</a>

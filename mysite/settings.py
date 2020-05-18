@@ -142,3 +142,10 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+""" メールサーバー用"""
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'iicina.yftj.33@gmail.com'
+EMAIL_HOST_PASSWORD = 'ueglldzruyiytlxf'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

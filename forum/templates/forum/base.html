@@ -68,7 +68,7 @@
                         <div class="col-6 col-lg-4">
                             <ul class="mb-0">
                                 <li class="dm_1st">
-                                    <button class="btn dropdown-toggle dm_1st_sub" type="button">
+                                    <button class="btn btn-outline-light dropdown-toggle dm_1st_sub" type="button">
                                         <i class="fas fa-th-list"></i>
                                         <span>カテゴリーから探す</span>
                                     </button>
@@ -109,8 +109,8 @@
                         <div class="col-6 col-lg-8">
                             <!-- 検索フォーム -->
                             <form method="GET" action="{% url 'forum:result' %}">
-                                <input type="text" name="keyword">
-                                <button type="submit">検索</button>
+                                <input class="form-control-sm" type="text" name="keyword">
+                                <button class="btn btn-outline-light btn-sm" type="submit">検索</button>
                             </form>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
     <!-- ---------- Footer ---------- -->
     <footer>
         <div class="footer-wrapper mt-4 pt-4">
-            <div class="container-fluid main-wrapper padding">
+            <div class="container-fluid padding">
                 <div class="row">
                     {% if user.is_authenticated %}
                     <!-- ページ -->
@@ -157,7 +157,7 @@
                             <h5>About</h5>
                             <p><a class="d-block" href="{% url 'forum:tos' %}">ご利用規約</a></p>
                             <p><a class="d-block" href="{% url 'forum:privacy_policy' %}">プライバシーポリシー</a></p>
-                            <p><a class="d-block" href="{% url 'forum:contact' %}">お問い合わせ</a></p>
+                            <p><a class="d-block" href="{% url 'forum:contact_form' %}">お問い合わせ</a></p>
                             <a class="my-2 d-block" href="#"><span><i class="fab fa-github-square"></i></span>
                                 Github</a>
                         </div>
@@ -169,7 +169,7 @@
                             <h5>About</h5>
                             <p><a class="d-block" href="{% url 'forum:tos' %}">ご利用規約</a></p>
                             <p><a class="d-block" href="{% url 'forum:privacy_policy' %}">プライバシーポリシー</a></p>
-                            <p><a class="d-block" href="{% url 'forum:contact' %}">お問い合わせ</a></p>
+                            <p><a class="d-block" href="{% url 'forum:contact_form' %}">お問い合わせ</a></p>
                             <a class="my-2 d-block" href="#"><span><i class="fab fa-github-square"></i></span>
                                 Github</a>
                         </div>

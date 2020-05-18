@@ -22,5 +22,6 @@ urlpatterns = [
     # 固定ページ
     path('tos/', views.TosView.as_view(), name='tos'),
     path('privacy_policy/', views.PrivacyPolicyView.as_view(), name='privacy_policy'),
-    path('contact/', views.ContactView.as_view(), name='contact'),
+    path('contact_form/', views.contact_form, name='contact_form'),
+    path('contact_complete/', views.contact_complete, name='contact_complete'),
 ]

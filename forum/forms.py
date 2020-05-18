@@ -1,5 +1,9 @@
 from django import forms
 from .models import Post, Comment, GrandCategory, ParentCategory, Category
+# from django.conf import settings
+# from django.core.mail import BadHeaderError, send_mail
+# from django.http import HttpResponse
+
 
 class PostForm(forms.ModelForm):
     grand_category = forms.ModelChoiceField(
@@ -22,3 +26,9 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('author', 'text',)
+
+class ContactForm(forms.Form):
+    subject = forms.CharField(label='件名', max_length=100)
+    sender = forms.EmailField(label='Email', help_text='※ご確認の上、正しく入力してください。')
+    message = forms.CharField(label='メッセージ', widget=forms.Textarea)
+    myself = forms.BooleanField(label='同じ内容を受け取る', required=False)

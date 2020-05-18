@@ -3,21 +3,45 @@ from django.utils import timezone
 from django.urls import reverse_lazy
 from forum.models import Post, NewsPost, Comment, GrandCategory, ParentCategory, Category
 from django.views.generic import (TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView)
-from forum.forms import PostForm, CommentForm
+from forum.forms import PostForm, CommentForm, ContactForm
 from django.utils import timezone
 from django.contrib import messages
 from django.db.models import Q
 from functools import reduce
 from operator import and_
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
+from django.conf import settings
+from django.core.mail import BadHeaderError, send_mail
 
 # Create your views here.
 class TosView(TemplateView):
     template_name = 'forum/tos.html'
 class PrivacyPolicyView(TemplateView):
     template_name = 'forum/privacy_policy.html'
-class ContactView(TemplateView):
-    template_name = 'forum/contact.html'
+
+def contact_form(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+            sender = form.cleaned_data['sender']
+            myself = form.cleaned_data['myself']
+            recipients = [settings.EMAIL_HOST_USER]
+            if myself:
+                recipients.append(sender)
+            try:
+                send_mail(subject, message, sender, recipients)
+            except BadHeaderError:
+                return HttpResponse('無効なヘッダーが見つかりました。')
+            return redirect('forum:contact_complete')
+    else:
+        form = ContactForm()
+    return render(request, 'forum/contact_form.html', {'form': form})
+
+def contact_complete(request):
+    return render(request, 'forum/contact_complete.html')
 
 class ResultView(LoginRequiredMixin, ListView):
     model = Post

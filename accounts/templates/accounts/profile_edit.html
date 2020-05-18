@@ -30,17 +30,21 @@
                 <h4 class="mb-3 text-center">登録情報の編集</h4>
                 <hr>
                 <div class="section-wrapper mt-3 p-3">
-                    <div class="d-flex justify-content-around">
+                    <div class="">
                         <form class="" action="" method="post">
                             <!-- 登録するボタンを押した時に、ビューのpost関数がコールされる。 -->
                             <!-- フォームでデータが改ざんされることを防ぐための記載 -->
                             {% csrf_token %} 
                             <div class="form-group">
-                                <h5>名前：</h5>
-                                <p>
-                                    {% render_field form.first_name class="form-control" placeholder="姓" %}
-                                    {% render_field form.last_name class="form-control" placeholder="名" %}
-                                </p>
+                                <h5>名前</h5>
+                                <div class="d-flex jistify-content-around">
+                                    <p>姓
+                                        {% render_field form.first_name class="form-control" placeholder="姓" %}
+                                    </p>
+                                    <p>名
+                                        {% render_field form.last_name class="form-control" placeholder="名" %}
+                                    </p>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <h5>所属</h5>
@@ -48,14 +52,8 @@
                                     {% render_field form.department class="form-control" placeholder="所属" %}
                                 </p>
                             </div>
-                            <div class="form-group">
-                                <h5>所属</h5>
-                                <p>
-                                    {% render_field form.position class="form-control" placeholder="役職" %}
-                                </p>
-                            </div>
-                            <div class="button mx-auto">
-                                <button class="btn btn-lg btn-warning btn-block" type="submit">登録する</button>
+                            <div class="text-center mx-auto">
+                                <button class="btn btn-warning" type="submit">登録する</button>
                             </div>
                         </form>
                     </div>
