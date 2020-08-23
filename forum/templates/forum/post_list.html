@@ -22,18 +22,9 @@
                     <div class="text-center d-flex justify-content-around">
                         <h4 class="mb-3">{{ category_name }}の投稿一覧</h4>
                     </div>
-                    <!-- ----- タブ ----- -->
-                    <nav>
-                        <div class="nav nab-tabs nav-fill" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link all-bgc active" id="nav-all-tab" data-toggle="tab"
-                                href="#nav-all" role="tab" aria-controls="nav-all" aria-selected="true"></a>
-                        </div>
-                    </nav>
                     <!-- ----- メイン ----- -->
-                    <div class="tab-content" id="nav-tabContent">
+                    <div>
                         <!-- ----- すべて ----- -->
-                        <div class="tab-pane fade show active pb-2 all-bgc" id="nav-all" role="tabpanel"
-                            aria-labelledby="nab-all">
                             <div class="p-2 medium">
                                 {% for post in post_list %}
                                 <div class="media m-3 p-2 bg-white shadow">
@@ -54,7 +45,6 @@
                                 </div>
                                 {% endfor %}
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -63,7 +53,7 @@
             <div class="col-12 col-lg-4 px-0">
                 <!-- ----- 新着情報一覧 ----- -->
                 <div class="mt-5">
-                    <h4 class="text-center">新着情報　<span class="badge badge-info">New!!</span></h4>
+                    <h4 class="text-center">新着情報<span class="badge badge-info">New!!</span></h4>
                     <hr>
                     <div class="section-wrapper p-3">
                         <div class="medium">
