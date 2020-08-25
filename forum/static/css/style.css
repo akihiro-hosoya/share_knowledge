@@ -19,6 +19,9 @@ a {
     display: block;
 }
 
+p {
+    line-height: 1em;
+}
 
 /* 全体 */
 .section-wrapper {

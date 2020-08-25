@@ -85,17 +85,45 @@ class PostListView(LoginRequiredMixin, ListView):
         context['category_name'] = Category.objects.filter(id=self.kwargs['category'])[0]
         return context
 
-class CreatePostView(LoginRequiredMixin, CreateView):
-    template_name = "forum/post_form.html"
-    redirect_field_name = 'forum/post_confirm.html'
-    form_class = PostForm
-    model = Post
+class CreatePostView(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        form = PostForm(request.POST or None)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['grandcategory_list'] = GrandCategory.objects.all()
-        context['parentcategory_list'] = ParentCategory.objects.all()
-        return context
+        return render(request, 'forum/post_form.html', {
+            'form': form,
+        })
+    
+    def post(self, request, *args, **kwargs):
+        form = PostForm(request.POST or None)
+        print('test2')
+        print(request.POST)
+
+        if form.is_valid():
+            print('test3')
+            post_data = Post()
+            post_data.author = request.user
+            post_data.title = form.cleaned_data['title']
+            post_data.text = form.cleaned_data['text']
+            category = form.cleaned_data['category']
+            category_data = Category.objects.filter(name=category)[0]
+            post_data.category = category_data
+            post_data.save()
+            print('test')
+            return redirect('forum:post_detail', post_data.id)
+
+        return render(request, 'forum/post_form.html', {
+            'form': form
+        })
+    # template_name = "forum/post_form.html"
+    # redirect_field_name = 'forum/post_confirm.html'
+    # form_class = PostForm
+    # model = Post
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['grandcategory_list'] = GrandCategory.objects.all()
+    #     context['parentcategory_list'] = ParentCategory.objects.all()
+    #     return context
 
 class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
@@ -159,9 +187,6 @@ class MyPostsView(LoginRequiredMixin, View):
             'user_data': user_data,
             'post_list': post_list,
         })
-
-class MyAnswersView(LoginRequiredMixin, TemplateView):
-    template_name = 'forum/my_answers.html'
 
 class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post

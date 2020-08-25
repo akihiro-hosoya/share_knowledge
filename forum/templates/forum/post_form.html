@@ -23,15 +23,11 @@
                         {% render_field form.title class="form-control" placeholder="" %}
                     </div>
                     <div class="mb-3">
-                        <label for="">投稿者</label>
-                        {% render_field form.author class="form-control" placeholder="" %}
-                    </div>
-                    <div class="mb-3">
                         <label for="">カテゴリー</label>
-                        {% if not post.category %}
-                            {% render_field form.grand_category class="select form-control form-control-sm m-1"%}
-                            {% render_field form.parent_category class="select form-control form-control-sm m-1" %}
-                        {% endif %}
+                        <!-- {% if not post.category %}
+                            {% render_field form.grandcategory class="select form-control form-control-sm m-1"%}
+                            {% render_field form.parentcategory class="select form-control form-control-sm m-1" %}
+                        {% endif %} -->
                         {% render_field form.category class="select form-control form-control-sm m-1" %}
                     </div>
                     <div class="mb-3">
@@ -46,8 +42,8 @@
         </div>
     </div>
 </div>
-<script>
-    const grandCategoryElement = document.querySelector('#id_grand_category');
+<!-- <script>
+const grandCategoryElement = document.querySelector('#id_grand_category');
 const parentCategoryElement = document.querySelector('#id_parent_category');
 const categoryElement = document.querySelector('#id_category');
 const categories = {
@@ -121,5 +117,5 @@ if (parentCategoryElement.value) {
 if (grandCategoryElement.value) {
     changeCategory2(parentCategoryElement.value);
 }
-</script>
+</script> -->
 {% endblock content %}

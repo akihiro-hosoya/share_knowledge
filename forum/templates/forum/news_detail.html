@@ -15,10 +15,12 @@
             <h3 class="text-center">NEWS</h3>
             <hr>
             <div>
-                <h5>{{ newspost.title }}</h5>
+                <h5 class="text-info">{{ newspost.title }}</h5>
                 <p>{{ newspost.text|linebreaksbr }}</p>
-                <p>{{ newspost.author }}</p>
-                <p class="my-0">{{ newspost.published_date }}</p>
+                <div class="my-4">
+                    <p>{{ newspost.author }}</p>
+                    <p class="my-0">{{ newspost.published_date }}</p>
+                </div>
             </div>
         </div>
     </div>

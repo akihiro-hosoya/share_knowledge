@@ -13,7 +13,6 @@ urlpatterns = [
     path('post/<int:pk>/edit/', views.PostUpdateView.as_view(), name='post_edit'),
     path('post/<int:pk>/confirm/', views.PostConfirmView.as_view(), name='post_confirm'),
     path('myposts/', views.MyPostsView.as_view(), name='my_post_list'),
-    path('myanswers/', views.MyAnswersView.as_view(), name='my_answer_list'),
     path('post/<int:pk>/remove/', views.PostDeleteView.as_view(), name='post_remove'),
     path('news/top/', views.NewsListView.as_view(), name='news_list'),
     path('news/<int:pk>/', views.NewsDetailView.as_view(), name='news_detail'),

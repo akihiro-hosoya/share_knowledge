@@ -18,13 +18,15 @@ class ParentCategory(models.Model):
     def __str__(self):
         return self.name
 
-
 class Category(models.Model):
     name = models.CharField('小カテゴリー', max_length=50)
     parent = models.ForeignKey(ParentCategory, verbose_name='中カテゴリー', on_delete=models.PROTECT)
 
     def __str__(self):
         return self.name
+
+
+        
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
